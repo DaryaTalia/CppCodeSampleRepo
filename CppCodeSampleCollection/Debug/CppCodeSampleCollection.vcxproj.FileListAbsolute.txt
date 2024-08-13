@@ -1,1 +1,2 @@
 D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe
