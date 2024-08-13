@@ -5,20 +5,43 @@
 
 using namespace std;
 
-// Expensive Calculator
+// Game Stats
 int main()
 {
-    cout << "7 + 3 = " << 7 + 3 << endl;
-    cout << "7 - 3 = " << 7 - 3 << endl;
-    cout << "7 * 3 = " << 7 * 3 << endl;
+    int score;
+    double distance;
+    char playAgain;
+    bool shieldsUp;
 
-    cout << "7 / 3 = " << 7 / 3 << endl;
-    cout << "7.0 / 3.0 = " << 7.0 / 3.0 << endl;
+    short lives, aliensKilled;
 
-    cout << "7 % 3 = " << 7 % 3 << endl;
+    score = 0;
+    distance = 1200.76;
+    playAgain = 'y';
+    shieldsUp = true;
+    lives = 3;
+    aliensKilled = 10;
 
-    cout << "7 + 3 * 5 = " << 7 + 3 * 5 << endl;
-    cout << "(7 + 3) * 5 = " << (7 + 3) * 5 << endl;
+    double engineTemp = 6572.89;
+
+    cout << "\nscore: " << score << endl;
+    cout << "distance: " << distance << endl;
+    cout << "playAgain: " << playAgain << endl;
+
+    cout << "lives: " << lives << endl;
+    cout << "aliensKilled: " << aliensKilled << endl;
+    cout << "engineTemp: " << engineTemp << endl;
+
+    int fuel;
+    cout << "\nHow much fuel?\n";
+    cin >> fuel;
+    cout << "fuel: " << fuel << endl;
+
+    // Define a new name for an existing type; 
+    // often used to create shorter names for types with long names
+    typedef unsigned short int ushort;
+    ushort bonus = 10;
+    cout << "\nbonus: " << bonus << endl;
 
     return 0;
 }
