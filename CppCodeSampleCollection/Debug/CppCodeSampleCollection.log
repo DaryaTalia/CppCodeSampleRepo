@@ -1,3 +1,2 @@
 ﻿  CppCodeSampleCollection.cpp
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(42,30): warning C4305: 'initializing': truncation from 'double' to 'float'
   CppCodeSampleCollection.vcxproj -> D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe
