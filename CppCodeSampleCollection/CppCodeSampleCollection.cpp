@@ -6,25 +6,35 @@
 
 using namespace std;
 
-
-// Score Rater 3.0
+// Menu Chooser
 int main()
 {    
-    int score ;
-    cout << "Enter your score: ";
-    cin >> score;
+    cout << "Difficulty Levels\n\n";
+    cout << "1 - Easy\n";
+    cout << "2 - Normal\n";
+    cout << "3 - Hard\n";
+
+    int choice ;
+    cout << "Choice: ";
+    cin >> choice;
     
-    if (score >= 1000) {
-        cout << "You scored 1000 or more. Impressive!\n";        
-    } 
-    else if (score >= 500) {
-        cout << "You scored 500 or more. Nice.\n";
+    switch (choice) {
+    case 1: {
+        cout << "You picked Easy.\n";
+        break;
+        }
+    case 2: {
+        cout << "You picked Normal.\n";
+        break;
     }
-    else if (score >= 250) {
-        cout << "You scored 250 or more. Decent.\n";
+    case 3: {
+        cout << "You picked Hard.\n";
+        break;
     }
-    else {
-        cout << "You scored less than 250. Nothing to brag about.\n";
+    default: {
+        cout << "You made an illegal choice.\n";
+        break;
+    }
     }
 
     return 0;
