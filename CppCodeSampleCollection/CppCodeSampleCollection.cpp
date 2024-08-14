@@ -3,29 +3,53 @@
 
 #include "CppCodeSampleCollection.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-// Finicky Counter
+// Designers Network
 int main()
 {    
-    int count = 0;
+    string username, password;
+    bool success;
 
-    while (true) {
-        count += 1;
+    cout << "\tGame Designer's Network\n";
 
-        //end loop if count is greater than 10
-        if (count > 10) {
-            break;
+    do 
+    {
+        cout << "\nUsername: ";
+        cin >> username;
+
+        cout << "\nPassword: ";
+        cin >> password;
+
+        if (username == "S.Meier" && password == "civilization") {
+            cout << "\nHey, Sid.";
+            success = true;
+        } 
+        else if(username == "S.Miyamoto" && password == "mariobros") {
+            cout << "\nWhat's up, Shigeru?";
+            success = true;
         }
-
-        //skip the number 5
-        if (count == 5) {
-            continue;
+        else if (username == "W.Wright" && password == "thesims") {
+            cout << "\nHow goes it, Will?";
+            success = true;
         }
-
-        cout << count << endl;
+        else if (username == "H.Kojima" && password == "metalgear") {
+            cout << "\nHi, Hideo!";
+            success = true;
+        }
+        else if (username == "guest" && password == "guest") {
+            cout << "\nWelcome, guest.";
+            success = true;
+        }
+        else {
+            cout << "\nYour login failed.";
+            success = false;
+        }
     }
+
+    while(!success);
 
     return 0;
 }
