@@ -10,47 +10,48 @@ using std::cin;
 using std::endl;
 using std::string;
 
-// String Tester
-int main()
-{    
-    string word1 = "Game";
-    string word2 = "Over";
-    string word3(3, '!');
+// Hero's Inventory
+const int MAX_ITEMS = 10;
+string inventory[MAX_ITEMS];
+int numItems = 0;
 
-    string phrase = word1 + " " + word2 + word3;
-    cout << "The phrase is: " << phrase << "\n\n";
 
-    cout << "The phrase has " << phrase.size() << " characters in it.\n\n";
-
-    cout << "The character at position 0 is: " << phrase[0] << "\n\n";
-
-    cout << "Changing the character at position 0.\n";
-    phrase[0] = 'L';
-    cout << "The phrase is now: " << phrase << "\n\n";
-
-    for (unsigned int i = 0; i < phrase.size(); ++i) {
-        cout << "Character at position " << i << " is: " << phrase[i] << endl;
+void DisplayItems() {
+    cout << "\nYour items:\n";
+    for (int i = 0; i < numItems; ++i) {
+        cout << inventory[i] << endl;
     }
+}//end display items 
 
-    cout << "\nThe sequence 'Over' begins at location ";
-    cout << phrase.find("Over") << endl;
-
-    if (phrase.find("eggplant") == string::npos) {
-        cout << "'eggplant' is not the phrase. \n\n";
+void AddItem(string itemName) {
+    if (numItems < MAX_ITEMS) {
+        inventory[numItems++] = itemName;
     }
-
-    phrase.erase(4, 5);
-    cout << "the phrase is now: " << phrase << "\n\n";
-
-    phrase.erase(4);
-    cout << "the phrase is now: " << phrase << "\n\n";
-
-    phrase.erase();
-    cout << "the phrase is now: " << phrase << "\n\n";
-
-    if (phrase.empty()) {
-        cout << "\nThe phrase is no more.\n";
+    else {
+        cout << "\nYou have too many items and can't carry another.";
     }
+}//end add item
+
+
+int main() {    
+    inventory[numItems++] = "sword";
+    inventory[numItems++] = "armor";
+    inventory[numItems++] = "shield";
+
+    DisplayItems();
+
+    cout << "\nYou trade your sword for a battleaxe.";
+    inventory[0] = "battleaxe";
+
+    DisplayItems();
+
+    cout << "\nThe item name '" << inventory[0] << "' has ";
+    cout << inventory[0].size() << " letters in it.\n";
+
+    cout << "You find a healing potion.";
+    AddItem("healing potion");
+
+    DisplayItems();
 
     cout << endl;
 
