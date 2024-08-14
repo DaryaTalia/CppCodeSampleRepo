@@ -3,29 +3,38 @@
 
 #include "CppCodeSampleCollection.h"
 #include <iostream>
-#include <string>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
+using namespace std;
 
+
+// Score Rater
 int main()
 {
-    int gameScore1, gameScore2, gameScore3;
+    if (true) {
+        cout << "This is always displayed.\n\n";
+    }
 
-    cout << "Provide the first score: "; 
-    cin >> gameScore1;
+    if (false) {
+        cout << "This is never displayed.\n\n";
+    }
 
-    cout << "\nProvide the second score: ";
-    cin >> gameScore2;
+    int score = 1000;
 
-    cout << "\nProvide the third score: ";
-    cin >> gameScore3;
+    if (score) {
+        cout << "At least you didn't score 0.\n\n";
+    }
 
-    int average = (gameScore1 + gameScore2 + gameScore3) / 3;
+    if (score >= 250) {
+        cout << "You scored 250 or more. Decent.\n\n";
+    }
 
-    cout << "\nAverage score: " << average;
+    if (score >= 500) {
+        cout << "You scored more 500 or more. Nice.\n\n";
+
+        if (score >= 1000) {
+            cout << "You scored more 1000 or more. Impressive!\n\n";
+        }
+    }
 
     return 0;
 }
