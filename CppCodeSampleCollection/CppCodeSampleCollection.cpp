@@ -5,218 +5,130 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <list>
+#include <string>
 
-using namespace std;
+using std::cout;
+using std::cin;
 
 // Guess My Number: Computer Guesses
 int main()
 {    
-    srand(static_cast<unsigned int>(time(0))); //seed random number generator
-
-    int secretNumber;
-    int tries = 0;
-    int guess;
-    int upperLimit = 100;
-    int lowerLimit = 1;
-
-    int memory[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-    cout << "\tWelcome to Guess My Number!\n\n";
-
-    //Get player's number
-    do {
-        cout << "Enter a number for the computer to guess between "<< lowerLimit << " and " << upperLimit << ": ";
-        cin >> secretNumber;
-    }
-
-    while (secretNumber < lowerLimit || secretNumber > upperLimit);
+    char playAgain;
 
     do {
+
+//#define GAME_LOOP
+#ifndef GAME_LOOP
+        //Game Loop
+        srand(static_cast<unsigned int>(time(0))); //seed random number generator
+
+        int secretNumber;
+        int tries = 0;
+        int guess;
+        int const UPPER_LIMIT = 100;
+        int const LOWER_LIMIT = 1;
+
+        //Populate memory with valid choices
+        std::list<int> memory;
+
+        for (int i = 1; i < UPPER_LIMIT + 1; i++) {
+            memory.push_back(i);
+        }
+
+        cout << "\tWelcome to Guess My Number!\n\n";
+
+        //Get player's number
+        do {
+            cout << "Enter a number for the computer to guess between " << LOWER_LIMIT << " and " << UPPER_LIMIT << ": ";
+            cin >> secretNumber;
+        }
+
+        while (secretNumber < LOWER_LIMIT || secretNumber > UPPER_LIMIT);
+
         //Computer will guess player's number
-        cout << "\nYou ask the computer to guess your number: ";
+        do {
+            cout << "\nYou ask the computer to guess your number: ";
 
-        guess = rand() % upperLimit + lowerLimit;
+            //Find a random index up to the size of memory
+            int index = rand() % memory.size();
+            //Iterate to the specified memory location
+            std::list<int>::iterator itr = memory.begin();
+            for (int i = 0; i < index; i++) {
+                ++itr;
+            }
+            //The guess is the value at the iterator
+            guess = *itr;
 
-        ++tries;
+            ++tries;
 
-        //Add memory within a range of 10
-        if (upperLimit - lowerLimit < 10) {
-            bool inMemory = false;
+            //evaluate guess
+            cout << "\nThe computer guesses " << guess << ". ";
 
-            //Check memory for duplicate
-            for (int i = 0; i < 10; i++) {
-                if (memory[i] == guess) {
-                    inMemory = true;
-                    cout << "***** inMemory";
-                    cout << "***** guess";
-                    break;
+            if (guess > secretNumber) {
+                cout << "The guess is too high!\n\n";
+
+                //Remove the guess and higher values from the memory list so they cannot be chosen again
+
+                for (int i = memory.size() - 1; i >= index; i--) {
+                    //cout << "***** Removed: " << memory.back() << "\n";
+                    memory.remove(memory.back());
                 }
             }
+            else if (guess < secretNumber) {
+                cout << "The guess is too low!\n\n";
 
-            //Find a new number if in memory
-            if (inMemory) {
-                do {
-                    guess = rand() % upperLimit + lowerLimit;
-                    ++tries;
+                //Remove the guess and lower values from the memory list so they cannot be chosen again
 
-                    inMemory = false;
-
-                    //Check memory for duplicate
-                    for (int i = 0; i < 10; i++) {
-                        if (memory[i] == guess) {
-                            inMemory = true;
-                            cout << "***** inMemory";
-                            cout << "***** guess";
-                            break;
-                        }
-                    }
-                } 
-                
-                while (inMemory);
-            }
-        }//end memory search
-
-        //Add Clamping
-        if (guess > upperLimit) {
-            cout << "\n***** guess > upperLimit";
-            if (guess - lowerLimit < upperLimit && guess - lowerLimit > lowerLimit) {
-                guess -= lowerLimit;
-                cout << "\n***** guess - lowerLimit < upperLimit && guess - lowerLimit > lowerLimit";
-
-                //Add memory within a range of 10
-                if (upperLimit - lowerLimit < 10) {
-                    bool inMemory = false;
-
-                    //Check memory for duplicate
-                    for (int i = 0; i < 10; i++) {
-                        if (memory[i] == guess) {
-                            inMemory = true;
-                            cout << "***** inMemory";
-                            cout << "***** guess";
-                            break;
-                        }
-                    }
-
-                    //Find a new number if in memory
-                    if (inMemory) {
-                        do {
-                            guess = rand() % upperLimit;
-                            ++tries;
-
-                            inMemory = false;
-
-                            //Check memory for duplicate
-                            for (int i = 0; i < 10; i++) {
-                                if (memory[i] == guess) {
-                                    inMemory = true;
-                                    cout << "***** inMemory";
-                                    cout << "***** guess";
-                                    break;
-                                }
-                            }
-                        }
-
-                        while (inMemory);
-                    }
-                }//end memory search
+                for (int i = 0; i <= index; i++) {
+                    //cout << "***** Removed: " << memory.front() << "\n";
+                    memory.remove(memory.front());
+                }
             }
             else {
-                //Add memory within a range of 10
-                if (upperLimit - lowerLimit < 10) {
-                    bool inMemory = false;
+                cout << "\n\nThat's it! The computer got it in " << tries << " guesses!\n";
+            }
 
-                    //Check memory for duplicate
-                    for (int i = 0; i < 10; i++) {
-                        if (memory[i] == guess) {
-                            inMemory = true;
-                            cout << "***** inMemory";
-                            cout << "***** guess";
-                            break;
-                        }
-                    }
+        }
 
-                    //Find a new number if in memory
-                    if (inMemory) {
-                        do {
-                            guess = rand() % upperLimit + lowerLimit;
-                            ++tries;
+        while (guess != secretNumber);
+#endif GAME_LOOP
 
-                            inMemory = false;
 
-                            //Check memory for duplicate
-                            for (int i = 0; i < 10; i++) {
-                                if (memory[i] == guess) {
-                                    inMemory = true;
-                                    cout << "***** inMemory";
-                                    cout << "***** guess " << guess;
-                                    break;
-                                }
-                            }
-                        }
+        //Play Again?
+        int invalidEntries = -1;
+        playAgain = ' ';
+        std::string input;
 
-                        while (!inMemory);
-                    }
-                    else {
-                        guess = upperLimit;
-                        cout << "\n***** guess = upperLimit";
-                    }
-                }//end memory search
+        do {
+            invalidEntries++;
+            cout << "\n\nWant to play again? (y/n): ";
+            std::getline(std::cin, input);
+
+            if (input.length() == 1 && (input[0] == 'y' || input[0] == 'n')) {
+                playAgain = input[0];
+            }
+            else {
+                cout << "\nInvalid input. Please enter 'y' or 'n'.";
+                playAgain = ' ';  // Reset to ensure loop continues
+            }
+
+            if (invalidEntries >= 6) {
+                cout << "\nToo many invalid entries.";
+                playAgain = 'n';
+                break;
             }
         }
 
-        cout << "\n***** lowerLimit: " << lowerLimit << ", upperLimit: " << upperLimit << "\n";
+        while (playAgain != 'y' && playAgain != 'n');
 
-        //Add memory within a range of 10
-        if (upperLimit - lowerLimit < 10) {
-            bool inMemory = false;
-
-            //Check memory for duplicate
-            for (int i = 0; i < 10; i++) {
-                if (memory[i] == guess) {
-                    inMemory = true;
-                    cout << "***** inMemory";
-                    cout << "***** guess " << guess;
-                    break;
-                }
-            }
-
-            if (!inMemory) {
-                //Add to memory
-                for (int i = 0; i < 10; i++) {
-
-                    if (memory[i] == 0) {
-                        memory[i] = guess;
-                        cout << "***** memory[" << i << "] = " << guess;
-                        break;
-                    }
-                }
-            }
-        }//end memory search
-
-        //evaluate guess
-        cout << "\nThe computer guesses " << guess << ". ";
-
-        if (guess > secretNumber) {
-            cout << "The guess is too high!\n\n";
-        }
-        else if (guess < secretNumber) {
-            cout << "The guess is too low!\n\n";
-        }
-        else {
-            cout << "\nThat's it! The computer got it in " << tries << " guesses!\n";
-        }
-
-        //re-adjust searching bounds
-        if (guess < upperLimit && guess > secretNumber) {
-            upperLimit = guess;
-        } 
-        else if (guess > lowerLimit && guess < secretNumber) {
-            lowerLimit = guess;
-        }
+        cout << "\n\n\n";
 
     }
 
-    while (guess != secretNumber);
+    while (playAgain == 'y');
+
+    cout << "\tGood-bye!\n\n\n";
 
     return 0;
 }
