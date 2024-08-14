@@ -3,53 +3,25 @@
 
 #include "CppCodeSampleCollection.h"
 #include <iostream>
-#include <string>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-// Designers Network
+// Die Roller
 int main()
 {    
-    string username, password;
-    bool success;
+    //static_cast<unsigned int> coverts/casts system date and time to an unsigned int
+    //execute this code once before calls to rand()
+    srand(static_cast<unsigned int>(time(0))); //seed random number generator
 
-    cout << "\tGame Designer's Network\n";
+    //rand() generates a number between 0 and 32767 (RAND_MAX)
+    int randomNumber = rand();
+    cout << RAND_MAX<< endl;
 
-    do 
-    {
-        cout << "\nUsername: ";
-        cin >> username;
-
-        cout << "\nPassword: ";
-        cin >> password;
-
-        if (username == "S.Meier" && password == "civilization") {
-            cout << "\nHey, Sid.";
-            success = true;
-        } 
-        else if(username == "S.Miyamoto" && password == "mariobros") {
-            cout << "\nWhat's up, Shigeru?";
-            success = true;
-        }
-        else if (username == "W.Wright" && password == "thesims") {
-            cout << "\nHow goes it, Will?";
-            success = true;
-        }
-        else if (username == "H.Kojima" && password == "metalgear") {
-            cout << "\nHi, Hideo!";
-            success = true;
-        }
-        else if (username == "guest" && password == "guest") {
-            cout << "\nWelcome, guest.";
-            success = true;
-        }
-        else {
-            cout << "\nYour login failed.";
-            success = false;
-        }
-    }
-
-    while(!success);
+    //modulus may not always produce uniform results
+    int die = (randomNumber % 6) + 1;
+    cout << "You rolled a "<< die << endl;
 
     return 0;
 }
