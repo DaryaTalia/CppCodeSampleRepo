@@ -3,55 +3,44 @@
 
 #include "CppCodeSampleCollection.h"
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
-// Hero's Inventory
-const int MAX_ITEMS = 10;
-string inventory[MAX_ITEMS];
-int numItems = 0;
-
-
-void DisplayItems() {
-    cout << "\nYour items:\n";
-    for (int i = 0; i < numItems; ++i) {
-        cout << inventory[i] << endl;
-    }
-}//end display items 
-
-void AddItem(string itemName) {
-    if (numItems < MAX_ITEMS) {
-        inventory[numItems++] = itemName;
-    }
-    else {
-        cout << "\nYou have too many items and can't carry another.";
-    }
-}//end add item
-
-
+// Tic-Tac-Toe Board 1.0
 int main() {    
-    inventory[numItems++] = "sword";
-    inventory[numItems++] = "armor";
-    inventory[numItems++] = "shield";
+    const int ROWS = 3;
+    const int COLUMNS = 3;
+    char board[ROWS][COLUMNS] = 
+    {
+        {'O', 'X', 'O'},
+        {' ', 'X', 'X'},
+        {'X', 'O', 'O'}
+    };
 
-    DisplayItems();
+    cout << "Here's the tic-tac-toe board:\n";
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLUMNS; ++j) {
+            cout << board[i][j];
+        }
 
-    cout << "\nYou trade your sword for a battleaxe.";
-    inventory[0] = "battleaxe";
+        cout << endl;
+    }
 
-    DisplayItems();
+    cout << "\n'X' moves to the empty location.\n\n";
+    board[1][0] = 'X';
 
-    cout << "\nThe item name '" << inventory[0] << "' has ";
-    cout << inventory[0].size() << " letters in it.\n";
+    cout << "Now the tic-tac-toe boardis:\n";
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLUMNS; ++j) {
+            cout << board[i][j];
+        }
 
-    cout << "You find a healing potion.";
-    AddItem("healing potion");
+        cout << endl;
+    }
 
-    DisplayItems();
+    cout << "\n'X' wins!";
 
     cout << endl;
 
