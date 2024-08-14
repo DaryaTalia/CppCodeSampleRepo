@@ -6,22 +6,26 @@
 
 using namespace std;
 
-// Play Again
+// Finicky Counter
 int main()
 {    
-    char again = 'y';
-    while (again == 'y') {        
-        cout << "\n**Played an exciting game**";
+    int count = 0;
 
-        // Loop for valid input
-        do {
-            cout << "\nDo you want to play again? (y/n): ";
-            cin >> again; 
-        } 
-        while (again != 'y' && again != 'n');
+    while (true) {
+        count += 1;
+
+        //end loop if count is greater than 10
+        if (count > 10) {
+            break;
+        }
+
+        //skip the number 5
+        if (count == 5) {
+            continue;
+        }
+
+        cout << count << endl;
     }
-
-    cout << "\nOkay, bye!";
 
     return 0;
 }
