@@ -11,36 +11,81 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::stoi;
+using std::stof;
+using std::to_string;
 
 // Metal Gear Solid 3 as C++ Objects
 
 //////////////////
 // Data Members
 
+#define NAME
+#ifdef NAME
 const string name = "Jack";
 const string codename1 = "Naked Snake";
 const string codename2 = "Big Boss";
 const string codename3 = "Snake";
+#endif 
 
-// Inventory
-
+#define INVENTORY
+#ifdef INVENTORY
 enum Inventory_Properties { item_name, item_quantity, item_description };
 const int MAX_ITEMS = 10;
 int totalItems = 0;
 string inventory[MAX_ITEMS][3];
+#endif 
 
-// Health & Stamina
+#define CURING
+#ifdef CURING
 
+#define HEALTH
+#ifdef HEALTH
 const float MAX_HEALTH = 100.0;
 float _health = 100.0;
+#endif 
+
+#define STAMINA
+#ifdef STAMINA
 const float MAX_STAMINA = 100.0;
 float _stamina = 100.0;
+#endif 
+#define INJURY
+#ifdef INJURY
+enum Injury_Types { arrow_bolt, broken_bone, burn, cut, gunshot_wound, hypodermic_needle, leech, no_injury }; //rows
+enum Injury_Tools { survival_knife, cigar, ointment, disinfectant, styptic, plint, bandage, suture_kit }; // columns
 
-// Camoflouge
+const bool injury_chart[7][8] = 
+{// survival_knife, cigar, ointment, disinfectant, styptic, plint, bandage, suture_kit
+    { {true}, {false}, {false}, {false}, {false}, {false}, {true}, {false} }, // arrow_bolt
+    { {false}, {false}, {false}, {false}, {false}, {true}, {true}, {false} }, // broken_bone
+    { {false}, {false}, {true}, {false}, {false}, {false}, {true}, {false} }, // burn
+    { {false}, {false}, {false}, {true}, {true}, {false}, {true}, {true} }, // cut
+    { {true}, {false}, {false}, {true}, {true}, {false}, {true}, {false} }, // gunshot_wound
+    { {true}, {false}, {false}, {false}, {false}, {false}, {false}, {false} }, // hypodermic_needle
+    { {false}, {true}, {false}, {false}, {false}, {false}, {false}, {false} }  // leech
+};
+#endif INJURY
 
+#define AILMENT
+#ifdef AILMENT
+enum Ailment_Types { cold, food_poisoning, stomach_sickness, venom_poisoning, no_ailment }; //rows
+enum Ailment_Tools { serum, cold_medicine, antidote, digestive_medicine }; // columns
+
+const Ailment_Tools ailment_chart[4] =
+{
+    // cold, food_poisoning, stomach_sickness, venom_poisoning
+    {cold_medicine}, {antidote}, {digestive_medicine}, {serum}
+};
+#endif AILMENT
+
+#endif 
+
+#define STEALTH
+#ifdef STEALTH
 const int MAX_CAMO_INDEX = 100;
 const int MIN_CAMO_INDEX = 0;
-int camoIndex = 30;
+int _camoIndex = 30;
 
 enum Camo_Status { Unhidden = 20, Semihidden = 50, Hidden = 80, Invisible = 100 };
 Camo_Status camoStatus = Unhidden;
@@ -151,13 +196,12 @@ string camoInventory[MAX_CAMO_ITEMS][4] =
 };
 //"Boss Camoflouge"/"Uniforms"/"Disguise", "Face Paint", "Special"
 string currentCamo[3] = {"", "", ""};
-
+#endif 
 
 //////////////////////
 // Member Functions
 
-// Inventory
-
+#ifdef INVENTORY
 bool AddInventoryItem(string itemName) {
     if (totalItems < MAX_ITEMS) {
         inventory[totalItems++][item_name] = itemName;
@@ -185,15 +229,39 @@ string GetInventoryDescription(string itemName, string itemDescription) {
     return "\nNot Item Description Found\n";
 }//end GetInventoryDescription
 
-bool UpdateInventoryQuantity(string itemName, string newQuantity) {
+bool SetInventoryQuantity(string itemName, int newQuantity) {
     for (int i = 0; i < MAX_ITEMS; i++) {
         if (inventory[i][item_name] == itemName) {
-            inventory[i][item_quantity] = newQuantity;
+            inventory[i][item_quantity] = to_string(newQuantity);
             return true;
         }
     }
     return false;
-}//end UpdateInventoryQuantity
+}//end SetInventoryQuantity
+
+bool IncrementInventoryQuantity(string itemName, int value) {
+    for (int i = 0; i < MAX_ITEMS; i++) {
+        if (inventory[i][item_name] == itemName) {
+            int _itemQuantity = stoi(inventory[i][item_quantity]);
+            _itemQuantity += value;
+            inventory[i][item_quantity] = to_string(_itemQuantity);
+            return true;
+        }
+    }
+    return false;
+}//end IncrementInventoryQuantity
+
+bool DecrementInventoryQuantity(string itemName, int value) {
+    for (int i = 0; i < MAX_ITEMS; i++) {
+        if (inventory[i][item_name] == itemName) {
+            int _itemQuantity = stoi(inventory[i][item_quantity]);
+            _itemQuantity -= value;
+            inventory[i][item_quantity] = to_string(_itemQuantity);
+            return true;
+        }
+    }
+    return false;
+}//end DecrementInventoryQuantity
 
 string GetInventoryQuantity(string itemName, string newQuantity) {
     for (int i = 0; i < MAX_ITEMS; i++) {
@@ -203,9 +271,9 @@ string GetInventoryQuantity(string itemName, string newQuantity) {
     }
     return "\nNot Item Quantity Found\n";
 }//end GetInventoryQuantity
+#endif 
 
-// Health
-
+#ifdef HEALTH
 float GetHealth() {
     return _health;
 }//end get health
@@ -241,9 +309,9 @@ bool DamageHealth(float amount) {
     cout << codename3 << "? " << codename3 << "??? " << codename3 << extendedE << "!!!!!!\n";
     return true;
 }//end damage health
+#endif
 
-// Stamina
-
+#ifdef STAMINA
 float GetStamina() {
     return _stamina;
 }//end get stamina
@@ -279,32 +347,121 @@ bool DamageStamina(float amount) {
     cout << codename3 << "? " << codename3 << "??? " << codename3 << extendedE << "!!!!!!\n";
     return true;
 }//end damage stamina
+#endif
 
-// Camoflouge
-
+#ifdef STEALTH
 void DetermineCamoStatus() {
-    if (camoIndex == Invisible) {
+    if (_camoIndex == Invisible) {
         camoStatus = Invisible;
-    } else if (camoIndex < Invisible && camoIndex >= Hidden) {
+    } else if (_camoIndex < Invisible && _camoIndex >= Hidden) {
         camoStatus = Hidden;
     }
-    else if (camoIndex < Hidden && camoIndex >= Semihidden) {
+    else if (_camoIndex < Hidden && _camoIndex >= Semihidden) {
         camoStatus = Semihidden;
     }
-    else if (camoIndex < Semihidden && camoIndex >= Unhidden) {
+    else if (_camoIndex < Semihidden && _camoIndex >= Unhidden) {
         camoStatus = Unhidden;
     }
 }//end DetermineCamoStatus
 
+int GetCamoIndex() {
+    return _camoIndex;
+}//end GetCamoIndex
+
+void SetCamoIndex(int value) {
+    _camoIndex = value;
+    if (GetCamoIndex() > MAX_CAMO_INDEX) {
+        SetCamoIndex(MAX_CAMO_INDEX);
+    } 
+    else if (GetCamoIndex() < MIN_CAMO_INDEX) {
+        SetCamoIndex(MIN_CAMO_INDEX);
+    }
+}//end setcamoindex
+
+bool IncrementCamoIndex(int value) {
+    if (GetCamoIndex() < MAX_CAMO_INDEX) {
+        SetCamoIndex(GetCamoIndex() + value);
+        return true;
+    }
+    return false;
+}//end IncrementCamoIndex
+
+bool DecrementCamoIndex(int value) {
+    if (GetCamoIndex() > MIN_CAMO_INDEX) {
+        SetCamoIndex(GetCamoIndex() - value);
+        return true;
+    }
+    return false;
+}//end DecrementCamoIndex
+#endif
+
+#define HUD
+#ifdef HUD
+void PrintInventory() {
+    string inventoryList = "";
+
+    inventoryList += "\nCurrent Inventory\n";
+    inventoryList += "\n--------------------\n";
+    if (totalItems > 0) {
+        inventoryList += "\n";
+        for (int i = 0; i < totalItems; i++) {
+            inventoryList += inventory[i][0];
+            inventoryList += ". Quantity: ";
+            inventoryList += inventory[i][1];
+            inventoryList += ". Description: ";
+            inventoryList += inventory[i][2];
+            inventoryList += "\n";
+        }
+        inventoryList += "\n--------------------\n\n";
+    }
+    else {
+        inventoryList += "\nNo items in inventory.\n";
+        inventoryList += "\n--------------------\n\n";
+    }
+
+    cout << inventoryList;
+}//end PrintInventory
+
+void PrintWellness() {
+    string wellnessList = "";
+
+    wellnessList += "\nCurrent Wellness\n";
+    wellnessList += "\n--------------------\n\n";
+    wellnessList += "Health: ";
+    wellnessList += to_string(GetHealth());
+    wellnessList += "\n";
+    wellnessList += "Stamina: ";
+    wellnessList += to_string(GetStamina());
+    wellnessList += "\n";
+    wellnessList += "\n--------------------\n\n";
+
+    cout << wellnessList;
+}//end PrintWellness
+
+#endif
 
   ///////////////////////////////////////////////////////////////
  ///////////////////////     MAIN()     ////////////////////////
 ///////////////////////////////////////////////////////////////
 
+#ifdef HEALTH
 int main() { 
+    PrintInventory();
+
+    AddInventoryItem("Vine Melon");
+    AddInventoryDescription("Vine Melon", "Vegetable. Fairly Tasty. Moderate Stamina Recovery.");
+    SetInventoryQuantity("Vine Melon", 3);
+
+    PrintInventory();
+
+    PrintWellness();
+
     DamageHealth(1000);
+
+    PrintWellness();
 
     cout << endl;
 
     return 0;
 }
+#endif
