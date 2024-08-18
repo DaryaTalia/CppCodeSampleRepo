@@ -1,2 +1,9 @@
-﻿  CppCodeSampleCollection.cpp
-  CppCodeSampleCollection.vcxproj -> D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe
+﻿  Inventory.cpp
+  Player.cpp
+  Generating Code...
+CppCodeSampleCollection.obj : error LNK2019: unresolved external symbol "public: class Item & __thiscall Item::operator=(class Item const &)" (??4Item@@QAEAAV0@ABV0@@Z) referenced in function _main
+HUD.obj : error LNK2001: unresolved external symbol "public: class Item & __thiscall Item::operator=(class Item const &)" (??4Item@@QAEAAV0@ABV0@@Z)
+Inventory.obj : error LNK2001: unresolved external symbol "public: class Item & __thiscall Item::operator=(class Item const &)" (??4Item@@QAEAAV0@ABV0@@Z)
+CppCodeSampleCollection.obj : error LNK2019: unresolved external symbol "public: class Player && __thiscall Player::operator=(class Player const &)" (??4Player@@QAE$$QAV0@ABV0@@Z) referenced in function _main
+CppCodeSampleCollection.obj : error LNK2019: unresolved external symbol "public: class Inventory * __thiscall Player::GetInventory(void)" (?GetInventory@Player@@QAEPAVInventory@@XZ) referenced in function _main
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe : fatal error LNK1120: 3 unresolved externals

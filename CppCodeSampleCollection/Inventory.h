@@ -18,8 +18,10 @@ public:
     // Functions
     Inventory() {};
     ~Inventory() {};
+    Inventory& operator=(const Inventory&);
 
     bool AddInventoryItem(string itemName, int quantity);
+    Item GetItem(string nameKey);
 
     bool AddInventoryDescription(Item* item, string itemDescription);
     string GetInventoryDescription(Item* item);
@@ -30,6 +32,7 @@ public:
     bool IncrementInventoryQuantity(Item* item, int value);
     bool DecrementInventoryQuantity(Item* item, int value);
 
+    int GetTotalItems();
     Item GetHeadItem();
     Item GetLastItem();
     bool SetHeadItem(Item* newItem);

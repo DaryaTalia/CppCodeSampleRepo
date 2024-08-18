@@ -7,9 +7,6 @@
 
 using std::abs;
 
-Inventory::Inventory() {}
-Inventory::~Inventory() {}
-
 bool Inventory::AddInventoryItem(string itemName, int quantity) {
     if (_totalItems < MAX_ITEMS) {
         //Init Item pointer
@@ -23,6 +20,7 @@ bool Inventory::AddInventoryItem(string itemName, int quantity) {
         }
         else if (_last != NULL) {
             _last->SetNextItem(newItem);
+            newItem->SetLastItem(_last);
             SetLastItem(newItem);
         }
         else {
@@ -31,6 +29,22 @@ bool Inventory::AddInventoryItem(string itemName, int quantity) {
         return true;
     }
     return false;
+}
+
+Item Inventory::GetItem(string nameKey) {
+    Item search = GetHeadItem();
+    bool itemFound = false;
+
+    while (!itemFound || search.CompareNullItem(search)) {
+        if (search.GetItemName() == nameKey) {
+            return search; //Contains correct name key
+        }
+        else {
+            search = search.GetNextItem();
+        }
+    }
+
+    return search; //Null Item
 }
 
 bool Inventory::AddInventoryDescription(Item* item, string itemDescription) {
@@ -68,6 +82,10 @@ bool Inventory::IncrementInventoryQuantity(Item* item, int value) {
 bool Inventory::DecrementInventoryQuantity(Item* item, int value) {
     return item->DecrementItemQuantity(abs(value));
 }//end DecrementInventoryQuantity
+
+int Inventory::GetTotalItems() {
+    return _totalItems;
+}
 
 Item Inventory::GetHeadItem() {
     return *_head;

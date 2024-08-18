@@ -5,7 +5,14 @@
 
 using std::string;
 
+Item::Item() {
+    SetItemName(NULL_ITEM->GetItemName());
+    SetItemQuantity(NULL_ITEM->GetItemQuantity());
+}
+
 Item::Item(string name, int quantity){
+    SetItemName(name);
+    SetItemQuantity(quantity);
 }
 
 Item::~Item() {}
@@ -71,7 +78,7 @@ Item Item::GetNextItem() {
 
 bool Item::SetLastItem(Item* newLast) {
     _lastItem = newLast;
-    if (_lastItem != NULL) {
+    if (_lastItem != NULL_ITEM) {
         return true;
     }
     return false;
@@ -79,7 +86,15 @@ bool Item::SetLastItem(Item* newLast) {
 
 bool Item::SetNextItem(Item* newNext) {
     _nextItem = newNext;
-    if (_nextItem != NULL) {
+    if (_nextItem != NULL_ITEM) {
+        return true;
+    }
+    return false;
+}
+
+bool Item::CompareNullItem(Item comparison) {
+    if (comparison.GetItemName() == NULL_ITEM->GetItemName() && 
+        comparison.GetItemQuantity() == NULL_ITEM->GetItemQuantity()) {
         return true;
     }
     return false;

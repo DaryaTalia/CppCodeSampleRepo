@@ -37,6 +37,7 @@ public:
 
     Player();
     ~Player();
+    Player&& operator=(const Player&);
 
     float GetHealth();
     bool SetHealth(float newHealth);
@@ -53,6 +54,8 @@ public:
     void SetCamoIndex(int value);
     bool IncrementCamoIndex(int value);
     bool DecrementCamoIndex(int value);
+
+    Inventory* GetInventory();
 
 
 private:

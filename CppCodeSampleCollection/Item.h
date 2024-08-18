@@ -15,13 +15,17 @@ private:
     string _itemDescription;
 
     // Nodes
-    Item* _lastItem = NULL;
-    Item* _nextItem = NULL;
+    Item* NULL_ITEM = new Item("NULLITEM", -1);
+
+    Item* _lastItem = NULL_ITEM;
+    Item* _nextItem = NULL_ITEM;
 
 public:
     // Functions
+    Item();
     Item(string name, int quantity);
     ~Item();
+    Item& operator=(const Item&);
 
     string GetItemName();
     bool SetItemName(string newName);
@@ -38,4 +42,6 @@ public:
     Item GetNextItem();
     bool SetLastItem(Item* newLast);
     bool SetNextItem(Item* newNext);
+
+    bool CompareNullItem(Item comparison);
 };

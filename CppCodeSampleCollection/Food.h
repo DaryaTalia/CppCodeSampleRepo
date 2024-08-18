@@ -23,6 +23,6 @@ public:
 	void ToggleSpoiled();
 
 	int GetAge();
-	bool SetAge(float value);
-	bool IncrementAge(float value);
+	bool SetAge(int value);
+	bool IncrementAge(int value);
 };

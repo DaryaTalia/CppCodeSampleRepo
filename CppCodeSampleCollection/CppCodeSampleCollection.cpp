@@ -1,8 +1,9 @@
 // CppCodeSampleCollection.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "CppCodeSampleCollection.h"
 #include "Player.h"
+#include "Inventory.h"
+#include "HUD.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -19,74 +20,31 @@ using std::to_string;
 
 // Metal Gear Solid 3 as C++ Objects
 
+Player playerOne;
+HUD gameplayHUD;
 
-//#define HUD
-#ifdef HUD
-void PrintInventory() {
-    string inventoryList = "";
-
-    inventoryList += "\nCurrent Inventory\n";
-    inventoryList += "\n--------------------\n";
-    if (totalItems > 0) {
-        inventoryList += "\n";
-        for (int i = 0; i < totalItems; i++) {
-            inventoryList += inventory[i][0];
-            inventoryList += ". Quantity: ";
-            inventoryList += inventory[i][1];
-            inventoryList += ". Description: ";
-            inventoryList += inventory[i][2];
-            inventoryList += "\n";
-        }
-        inventoryList += "\n--------------------\n\n";
-    }
-    else {
-        inventoryList += "\nNo items in inventory.\n";
-        inventoryList += "\n--------------------\n\n";
-    }
-
-    cout << inventoryList;
-}//end PrintInventory
-
-void PrintWellness() {
-    string wellnessList = "";
-
-    wellnessList += "\nCurrent Wellness\n";
-    wellnessList += "\n--------------------\n\n";
-    wellnessList += "Health: ";
-    //wellnessList += to_string(GetHealth());
-    wellnessList += "\n";
-    wellnessList += "Stamina: ";
-    //wellnessList += to_string(GetStamina());
-    wellnessList += "\n";
-    wellnessList += "\n--------------------\n\n";
-
-    cout << wellnessList;
-}//end PrintWellness
-
-#endif
-
-  ///////////////////////////////////////////////////////////////
- ///////////////////////     MAIN()     ////////////////////////
-///////////////////////////////////////////////////////////////
-
-#ifdef HEALTH
 int main() { 
-    PrintInventory();
+    playerOne = Player();
+    gameplayHUD = HUD();
 
-    AddInventoryItem("Vine Melon");
-    AddInventoryDescription("Vine Melon", "Vegetable. Fairly Tasty. Moderate Stamina Recovery.");
-    SetInventoryQuantity("Vine Melon", 3);
+    gameplayHUD.PrintInventory(*playerOne.GetInventory());
 
-    PrintInventory();
+    playerOne.GetInventory()->AddInventoryItem("Vine Melon", 1);
+    Item* vineMelon = new Item();
+    *vineMelon = playerOne.GetInventory()->GetItem("Vine Melon");
 
-    PrintWellness();
+    playerOne.GetInventory()->AddInventoryDescription(vineMelon, "Vegetable. Fairly Tasty. Moderate Stamina Recovery.");
+    playerOne.GetInventory()->SetInventoryQuantity(vineMelon, 3);
 
-    DamageHealth(1000);
+    gameplayHUD.PrintInventory(*playerOne.GetInventory());
 
-    PrintWellness();
+    gameplayHUD.PrintWellness(playerOne);
+
+    playerOne.DamageHealth(1000);
+
+    gameplayHUD.PrintWellness(playerOne);
 
     cout << endl;
 
     return 0;
 }
-#endif

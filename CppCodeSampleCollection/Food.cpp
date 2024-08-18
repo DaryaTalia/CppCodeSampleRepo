@@ -38,14 +38,14 @@ int Food::GetAge() {
 	return _age;
 }
 
-bool Food::SetAge(float value) {
+bool Food::SetAge(int value) {
 	_age = value;
 	if (_age > SPOILING_AGE) {
 		return true;
 	}
 	return false;
 }
-bool Food::IncrementAge(float value) {
+bool Food::IncrementAge(int value) {
 	SetAge(_age - value);
 	if (_age > SPOILING_AGE) {
 		return true;
