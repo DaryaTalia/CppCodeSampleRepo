@@ -2,29 +2,39 @@
 //
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
-// Give Me a Number 3.0
-
-int getNumber();
-int getNumber(string prompt);
+// Referencing
 
 int main() { 
     bool playAgain = true;
     char play;
 
+    int myScore = 1000;
+    // create a reference
+    // MUST BE INITIALIZED
+    // cannot be reassigned to another variable
+    int& rMikesScore = myScore; 
+
     while (playAgain) {
         // App
-        int number = getNumber();
-        cout << number << endl << endl;
-        number = getNumber("Give me a number: ");
-        cout << number << endl << endl;
+        cout << "myScore is:" << myScore << endl;
+        cout << "rMikesScore is:" << rMikesScore << endl << endl;
 
+        cout << "Adding 500 to myScore \n";
+        myScore += 500;
+
+        cout << "myScore is: " << myScore << endl;
+        cout << "rMikesScore is: " << rMikesScore << endl << endl;
+
+        cout << "Adding 500 to mikesScore \n";
+        rMikesScore += 500;
+
+        cout << "myScore is: " << myScore << endl;
+        cout << "rMikesScore is: " << rMikesScore << endl << endl;
 
         // Play Again?
         play = ' ';
@@ -45,20 +55,3 @@ int main() {
 
     return 0;
 }
-
-int getNumber(string prompt) {
-    int num = 0;
-    cout << prompt;
-    cin >> num;
-    return num;
-}
-
-int getNumber() {
-    int num = 0;
-    cout << "What number am I thinking? ";
-    cin >> num;
-    return num;
-}
-
-
-
