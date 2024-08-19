@@ -11,7 +11,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-// Hero's Inventory 2.0
+// Hero's Inventory 2.1
 
 int main() { 
     vector<string> inventory;
@@ -51,6 +51,41 @@ int main() {
     }
     else {
         cout << "\nYou have at least one item.\n";
+    }
+
+    cout << endl;
+
+    vector<string> fridge(10, "nothing");
+    cout << "\nYour items:";
+    if (fridge.empty()) {
+        cout << "\nYour fridge is empty.\n";
+    }
+    else {
+        cout << "\nYou have at least one item in your fridge.\n";
+
+        cout << "\nYour items:\n";
+        for (unsigned int i = 0; i < fridge.size(); i++) {
+            cout << fridge[i] << endl;
+        }
+    }
+
+    vector<string> groceries(5);
+    groceries[0] = "Eggs";
+    groceries[1] ="Bacon";
+    groceries[2] = "Sausage";
+    groceries[3] = "Lettuce";
+    groceries[4] = "Tomatoes";
+
+    for (unsigned int i = 0; i < groceries.size(); i++) {
+       fridge[i] = groceries[i];
+    }
+    groceries.clear();
+
+    //vector<string> fridge(groceries);
+
+    cout << "\nYour items:\n";
+    for (unsigned int i = 0; i < fridge.size(); i++) {
+        cout << fridge[i] << endl;
     }
 
     cout << endl;
