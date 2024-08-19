@@ -2,47 +2,40 @@
 //
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
-// Yes or No
+// Scoping
 
-char askYesNo();
-char askYesNo(string question);
+void func();
 
 int main() { 
-    char answer1 = askYesNo();
-    cout << "Thanks for answering: " << answer1 << "\n\n";
+    int var = 5;
+    cout << "In main() var is: " << var << "\n\n";
 
-    char answer2 = askYesNo("Do you wish to save your game?");
-    cout << "Thanks for answering: " << answer2 << "\n\n";
+    func();
+
+    cout << "Back in main() var is: " << var << "\n\n";
+
+    {
+        cout << "In main() in a new scope var is " << var << "\n\n";
+
+        cout << "Creating a new var in a new scope. \n";
+        int var = 10;
+        cout << "In main() in a new scope var is " << var << "\n\n";
+    }
+
+    cout << "At end of main() var created in new scope no longer exists. \n";
+    cout << "At end of main() var is: " << var << "\n";
 
     cout << endl;
 
     return 0;
 }
 
-char askYesNo() {
-    char response;
-    do {
-        cout << "Please enter 'y' or 'n': ";
-        cin >> response;
-    } 
-    while (response != 'y' && response != 'n');
-
-    return response;
-}
-
-char askYesNo(string question) {
-    char response;
-    do {
-        cout << question << " (y/n): ";
-        cin >> response;
-    } while (response != 'y' && response != 'n');
-
-    return response;
+void func() {
+    int var = -5;
+    cout << "In func() var is " << var << "\n\n";    
 }
