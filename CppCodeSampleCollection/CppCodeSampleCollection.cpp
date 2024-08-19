@@ -9,9 +9,10 @@ using std::cin;
 using std::endl;
 using std::string;
 
-// Give Me a Number 2.0
+// Give Me a Number 3.0
 
-int getNumber(string prompt = "What number am I thinking? ");
+int getNumber();
+int getNumber(string prompt);
 
 int main() { 
     bool playAgain = true;
@@ -48,6 +49,13 @@ int main() {
 int getNumber(string prompt) {
     int num = 0;
     cout << prompt;
+    cin >> num;
+    return num;
+}
+
+int getNumber() {
+    int num = 0;
+    cout << "What number am I thinking? ";
     cin >> num;
     return num;
 }
