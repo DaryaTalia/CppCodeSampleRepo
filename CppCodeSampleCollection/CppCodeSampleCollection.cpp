@@ -14,140 +14,87 @@ using std::endl;
 using std::vector;
 using std::string;
 
-// Hangman
+// Favorite Games
 
 int main() { 
-    bool playAgain = true;
-    char play;
+    bool appLoop = true;
+    const char exitKey = 'q';
+    const char addKey = 'a';
+    const char deleteKey = 'd';
+    const char viewKey = 'v';
+    char key = ' ';
+    string game = "";
 
-    // Initialize a constant int called MAX_GUESSES and declare to 8
-    const int MAX_GUESSES = 8;
+    vector<string> favoriteGames;
+    vector<string>::const_iterator iter;
+    vector<string>::iterator gameIterator;
 
-    while (playAgain) {
-        // Game// Initialize an int called guesses and declare to 0
-        int guesses = 0;
-        // Generate a list of words, <string>
-        vector<string> words = { "marble", "cherry", "banana", "random", "everything", "karma" };
-        // Generate a new seed of random numbers using current time
-        srand(static_cast<unsigned int>(time(0)));
-        // Randomly select a word from the vector and save as the secret word
-        string secretWord = words[(rand() % words.size())];
-        // Initialize an empty vector list for letters used, <char>
-        vector<char> lettersUsed(MAX_GUESSES + secretWord.size());
-        // Initialize a vector list of characters equal to the size of the random word where each <character> is '-' for the guessed word
-        string guessedWord = string(secretWord.size(), '-');
-        // Declare correctGuess as a bool
-        bool correctGuess;
+    while (appLoop) {
+        // App
 
-        vector<char>::const_iterator iter;
-        // Welcome the player
-        cout << "Welcome to Hangman!" << endl << endl;
+        cout << "Legend: \n";
 
-        while (guesses < MAX_GUESSES && guessedWord != secretWord) {
-            // Tell the player how many incorrect guesses they have left (MAX_GUESSS - guesses)
-            cout << "You have " << (MAX_GUESSES - guesses) << " guesses left." << endl;
+        cout << " - '" << addKey << "' to add a new favorite game.\n";
+        cout << " - '" << deleteKey << "' to delete an existing favorite game.\n";
+        cout << " - '" << viewKey << "' to view all of your favorite games.\n";
+        cout << " - '" << exitKey << "' to exit the app.\n";
 
-            cout << "You have already guessed: ";
-            //      Print letters already used (none at start)
-            for (iter = lettersUsed.begin(); iter != lettersUsed.end(); iter++) {
-                cout << *iter << " ";
+        // Key Validation
+        do {
+            cout << "\nEnter a key: ";
+            cin >> key;
+            cin.ignore();
+        }             
+        while (key != addKey && key != deleteKey && key != viewKey && key != exitKey);
+
+        // App Actions
+        switch (key) {
+            case addKey: {
+                // Game Key Validation
+                cout << "\n[ADD] Enter the name of the game followed by the enter key:\t";
+                getline(cin, game);
+                cin.ignore();
+
+                favoriteGames.push_back(game);
+                cout << "\n'" << game << "' has been entered into system.\n";
+                break;
             }
+            case deleteKey: {
+                cout << "\n[DELETE] Enter the name of the game followed by the enter key:\t";
+                getline(cin, game);
+                cin.ignore();
 
-            cout << endl << endl;
-
-            //      Print the guessed word ('-'s at start)
-            for (int i = 0; i < guessedWord.size(); i++) {
-                cout << guessedWord[i];
-            }
-
-            cout << endl << endl;
-
-            //      Ask the player to enter one letter as a guess that is not already in the list of guessed characters and is between a to z
-            char guess = ' ';
-            while (guess < 'a' || guess > 'z') {
-                cout << "Guess a letter: ";
-                cin >> guess;
-                cout << endl;
-
-                if (find(lettersUsed.begin(), lettersUsed.end(), guess) != lettersUsed.end()) {
-                    guess = ' ';
+                if (find(favoriteGames.begin(), favoriteGames.end(), game) != favoriteGames.end()) {
+                    favoriteGames.erase(find(favoriteGames.begin(), favoriteGames.end(), game));
+                    cout << "\n'" << game << "' has been deleted from system.\n";
                 }
-            }
-            //      Initialize correctGuess to false
-            correctGuess = false;
-
-            //      Search the entire secret word for the guessed character:
-            //          If the character is found:
-            //              Replace the matching index of the guessed word with the character
-            //              If correctGuess is false:
-            //                  Add the character to the end of the list of guessed characters
-            //                  Mark correctGuess true
-
-            for (int i = 0; i < secretWord.size(); i++) {
-                if (guess == secretWord[i]) {
-                    guessedWord[i] = guess;
-                    correctGuess = true;
+                else {
+                    cout << "\n'" << game << "' is not in the system.\n";
                 }
-
-                if (find(lettersUsed.begin(), lettersUsed.end(), guess) == lettersUsed.end()) {
-                    lettersUsed.push_back(guess);
+                break;
+            }
+            case viewKey: {
+                cout << "\n[VIEW] Favorite Games:\n";
+                for (iter = favoriteGames.begin(); iter != favoriteGames.end(); iter++) {
+                    cout << *iter << "\n";
                 }
+                break;
             }
-
-            //      If correctGuess is equal to false, increment guesses by 1
-            //          Tell the player they guessed incorrectly
-            //      Otherwise
-            //          Tell the player they guessed correctly
-
-            if (correctGuess) {
-                cout << "Your guess is right!\n";
+            case exitKey: {
+                cout << "\n[EXIT] Exiting the app. Goodbye";
+                appLoop = false;
+                break;
             }
-            else {
-                cout << "Your guess is wrong.\n";
-                guesses++;
+            default: {
+                cout << "\nInvalid key entered."; 
+                break;
             }
-
-            cout << endl;
-        }
-
-        // While guesses is less than MAX_GUESSES or the guessed word is not equal to the secret word:
-        // 
-        // While loop ends when the secret word is fully found or when guesses is equal to or greater than max guesses
-        // 
-        // Tell the player what the secret word was
-        // 
-        // Congratulate the player if they won or 
-        // tell the player if they lost
-
-        cout << "The secret word was: " << secretWord << endl;
-
-        cout << endl;
-
-        if (secretWord == guessedWord) {
-            cout << "Congratulations!\n";
-        }
-        else {
-            cout << "Better luck next time.\n";
-        }
-
-        cout << endl;
-
-        // Play Again?
-        play = ' ';
-
-        while (play != 'y' && play != 'n') {
-            cout << "Play Again? (y/n): ";
-            cin >> play;
-        }
-
-        if (play == 'n') {
-            playAgain = false;
         }
 
         cout << endl;
     }
 
-    return 0;
-
     cout << endl;
+
+    return 0;
 }
