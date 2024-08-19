@@ -2,41 +2,63 @@
 //
 
 #include <iostream>
+#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
 
-// Taking Damage
+// Mad-Lib
 
-int radiation(int health);
+string askText(string prompt);
+int askNumber(string prompt);
+void tellStory(string name, string noun, int number, string bodyPart, string verb);
 
 int main() { 
-    int health = 80;
-    cout << "Your health is " << health << "\n\n";
+    cout << "Welcome to Mad Lib.\n\n";
+    cout << "Answer the following questions to help create a new story.\n";
 
-    health = radiation(health);
-    cout << "After radiation exposure your health is " << health << "\n\n";
+    string name = askText("Please enter a name: ");
+    string noun = askText("Please enter a plural noun: ");
+    int number = askNumber("Please enter a number, greater than 4: ");
+    string bodyPart = askText("Please enter a body part: ");
+    string verb = askText("Please enter a verb: ");
 
-    health = radiation(health);
-    cout << "After radiation exposure your health is " << health << "\n\n";
-
-    health = radiation(health);
-    cout << "After radiation exposure your health is " << health << "\n\n";
+    tellStory(name, noun, number, bodyPart, verb);
 
     cout << endl;
 
     return 0;
 }
 
-inline int radiation(int health) {
-    return (health / 2);
+string askText(string prompt) {
+    string text;
+    cout << prompt;
+    cin >> text;
+    return text;
 }
 
-//  Although obsessing about performance is a game programmer’s favorite hobby, there’s a danger in
-// focusing too much on speed. In fact, the approach many developers take is to first get their game
-// programs working well before they tweak for small performance gains. At that point, programmers
-// will profile their code by running a **utility (a profiler)** that analyzes where the game program spends
-// its time. If a programmer sees bottlenecks, he or she might consider **hand optimizations** such as
-// function inlining.
-//
+int askNumber(string prompt) {
+    int num = 0;
+    while (num < 5) {
+        cout << prompt;
+        cin >> num;
+    }
+    return num;
+}
+
+void tellStory(string name, string noun, int number, string bodyPart, string verb) {
+    cout << "\nHere's your story:\n";
+
+    cout << name;
+    cout << " was exploring the dense forests of Avalon when they suddenly found ";
+    cout << number;
+    cout << " golden " << noun << ". ";
+    cout << name;
+    cout << " buried 1 and felt richer. They crushed 1 and felt stronger. When they ";
+    cout << verb << " another, their ";
+    cout << bodyPart << " disappeared! ";
+    cout << name;
+    cout << " screamed, abandoning the remaining " << (number - 3) << " " << noun << " and leaving the forest.\n\n";
+}
