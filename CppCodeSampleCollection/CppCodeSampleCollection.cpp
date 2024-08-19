@@ -12,7 +12,7 @@ using std::cin;
 using std::endl;
 using std::vector;
 
-// High Scores
+// High Scores 2.1
 
 int main() { 
     vector<int>::const_iterator iter;
@@ -57,6 +57,37 @@ int main() {
     for (iter = scores.begin(); iter != scores.end(); iter++) {
         cout << *iter << endl;
     }
+
+    cout << endl;
+
+    cout << "Creating a 10 element vector to hold scores.\n";
+    vector<int> _scores(10, 0);
+    cout << "Vector size is: " << _scores.size() << endl;
+    cout << "Vector capacity is: " << _scores.capacity() << endl; //10
+    cout << "Adding a score.\n";
+    _scores.push_back(0);
+    cout << "Vector size is: " << _scores.size() << endl;
+    cout << "Vector capacity is: " << _scores.capacity() << endl; //15
+    cout << "Adding a score.\n";
+    _scores.push_back(0);
+    _scores.push_back(0);
+    _scores.push_back(0);
+    _scores.push_back(0);
+    _scores.push_back(0);
+    cout << "Vector size is: " << _scores.size() << endl;
+    cout << "Vector capacity is: " << _scores.capacity() << endl; //22
+
+    cout << endl;
+
+    cout << "Creating a list of scores.\n";
+    vector<int> moreScores(10, 0);
+    cout << "Vector size is: " << moreScores.size() << endl;
+    cout << "Vector capacity is: " << moreScores.capacity() << endl; //10
+
+    cout << "Reserving more memory.\n";
+    moreScores.reserve(20);
+    cout << "Vector size is: " << moreScores.size() << endl;
+    cout << "Vector capacity is: " << moreScores.capacity() << endl; //20
 
     cout << endl;
 
