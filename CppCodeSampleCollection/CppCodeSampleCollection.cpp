@@ -7,35 +7,39 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// Scoping
+// Global Reach
 
-void func();
+int glob = 10;
+
+void access_global();
+void hide_global();
+void change_global();
 
 int main() { 
-    int var = 5;
-    cout << "In main() var is: " << var << "\n\n";
+    cout << "In main() glob is: " << glob << "\n\n";
+    access_global();
 
-    func();
+    hide_global();
+    cout << "In main() glob is: " << glob << "\n\n";
 
-    cout << "Back in main() var is: " << var << "\n\n";
-
-    {
-        cout << "In main() in a new scope var is " << var << "\n\n";
-
-        cout << "Creating a new var in a new scope. \n";
-        int var = 10;
-        cout << "In main() in a new scope var is " << var << "\n\n";
-    }
-
-    cout << "At end of main() var created in new scope no longer exists. \n";
-    cout << "At end of main() var is: " << var << "\n";
+    change_global();
+    cout << "In main() glob is: " << glob << "\n\n";
 
     cout << endl;
 
     return 0;
 }
 
-void func() {
-    int var = -5;
-    cout << "In func() var is " << var << "\n\n";    
+void access_global() {
+    cout << "In access_global() glob is: " << glob << "\n\n";
+}
+
+void hide_global() {
+    int glob = 0;
+    cout << "In hide_global() glob is: " << glob << "\n\n";
+}
+
+void change_global() {
+    glob = -10;
+    cout << "In change_global() glob is: " << glob << "\n\n";
 }
