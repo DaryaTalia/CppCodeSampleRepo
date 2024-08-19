@@ -2,31 +2,41 @@
 //
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
-// Give Me a Number
+// Taking Damage
 
-int triple(int number);
-string triple(string text);
+int radiation(int health);
 
 int main() { 
-    cout << "Tripling 5: " << triple(5) << "\n\n";
-    cout << "Tripling 'gamer': " << triple("gamer") << "\n\n";
+    int health = 80;
+    cout << "Your health is " << health << "\n\n";
+
+    health = radiation(health);
+    cout << "After radiation exposure your health is " << health << "\n\n";
+
+    health = radiation(health);
+    cout << "After radiation exposure your health is " << health << "\n\n";
+
+    health = radiation(health);
+    cout << "After radiation exposure your health is " << health << "\n\n";
 
     cout << endl;
 
     return 0;
 }
 
-int triple(int number) {
-    return (number * 3);
+inline int radiation(int health) {
+    return (health / 2);
 }
 
-string triple(string text) {
-    return (text + text + text);
-}
+//  Although obsessing about performance is a game programmer’s favorite hobby, there’s a danger in
+// focusing too much on speed. In fact, the approach many developers take is to first get their game
+// programs working well before they tweak for small performance gains. At that point, programmers
+// will profile their code by running a **utility (a profiler)** that analyzes where the game program spends
+// its time. If a programmer sees bottlenecks, he or she might consider **hand optimizations** such as
+// function inlining.
+//
