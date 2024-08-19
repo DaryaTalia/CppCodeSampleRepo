@@ -2,56 +2,59 @@
 //
 
 #include <iostream>
-#include <string>
+#include <ctime>
 #include <vector>
+#include <algorithm>
+#include <cstdlib>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 using std::vector;
 
-// Hero's Inventory 3.0
+// High Scores
 
 int main() { 
-    vector<string> inventory;
-    inventory.push_back("staff");
-    inventory.push_back("robe");
-    inventory.push_back("amulet");
+    vector<int>::const_iterator iter;
 
-    vector<string>::iterator myIterator;
-    vector<string>::const_iterator iter;
+    cout << "Creating a list of scores.";
+    vector<int> scores;
+    scores.push_back(1500);
+    scores.push_back(3500);
+    scores.push_back(7500);
 
-    cout << "\nYour items:\n";
-    for (iter = inventory.begin(); iter != inventory.end(); iter++) {
+    cout << "\nHigh Scores:\n";
+    for (iter = scores.begin(); iter != scores.end(); iter++) {
         cout << *iter << endl;
     }
 
-    cout << "\nYou trade your staff for a wand. \n";
-    myIterator = inventory.begin();
-    *myIterator = "wand";
-    cout << "\nYour items:\n";
-    for (iter = inventory.begin(); iter != inventory.end(); iter++) {
+    cout << "\nFinding a score.";
+    int score;
+    cout << "\nEnter a score to find: ";
+    cin >> score;
+
+    iter = find(scores.begin(), scores.end(), score);
+    if (iter != scores.end()) {
+        cout << "Score found.\n";
+    }
+    else {
+        cout << "Score not found.\n";
+    }
+
+    cout << "\nRandomizing scores.";
+    srand(static_cast<unsigned int>(time(0))); 
+    random_shuffle(scores.begin(), scores.end());
+
+    cout << "\nHigh Scores:\n";
+    for (iter = scores.begin(); iter != scores.end(); iter++) {
         cout << *iter << endl;
     }
 
-    cout << "\nThe item name '" << *myIterator << "' has ";
-    cout << (*myIterator).size() << " letters in it.\n";
+    cout << "\nSorting scores.";
+    sort(scores.begin(), scores.end());
 
-    cout << "\nThe item name '" << *myIterator << "' has ";
-    cout << myIterator->size() << " letters in it.\n";
-
-    cout << "\nYou recover a spell book from a slain enemy. \n";
-    inventory.insert(inventory.begin(), "spell book");
-    cout << "\nYour items:\n";
-    for (iter = inventory.begin(); iter != inventory.end(); iter++) {
-        cout << *iter << endl;
-    }
-
-    cout << "\nYour wand is destroyed in a fierce battle. \n";
-    inventory.erase((inventory.begin() + 1));
-    cout << "\nYour items:\n";
-    for (iter = inventory.begin(); iter != inventory.end(); iter++) {
+    cout << "\nHigh Scores:\n";
+    for (iter = scores.begin(); iter != scores.end(); iter++) {
         cout << *iter << endl;
     }
 
