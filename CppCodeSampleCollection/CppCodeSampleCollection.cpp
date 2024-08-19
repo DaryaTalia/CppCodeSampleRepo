@@ -12,84 +12,41 @@ using std::cin;
 using std::endl;
 using std::vector;
 
-// High Scores 2.1
+// STL Containers and Psuedocode
 
 int main() { 
-    vector<int>::const_iterator iter;
+    // Psuedocode
+    
+    // If Snake is suspected by an enemy
+    //      The enemy should investigate
+    //      Snake should evade
+    // Otherwise
+    //      The enemy should continue their patrol
+    //      Snake can continue sneaking
+    // Snake can collect ammo pack
+    // Snake can change uniform
+    // Snake can leave the area
 
-    cout << "Creating a list of scores.";
-    vector<int> scores;
-    scores.push_back(1500);
-    scores.push_back(3500);
-    scores.push_back(7500);
 
-    cout << "\nHigh Scores:\n";
-    for (iter = scores.begin(); iter != scores.end(); iter++) {
-        cout << *iter << endl;
-    }
+    // Stepwise Refinement
+    
+    // Snake can collect ammo pack:
 
-    cout << "\nFinding a score.";
-    int score;
-    cout << "\nEnter a score to find: ";
-    cin >> score;
-
-    iter = find(scores.begin(), scores.end(), score);
-    if (iter != scores.end()) {
-        cout << "Score found.\n";
-    }
-    else {
-        cout << "Score not found.\n";
-    }
-
-    cout << "\nRandomizing scores.";
-    srand(static_cast<unsigned int>(time(0))); 
-    random_shuffle(scores.begin(), scores.end());
-
-    cout << "\nHigh Scores:\n";
-    for (iter = scores.begin(); iter != scores.end(); iter++) {
-        cout << *iter << endl;
-    }
-
-    cout << "\nSorting scores.";
-    sort(scores.begin(), scores.end());
-
-    cout << "\nHigh Scores:\n";
-    for (iter = scores.begin(); iter != scores.end(); iter++) {
-        cout << *iter << endl;
-    }
-
-    cout << endl;
-
-    cout << "Creating a 10 element vector to hold scores.\n";
-    vector<int> _scores(10, 0);
-    cout << "Vector size is: " << _scores.size() << endl;
-    cout << "Vector capacity is: " << _scores.capacity() << endl; //10
-    cout << "Adding a score.\n";
-    _scores.push_back(0);
-    cout << "Vector size is: " << _scores.size() << endl;
-    cout << "Vector capacity is: " << _scores.capacity() << endl; //15
-    cout << "Adding a score.\n";
-    _scores.push_back(0);
-    _scores.push_back(0);
-    _scores.push_back(0);
-    _scores.push_back(0);
-    _scores.push_back(0);
-    cout << "Vector size is: " << _scores.size() << endl;
-    cout << "Vector capacity is: " << _scores.capacity() << endl; //22
-
-    cout << endl;
-
-    cout << "Creating a list of scores.\n";
-    vector<int> moreScores(10, 0);
-    cout << "Vector size is: " << moreScores.size() << endl;
-    cout << "Vector capacity is: " << moreScores.capacity() << endl; //10
-
-    cout << "Reserving more memory.\n";
-    moreScores.reserve(20);
-    cout << "Vector size is: " << moreScores.size() << endl;
-    cout << "Vector capacity is: " << moreScores.capacity() << endl; //20
-
-    cout << endl;
+    // Move Snake to ammo's position
+    // Add ammo to Snake's inventory
+    // Destroy ammo from game world (or add to hidden pool)
 
     return 0;
 }
+
+// STL Containers
+
+// deque            sequential      double-ended queue
+// list             sequential      linear list
+// map              associative     key/value pairs, 1 key to 1 value
+// multimap         associative     key/value pairs, 1 key to 1+ values
+// priority_queue   adaptor         priority queue
+// queue            adaptor         queue
+// set              associative     each elemt is unique
+// stack            adaptor         stack
+// vector           sequential      dynamic array
