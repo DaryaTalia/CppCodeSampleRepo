@@ -7,34 +7,33 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// Referencing
+// Swap
+
+void badSwap(int x, int y);
+void goodSwap(int& x, int& y);
 
 int main() { 
     bool playAgain = true;
     char play;
 
-    int myScore = 1000;
-    // create a reference
-    // MUST BE INITIALIZED
-    // cannot be reassigned to another variable
-    int& rMikesScore = myScore; 
+    int myScore = 150;
+    int yourScore = 1000;
 
     while (playAgain) {
         // App
-        cout << "myScore is:" << myScore << endl;
-        cout << "rMikesScore is:" << rMikesScore << endl << endl;
-
-        cout << "Adding 500 to myScore \n";
-        myScore += 500;
-
+        cout << "Original values\n";
         cout << "myScore is: " << myScore << endl;
-        cout << "rMikesScore is: " << rMikesScore << endl << endl;
+        cout << "yourScore is: " << yourScore << endl << endl;
 
-        cout << "Adding 500 to mikesScore \n";
-        rMikesScore += 500;
-
+        cout << "Calling badSwap()\n";
+        badSwap(myScore, yourScore);
         cout << "myScore is: " << myScore << endl;
-        cout << "rMikesScore is: " << rMikesScore << endl << endl;
+        cout << "yourScore is: " << yourScore << endl << endl;
+
+        cout << "Calling goodSwap()\n";
+        goodSwap(myScore, yourScore);
+        cout << "myScore is: " << myScore << endl;
+        cout << "yourScore is: " << yourScore << endl << endl;
 
         // Play Again?
         play = ' ';
@@ -54,4 +53,21 @@ int main() {
     cout << endl;
 
     return 0;
+}
+
+// Pass by value
+// Copies values only
+void badSwap(int x, int y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+// Pass by reference
+// The parameters act as new references
+// Access to original object
+void goodSwap(int& x, int& y) {
+    int temp = x;
+    x = y;
+    y = temp;
 }
