@@ -7,26 +7,42 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// Critter Constructor
+// Private Critter
 
-// Class Definition
-// New type
+// For Classes, members are private by default
 class Critter {
 public:
-    int m_Hunger; //data member, m_
-
     Critter(int hunger = 0);
-    void Greet(); // member function prototype
+    int GetHunger() const;          // accessor member function allows indirect access
+    void SetHunger(int hunger);
+    void Greet();
+
+private:
+    int m_Hunger;
+
 };
 
-// Could also use Member Initializers:
-// Critter::Critter(int hunger = 0, int boredom = 0):
-// m_Hunger(hunger),        // dataMember = parameter
-// m_Boredom(boredom) {}    // empty constructor body
-Critter::Critter(int hunger) {
+Critter::Critter(int hunger) : m_Hunger(hunger) {
     cout << "A new critter has been born!" << endl;
-    m_Hunger = hunger;
     Greet();
+}
+
+// constant member functions can't modify a data member of its class or call a non-constant member function of its class
+// const at the end of the function header
+// ask only for what you need!
+// constant member functions *can* alter static data members
+// if a data member is keyworded with "mutable", even a constant member function can modify it
+int Critter::GetHunger() const {
+    return m_Hunger;
+}
+
+void Critter::SetHunger(int hunger) {     // accessor member function allows controlled access
+    if (hunger < 0) {
+        cout << "You can't set a critter's hunger to a negative number.\n\n";
+    }
+    else {
+        m_Hunger = hunger;
+    }
 }
 
 // Member function definition
@@ -35,8 +51,17 @@ void Critter::Greet() {
 }
 
 int main() {
-    Critter crit1;
-    Critter crit2(7);
+    Critter crit(5);
+    //cout << crit.m_Hunger;        // illegal, m_Hunter is private
+    cout << "Calling GetHunger(): " << crit.GetHunger() << "\n\n";
+
+    cout << "Calling SetHunger() with a -1.\n";
+    crit.SetHunger(-1);
+
+    cout << "Calling SetHunger() with a 9.\n";
+    crit.SetHunger(9);
+
+    cout << "Calling GetHunger(): " << crit.GetHunger() << "\n\n";
 
     cout << endl;
 
