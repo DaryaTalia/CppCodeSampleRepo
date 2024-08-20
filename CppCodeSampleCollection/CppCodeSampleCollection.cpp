@@ -2,16 +2,19 @@
 //
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
+using std::vector;
 
-// Swap Pointer
+// Inventory Pointer
 
-void badSwap(int x, int y);
-// pX and pY are constant pointers that accept memory addresses (&)
-void goodSwap(int* const pX, int* const pY);
+// Returning a <string> pointer
+string* ptrToElement(vector<string>* const pVec, int i);
 
 int main() {
     bool playAgain = true;
@@ -22,20 +25,28 @@ int main() {
 
     while (playAgain) {
         // App
-        cout << "Original values\n";
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
+        vector<string> inventory;
+        inventory.push_back("cup");
+        inventory.push_back("book");
+        inventory.push_back("sweet roll");
 
-        cout << "Calling badSwap()\n";
-        badSwap(myScore, yourScore);
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
+        cout << "Sending the object pointed to by returned pointer:\n";
+        cout << *(ptrToElement(&inventory, 0)) << "\n\n";
 
-        cout << "Calling goodSwap()\n";
-        // to pass a pointer, pass the address of the object
-        goodSwap(&myScore, &yourScore);
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
+        cout << "Assigning the returned pointer to another pointer.\n";
+        string* pStr = ptrToElement(&inventory, 1);
+        cout << "Sending the object pointed to by new pointer to cout:\n";
+        cout << *pStr << "\n\n";
+
+        cout << "Assigning object pointed by pointer to a string object.\n";
+        string str = *(ptrToElement(&inventory, 2));
+        cout << "Sending the object pointed to by new pointer to cout:\n";
+        cout << str << "\n\n";
+
+        cout << "Altering an object through a returned pointer.\n";
+        *pStr = "iron sword";
+        cout << "Sending the altered object to cout:\n";
+        cout << inventory[1] << endl;
 
         // Play Again?
         play = ' ';
@@ -57,19 +68,7 @@ int main() {
     return 0;
 }
 
-        // Pass by value
-        // Copies values only
-        void badSwap(int x, int y) {
-            int temp = x;
-            x = y;
-            y = temp;
-        }
-
-        // Pass by reference
-        // pX and pY store addresses of the passed objects
-        // the addresses can be used to manipulate the values stored there
-        void goodSwap(int* const pX, int* const pY) {
-            int temp = *pX;
-            *pX = *pY;
-            *pY = temp;
-        }
+string* ptrToElement(vector<string>* const pVec, int i) {
+    // return the address of the element in the value of pVec at [i]
+    return &((*pVec)[i]);
+}
