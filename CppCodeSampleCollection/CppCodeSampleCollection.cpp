@@ -7,33 +7,36 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-// Simple Critter
+// Critter Constructor
 
 // Class Definition
 // New type
 class Critter {
 public:
     int m_Hunger; //data member, m_
+
+    Critter(int hunger = 0);
     void Greet(); // member function prototype
 };
 
+// Could also use Member Initializers:
+// Critter::Critter(int hunger = 0, int boredom = 0):
+// m_Hunger(hunger),        // dataMember = parameter
+// m_Boredom(boredom) {}    // empty constructor body
+Critter::Critter(int hunger) {
+    cout << "A new critter has been born!" << endl;
+    m_Hunger = hunger;
+    Greet();
+}
+
 // Member function definition
 void Critter::Greet() {
-    cout << "Hi. I'm a critter. My hunger level is " << m_Hunger << ".\n";
+    cout << "Hi. I'm a critter. My hunger level is " << m_Hunger << ".\n\n";
 }
 
 int main() {
     Critter crit1;
-    Critter crit2;
-
-    crit1.m_Hunger = 9;
-    cout << "crit1's hunger level is " << crit1.m_Hunger << ".\n";
-
-    crit2.m_Hunger = 3;
-    cout << "crit2's hunger level is " << crit2.m_Hunger << ".\n\n";
-
-    crit1.Greet();
-    crit2.Greet();
+    Critter crit2(7);
 
     cout << endl;
 
