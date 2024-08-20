@@ -11,50 +11,14 @@ using std::endl;
 using std::string;
 using std::vector;
 
-// Inventory Referencer
-
-// Constant reference, restricted reference
-// Efficient, protects the original variable
-void display(const vector<string>& inventory);
-// Returning a reference, or "nickname" to another object
-string& refToElement(vector<string>& inventory, int i);
+// Tic Tac Toe and Psuedocode
 
 int main() { 
     bool playAgain = true;
     char play;
 
-    int myScore = 150;
-    int yourScore = 1000;
-
     while (playAgain) {
         // App
-        vector<string> inventory;
-        inventory.push_back("switch");
-        inventory.push_back("mario kart");
-        inventory.push_back("breath of the wild");
-
-        cout << "Sending the returned reference to cout:\n";
-        cout << refToElement(inventory, 0) << "\n\n";
-
-        cout << "Assigning the returned reference to another reference.\n";
-        string& rStr = refToElement(inventory, 1);
-        cout << "Sending the new reference to cout:\n";
-        cout << rStr << "\n\n";
-
-        cout << "Assigning the returned reference to a string object.\n";
-        // Copies inventory[2] to the string object str using the returned reference
-        string str = refToElement(inventory, 2);
-        cout << "Sending the new reference to cout:\n";
-        cout << str << "\n\n";
-
-        cout << "Altering an object through a returned reference.\n";
-        rStr = "sonic unleashed";
-        cout << "Sending the altered object to cout: \n";
-        cout << inventory[1] << endl;
-
-        cout << endl;
-
-        display(inventory);
 
         // Play Again?
         play = ' ';
@@ -76,15 +40,29 @@ int main() {
     return 0;
 }
 
-void display(const vector<string>& vec) {
-    cout << "Your items:\n";
-    for (vector<string>::const_iterator iter = vec.begin(); iter != vec.end(); iter++) {
-        cout << *iter << endl;
-    }
-    cout << endl;
-}
-
-// Never return a reference to a local variable, out-of-scope objects
-string& refToElement(vector<string>& vec, int i) {
-    return vec[i];
-}
+// Print a blank tic tac toe board
+// 
+// Repeat until the player or the computer has one, or until there are no more available spaces:
+// 
+//      If it's the player's turn:
+//          Get the player's desired position
+//          If valid, place the player's piece on the tic tac toe board
+//          Check to see if the values on the board have formed a winning combiination from the player
+//          If so, the player won
+//          Otherwise, check to see if there are available spaces left
+//              If so, the computer's turn is next (switch turns)
+//              Otherwise, the game ends in a stalemate
+// 
+//      If it's the computer's turn:
+//          Get the computer's position from random row and column values
+//          If valid, place the computer's piece on the tic tac toe board
+//          Check to see if the values on the board have formed a winning combiination from the computer
+//          If so, the computer won
+//          Otherwise, check to see if there are available spaces left
+//              If so, the player's turn is next (switch turns)
+//              Otherwise, the game ends in a stalemate
+// 
+//      Print the current tic tac toe board
+// 
+// When the game ends by the player, computer, or stalemate, announce the final outcome
+// 
