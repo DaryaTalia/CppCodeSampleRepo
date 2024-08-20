@@ -2,21 +2,38 @@
 //
 
 #include <iostream>
-#include <string>
 
 using std::cout;
 using std::cin;
 using std::endl;
-using std::string;
 
-// Point Point String
+// Simple Critter
+
+// Class Definition
+// New type
+class Critter {
+public:
+    int m_Hunger; //data member, m_
+    void Greet(); // member function prototype
+};
+
+// Member function definition
+void Critter::Greet() {
+    cout << "Hi. I'm a critter. My hunger level is " << m_Hunger << ".\n";
+}
 
 int main() {
-    string myName = "Darya Talia";
-    string* pMyName1 = &myName;
-    string* pMyName2 = pMyName1;
+    Critter crit1;
+    Critter crit2;
 
-    cout << "The length of my name is: " << pMyName2->size() - 1;
+    crit1.m_Hunger = 9;
+    cout << "crit1's hunger level is " << crit1.m_Hunger << ".\n";
+
+    crit2.m_Hunger = 3;
+    cout << "crit2's hunger level is " << crit2.m_Hunger << ".\n\n";
+
+    crit1.Greet();
+    crit2.Greet();
 
     cout << endl;
 
