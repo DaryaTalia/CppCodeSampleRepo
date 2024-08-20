@@ -2,15 +2,20 @@
 //
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 using std::cout;
 using std::cin;
-using std::endl;
+using std::endl; 
+using std::string;
+using std::vector;
 
-// Swap
+// Inventory Displayer
 
-void badSwap(int x, int y);
-void goodSwap(int& x, int& y);
+// Constant reference, restricted reference
+// Efficient, protects the original variable
+void display(const vector<string>& inventory);
 
 int main() { 
     bool playAgain = true;
@@ -21,19 +26,12 @@ int main() {
 
     while (playAgain) {
         // App
-        cout << "Original values\n";
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
+        vector<string> inventory;
+        inventory.push_back("switch");
+        inventory.push_back("mario kart");
+        inventory.push_back("breath of the wild");
 
-        cout << "Calling badSwap()\n";
-        badSwap(myScore, yourScore);
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
-
-        cout << "Calling goodSwap()\n";
-        goodSwap(myScore, yourScore);
-        cout << "myScore is: " << myScore << endl;
-        cout << "yourScore is: " << yourScore << endl << endl;
+        display(inventory);
 
         // Play Again?
         play = ' ';
@@ -55,19 +53,12 @@ int main() {
     return 0;
 }
 
-// Pass by value
-// Copies values only
-void badSwap(int x, int y) {
-    int temp = x;
-    x = y;
-    y = temp;
+void display(const vector<string>& vec) {
+    cout << "Your items:\n";
+    for (vector<string>::const_iterator iter = vec.begin(); iter != vec.end(); iter++) {
+        cout << *iter << endl;
+    }
+    cout << endl;
 }
 
-// Pass by reference
-// The parameters act as new references
-// Access to original object
-void goodSwap(int& x, int& y) {
-    int temp = x;
-    x = y;
-    y = temp;
-}
+//  If you need to assign a constant value to a reference, you have to assign the reference to a constant reference.
