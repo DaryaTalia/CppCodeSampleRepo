@@ -8,56 +8,89 @@ using std::cin;
 using std::endl;
 using std::string;
 
-// Mad-Lib 2.0
-
-string askText(string prompt);
-int askNumber(string prompt);
-void tellStory(string& name, string& noun, int& number, string& bodyPart, string& verb);
+// Pointing
 
 int main() {
-    cout << "Welcome to Mad Lib.\n\n";
-    cout << "Answer the following questions to help create a new story.\n";
+    int* pAPointer;
 
-    string name = askText("Please enter a name: ");
-    string noun = askText("Please enter a plural noun: ");
-    int number = askNumber("Please enter a number, greater than 4: ");
-    string bodyPart = askText("Please enter a body part: ");
-    string verb = askText("Please enter a verb: ");
+    // "Point to nothing", NULL pointer
+    // DO NOT dereference a null pointer, causes undefined behavior
+    // memory does not exist
+    // same error as NullReferenceException in C# or NullPointerException in Java
+    int* pScore = 0;
 
-    tellStory(name, noun, number, bodyPart, verb);
+    int score = 1000;
+    // Pointers store addresses of objects
+    pScore = &score; // point to the address of score
+
+    cout << "Assigning &score to pScore\n";
+    cout << "&score is: " << &score << "\n"; //address of score variable
+    cout << "pScore is: " << pScore << "\n"; //address stored in pScore
+    cout << "score is: " << score << "\n";
+    // * is dereference operator here
+    // "the object to which pScore points to"
+    cout << "*pScore is: " << *pScore << "\n";
+
+    cout << endl;
+
+    cout << "Adding 500 to score\n";
+    score += 500;
+    cout << "score is: " << score << "\n";
+    cout << "*pScore is: " << *pScore << "\n";
+
+    cout << endl;
+
+    cout << "Adding 500 to *pScore\n";
+    *pScore += 500;
+    cout << "score is: " << score << "\n";
+    cout << "*pScore is: " << *pScore << "\n";
+
+    cout << endl;
+
+    // Unlike references, pointers can point to different objects at different times
+    // during the life of a program.
+    cout << "Assigning &newScore to pScore\n";
+    int newScore = 5000;
+    pScore = &newScore;
+    cout << "&newScore is: " << &newScore << "\n";
+    cout << "pScore is: " << pScore << "\n";
+    cout << "newScore is: " << newScore << "\n";
+    cout << "*pScore is: " << *pScore << "\n";
+
+    cout << endl;
+
+    cout << "Assigning &str to pStr\n";
+    string str = "score";
+    string* pStr = &str;
+    cout << "str is: " << str << "\n";
+    cout << "*pStr is: " << *pStr << "\n";
+    // Whenever you dereference a pointer to access a data member or member function, surround the
+    // dereferenced pointer with a pair of parentheses.This ensures that the dot operator will be applied
+    // to the object to which the pointer points.
+    cout << "(*pStr).size() is: " << (*pStr).size() << "\n";
+    cout << "pStr->size() is: " << pStr->size() << "\n";
+
+    // a constant pointer, a pointer that is constant, must be initialized
+    // is: (int) (*const)
+    // can only point to a non-constant value
+    int* const newPScore = &score;
+
+    // a pointer to a constant int
+    // is: (const int) (*)
+    // const before the type of value
+    // can point to different objects but cannot alter their values
+    // can point to either a non-constant or constant value
+    const int* pNumber = &newScore;
+
+    // a constant pointer to a constant
+    // is: (const int) (*const)
+    // can only point to the initialized object
+    // cannot alter the value of the addressed object
+    // can point to either a non-constant or constant value
+    const int &BONUS = 90;
+    const int* const pBONUS = &BONUS;
 
     cout << endl;
 
     return 0;
-}
-
-string askText(string prompt) {
-    string text;
-    cout << prompt;
-    cin >> text;
-    return text;
-}
-
-int askNumber(string prompt) {
-    int num = 0;
-    while (num < 5) {
-        cout << prompt;
-        cin >> num;
-    }
-    return num;
-}
-
-void tellStory(string& name, string& noun, int& number, string& bodyPart, string& verb) {
-    cout << "\nHere's your story:\n";
-
-    cout << name;
-    cout << " was exploring the dense forests of Avalon when they suddenly found ";
-    cout << number;
-    cout << " golden " << noun << ". ";
-    cout << name;
-    cout << " buried 1 and felt richer. They crushed 1 and felt stronger. When they ";
-    cout << verb << " another, their ";
-    cout << bodyPart << " disappeared! ";
-    cout << name;
-    cout << " screamed, abandoning the remaining " << (number - 3) << " " << noun << " and leaving the forest.\n\n";
 }
