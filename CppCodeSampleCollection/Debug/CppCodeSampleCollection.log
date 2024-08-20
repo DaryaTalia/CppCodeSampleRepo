@@ -1,2 +1,3 @@
 ﻿  CppCodeSampleCollection.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(141,10): warning C4101: 'play': unreferenced local variable
   CppCodeSampleCollection.vcxproj -> D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe
