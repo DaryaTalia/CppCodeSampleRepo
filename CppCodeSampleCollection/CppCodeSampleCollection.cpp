@@ -6,14 +6,23 @@
 #include <vector>
 
 using std::cout;
-using std::cin;
+// using std::cin;
 using std::endl;
+using std::ostream;
 using std::string;
 using std::vector;
 
-// Critter Farm
+// Critter Friend
 
 class Critter {
+    // make following global functions friends of the Critter class
+    // friend is a special keyword that can be used inside a class definition
+    friend void Peek(const Critter& aCritter);
+    // operator overloading allows controlled meaning over built-in operators for new defined types
+    // syntax: operatorX, where X is the operator to be overloaded
+    // cout is of the type ostream which already overloads the << operator
+    friend ostream& operator<< (ostream& os, const Critter& aCriiter);
+
 public:
     static int s_Total;             
 
@@ -36,7 +45,7 @@ public:
 
 
 private:
-    string m_Name; // relationship, "has-a" string object
+    string m_Name;
     int m_Hunger;
     int m_Boredom;
 
@@ -164,10 +173,6 @@ Farm::Farm(int spaces) {
     m_Critters.reserve(spaces); //Allocating space for the variable amount of Critter objects
 }
 
-// accepts a cpnstant refernce to a Critter object
-// adds a copy of the object to the m_Critters vector
-// this creates an extra copy of each Critter object every time called
-// performance overhead could be reduced by using a vector of pointers to objects
 void Farm::Add(const Critter& aCritter) {
     m_Critters.push_back(aCritter);
 }
@@ -180,6 +185,9 @@ void Farm::RollCall() const {
 }
 
 
+void Peek(const Critter& aCritter);
+ostream& operator<<(ostream& os, const Critter& aCritter);
+
 
 int main() {
     bool playAgain = true;
@@ -191,16 +199,11 @@ int main() {
         Critter crit("Poochie");
         cout << "My critter's name is " << crit.GetName() << endl;
 
-        cout << "\nCreating critter farm.\n";
-        Farm myFarm(3);
+        cout << "\nCalling Peek() to access crit's private data member, m_name: \n";
+        Peek(crit);
 
-        cout << "\nAdding three critters to the farm.\n";
-        myFarm.Add(Critter("Moe"));     // constructs and deconstructs object long enough for use
-        myFarm.Add(Critter("Larry"));
-        myFarm.Add(Critter("Curly"));
-
-        cout << "\nCalling Roll...\n";
-        myFarm.RollCall();
+        cout << "\nSending crit object to cout with the << operator: \n";
+        cout << crit;
 
         playAgain = false;
     }
@@ -210,13 +213,15 @@ int main() {
     return 0;
 }
 
-// Psuedocode
-// 
-// Create one critter
-// 
-// While the game is active, do the following:
-//      Print a Legend for available player actions
-//      Wait for valid player input
-//      Switch to the correct critter or game function based on player input
-//      Output the selected function or exit the game
-//
+// global friend function which can access all of a Critter object's members
+void Peek(const Critter& aCritter) {
+    cout << aCritter.m_Name << endl;
+}
+
+// global friend function which can access all of Critter object's members
+// overloads the << operator so you can send a Critter object to cout
+ostream& operator<< (ostream& os, const Critter& aCritter) {
+    os << "Critter Object - ";
+    os << "m_Name: " << aCritter.m_Name;
+    return os;
+}
