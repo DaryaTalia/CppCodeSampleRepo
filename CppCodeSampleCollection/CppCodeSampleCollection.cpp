@@ -2,18 +2,23 @@
 //
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
+using std::vector;
 
-// Critter Caretaker
+// Critter Farm
 
 class Critter {
 public:
     static int s_Total;             
 
     Critter(int hunger = 0, int boredom = 0);
+    Critter(const string& name = " ");
     ~Critter();
 
     static int GetTotal();        
@@ -23,6 +28,7 @@ public:
     int GetBoredom() const;
     void SetBoredom(int boredom);
 
+    string GetName() const;
     void Greet();
     void Talk();
     void Eat(int food = 4);
@@ -30,6 +36,7 @@ public:
 
 
 private:
+    string m_Name; // relationship, "has-a" string object
     int m_Hunger;
     int m_Boredom;
 
@@ -45,6 +52,11 @@ Critter::Critter(int hunger, int boredom) : m_Hunger(hunger), m_Boredom(boredom)
     Greet();
 }
 
+Critter::Critter(const string& name) : m_Name(name) { 
+    m_Hunger = 0;
+    m_Boredom = 0;
+}
+
 Critter::~Critter() {
     cout << "Bye!" << endl;
     s_Total--;
@@ -52,6 +64,11 @@ Critter::~Critter() {
 
 int Critter::GetTotal() {          
     return s_Total;
+}
+
+inline string Critter::GetName() const
+{
+    return m_Name;
 }
 
 int Critter::GetHunger() const {
@@ -133,6 +150,34 @@ int Critter::GetMood() const {
 }
 
 
+class Farm {
+public:
+    Farm(int spaces = 1);
+    void Add(const Critter& aCritter);
+    void RollCall() const;
+
+private:
+    vector<Critter> m_Critters;
+};
+
+Farm::Farm(int spaces) {
+    m_Critters.reserve(spaces); //Allocating space for the variable amount of Critter objects
+}
+
+// accepts a cpnstant refernce to a Critter object
+// adds a copy of the object to the m_Critters vector
+// this creates an extra copy of each Critter object every time called
+// performance overhead could be reduced by using a vector of pointers to objects
+void Farm::Add(const Critter& aCritter) {
+    m_Critters.push_back(aCritter);
+}
+
+void Farm::RollCall() const {
+    for (vector<Critter>::const_iterator iter = m_Critters.begin(); iter != m_Critters.end(); iter++)
+    {
+        cout << iter->GetName() << " here.\n";
+    }
+}
 
 
 
@@ -140,61 +185,24 @@ int main() {
     bool playAgain = true;
     char play;
 
-    Critter yourCritter;
-
     cout << "Welcome to Critter Caretaker!\n\n";
 
     while (playAgain) {
-        // Print Legend
-        cout << "0 - Quit\n";
-        cout << "1 - Listen to your critter\n";
-        cout << "2 - Feed your critter\n";
-        cout << "3 - Play with your critter\n";
-        cout << "4 - See your critter's stats\n";
+        Critter crit("Poochie");
+        cout << "My critter's name is " << crit.GetName() << endl;
 
-        // Get Player Choice
-        int input = -1;
-        while (input < 0 || input > 4) {
-            cout << "\nChoice:\t";
-            cin >> input;
-        }
+        cout << "\nCreating critter farm.\n";
+        Farm myFarm(3);
 
-        // Evaluate Player Choice
-        switch (input) {
-        case 0: {
-            playAgain = false;
-            cout << "Quitting the Critter Caretaker game...\n";
-            break;
-        }
+        cout << "\nAdding three critters to the farm.\n";
+        myFarm.Add(Critter("Moe"));     // constructs and deconstructs object long enough for use
+        myFarm.Add(Critter("Larry"));
+        myFarm.Add(Critter("Curly"));
 
-        case 1: {
-            yourCritter.Talk();
-            break;
-        }
+        cout << "\nCalling Roll...\n";
+        myFarm.RollCall();
 
-        case 2: {
-            yourCritter.Eat();
-            break;
-        }
-
-        case 3: {
-            yourCritter.Play();
-            break;
-        }
-
-        case 4: {
-            cout << endl;
-            cout << "Hunger: " << yourCritter.GetHunger() << endl;
-            cout << "Boredom: " << yourCritter.GetBoredom() << endl;
-            cout << endl;
-            break;
-        }
-
-        default: {
-            cout << "Invalid input.";
-            break;
-        }
-        }
+        playAgain = false;
     }
 
     cout << endl;
