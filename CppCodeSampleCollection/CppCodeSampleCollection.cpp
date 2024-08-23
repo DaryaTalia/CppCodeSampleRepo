@@ -2,226 +2,77 @@
 //
 
 #include <iostream>
-#include <string>
-#include <vector>
 
 using std::cout;
 // using std::cin;
 using std::endl;
-using std::ostream;
-using std::string;
-using std::vector;
 
-// Critter Friend
+// Heap
 
-class Critter {
-    // make following global functions friends of the Critter class
-    // friend is a special keyword that can be used inside a class definition
-    friend void Peek(const Critter& aCritter);
-    // operator overloading allows controlled meaning over built-in operators for new defined types
-    // syntax: operatorX, where X is the operator to be overloaded
-    // cout is of the type ostream which already overloads the << operator
-    friend ostream& operator<< (ostream& os, const Critter& aCriiter);
-
-public:
-    static int s_Total;             
-
-    Critter(int hunger = 0, int boredom = 0);
-    Critter(const string& name = " ");
-    ~Critter();
-
-    static int GetTotal();        
-
-    int GetHunger() const;
-    void SetHunger(int hunger);
-    int GetBoredom() const;
-    void SetBoredom(int boredom);
-
-    string GetName() const;
-    void Greet();
-    void Talk();
-    void Eat(int food = 4);
-    void Play(int fun = 4);
-
-
-private:
-    string m_Name;
-    int m_Hunger;
-    int m_Boredom;
-
-    int GetMood() const;
-    void PassTime(int time = 1);
-};
-
-int Critter::s_Total = 0;          
-
-Critter::Critter(int hunger, int boredom) : m_Hunger(hunger), m_Boredom(boredom) {
-    cout << "A new critter has been born!" << endl;
-    ++s_Total;
-    Greet();
-}
-
-Critter::Critter(const string& name) : m_Name(name) { 
-    m_Hunger = 0;
-    m_Boredom = 0;
-}
-
-Critter::~Critter() {
-    cout << "Bye!" << endl;
-    s_Total--;
-}
-
-int Critter::GetTotal() {          
-    return s_Total;
-}
-
-inline string Critter::GetName() const
-{
-    return m_Name;
-}
-
-int Critter::GetHunger() const {
-    return m_Hunger;
-}
-
-void Critter::SetHunger(int hunger) {
-    if (hunger < 0) {
-        m_Hunger = 0;
-    }
-    else {
-        m_Hunger = hunger;
-    }
-}
-
-int Critter::GetBoredom() const {
-    return m_Boredom;
-}
-
-void Critter::SetBoredom(int boredom) {
-    if (boredom < 0) {
-        m_Boredom = 0;
-    }
-    else {
-        m_Boredom = boredom;
-    }
-}
-
-void Critter::Greet() {
-    cout << "Hi. I'm a critter. My hunger level is " << m_Hunger << ".\n\n";
-}
-
-void Critter::Talk() {
-    cout << "I feel ";
-
-    int mood = GetMood();
-    if (mood > 15) {
-        cout << "mad.\n";
-    }
-    else if (mood > 10) {
-        cout << "frustrated.\n";
-    }
-    else if (mood > 5) {
-        cout << "okay.\n";
-    }
-    else {
-        cout << "happy.\n";
-    }
-
-    if (m_Hunger > m_Boredom) {
-        cout << "I could eat!";
-    } else if (m_Hunger < m_Boredom) {
-        cout << "I could play!";
-    }
-    cout << endl << endl;
-
-    PassTime();
-}
-
-void Critter::Eat(int food) {
-    cout << "MM, good!\n\n";
-    SetHunger(GetHunger() - food);
-    PassTime();
-}
-
-void Critter::Play(int fun) {
-    cout << "You can't catch me!\n\n";
-    SetBoredom(GetBoredom() - fun);
-    PassTime();
-}
-
-void Critter::PassTime(int time) {
-    m_Hunger += time;
-    m_Boredom += time;
-}
-
-int Critter::GetMood() const {
-    return (m_Hunger + m_Boredom);
-}
-
-
-class Farm {
-public:
-    Farm(int spaces = 1);
-    void Add(const Critter& aCritter);
-    void RollCall() const;
-
-private:
-    vector<Critter> m_Critters;
-};
-
-Farm::Farm(int spaces) {
-    m_Critters.reserve(spaces); //Allocating space for the variable amount of Critter objects
-}
-
-void Farm::Add(const Critter& aCritter) {
-    m_Critters.push_back(aCritter);
-}
-
-void Farm::RollCall() const {
-    for (vector<Critter>::const_iterator iter = m_Critters.begin(); iter != m_Critters.end(); iter++)
-    {
-        cout << iter->GetName() << " here.\n";
-    }
-}
-
-
-void Peek(const Critter& aCritter);
-ostream& operator<<(ostream& os, const Critter& aCritter);
-
+int* intOnHeap();   // returns an int on the heap
+void leak1();       // creates a memory leak
+void leak2();       // creates another memory leak
 
 int main() {
-    bool playAgain = true;
-    char play;
+    // the new operator allocates memory on the heap and returns its address
+    // use new followed by the type of value to reserve space for
+    // pHeap points to allocated memory on the heap and not the stack
+    int* pHeap = new int;
+    *pHeap = 10;
+    cout << "*pHeap: " << *pHeap << "\n\n";
 
-    cout << "Welcome to Critter Caretaker!\n\n";
+    // memory on the heap can persist beyond the function in which it was allocated
+    int *pHeap2 = intOnHeap();
+    cout << "*pHeap2: " << *pHeap2 << "\n\n";
 
-    while (playAgain) {
-        Critter crit("Poochie");
-        cout << "My critter's name is " << crit.GetName() << endl;
+    cout << "Freeing memory pointed to by pHeap.\n\n";
+    // memory on the heap must be explicitly freed
+    // if 'new' is used, 'delete' must also be used
+    delete pHeap; 
 
-        cout << "\nCalling Peek() to access crit's private data member, m_name: \n";
-        Peek(crit);
+    cout << "Freeing memory pointed to by pHeap2.\n\n";
+    delete pHeap2;
 
-        cout << "\nSending crit object to cout with the << operator: \n";
-        cout << crit;
+    // memory is now free on the heap but the local variables aren't directly affected
+    // pHeap and pHeap2 are now dangling pointers
 
-        playAgain = false;
-    }
+    // get rid of dangling pointers
+    // never attempt to derefernce a dangling pointer
+    // assign them with 0
+    pHeap = 0;
+    pHeap2 = 0;
 
     cout << endl;
 
     return 0;
 }
 
-// global friend function which can access all of a Critter object's members
-void Peek(const Critter& aCritter) {
-    cout << aCritter.m_Name << endl;
+// creates an object on the heap and returns a pointer or reference to it
+// returns a pointer to this chunk of memory thanks to dynamic memory
+int* intOnHeap() {
+    int* pTemp = new int(20);
+    return pTemp;
 }
 
-// global friend function which can access all of Critter object's members
-// overloads the << operator so you can send a Critter object to cout
-ostream& operator<< (ostream& os, const Critter& aCritter) {
-    os << "Critter Object - ";
-    os << "m_Name: " << aCritter.m_Name;
-    return os;
+// memory leaks: allocating memory but losing any way to access it again or feee it
+// large leaks can cause a program to run out of memory and crash
+
+// memory lost until the programs ends
+// drip1 is a local variable and the only way to access this chunk of memory
+// local variable will stop existing after this scope region ends 
+// but the corresponding memory will still be reserved for int(30)
+// no way to free the allocated meory
+// ways to resolve: delete to free the memory, or return a copy of the pointer drip1
+// memory should later be freed elsewhere if a pointer is returned
+void leak1() {
+    int* drip1 = new int(30);
+}
+
+void leak2() {
+    // one chunk of memory
+    int* drip2 = new int(50);
+    // another chunk of memory
+    drip2 = new int(100);   // int(50) is no longer accessible
+    delete drip2;           // only frees int(100)
+    // drip2 was a dangling pointer, but will stop existing at the end of this function
 }
