@@ -5,112 +5,146 @@
 #include <string>
 
 using std::cout;
-// using std::cin;
+using std::cin;
 using std::endl;
 using std::string;
 using std::ostream;
 
-// Heap Data Member
+// Game Lobby
 
-class Critter {
+class Player {
 public:
-    Critter(const string& name = " ", int age = 0);
-    ~Critter();
-    Critter(const Critter& c);
-    Critter& operator=(const Critter& c);
-    
-    void Greet() const;
+    Player(const string& name = " ");
+    string GetName() const;
+    Player* GetNext() const;
+    void SetNext(Player* next);
 
 private:
-    // declare a data member as a pointer to point to a value on the heap
-    string* m_pName;
-    int m_Age;
+    string m_Name;
+    Player* m_pNext; //Pointer to next player in list
 };
 
-Critter::Critter(const string& name, int age) {
-    cout << "Constructor called\n";
-    // allocate memory on the heap for a string object
-    // new returns a pointer for the object
-    m_pName = new string(name);
-    m_Age = age;
+Player::Player(const string& name) : m_Name(name), m_pNext(0) {}
+
+string Player::GetName() const {
+    return m_Name;
 }
 
-// use destructors (~) to clean up any pointers to the heap
-Critter::~Critter() {
-    cout << "Destructor called\n";
-    delete m_pName;
+Player* Player::GetNext() const {
+    return m_pNext;
 }
 
-// copy constructor: same name as class, accepts a reference to an object of the class
-// make constant to protect og object from change
-// default copy construtor creates a member-wise copy
-// write custom cc when there are data members that point to a value in the heap
-// the default will produce a 'shallow copy' which will only copy the address, not create a
-// whole new object, this could create a dangling pointer if the memory is later freed.
-// copy constructor can perform a 'deep copy', new object, new chunk of memory
-Critter::Critter(const Critter& c) {
-    cout << "Copy Constructor called\n";
-    m_pName = new string(*(c.m_pName));
-    m_Age = c.m_Age;
+void Player::SetNext(Player* next) {
+    m_pNext = next;
 }
 
-// assignment operator member function
-// write custom ao when data members point to the heap
-Critter& Critter::operator=(const Critter& c) {
-    cout << "Overloaded Assignment Operator called\n";
-    if(this != &c) {
-        delete m_pName;
-        m_pName = new string(*(c.m_pName));
-        m_Age = c.m_Age;
+
+// an aggragate of player objects
+class Lobby {
+    friend ostream& operator<<(ostream& os, const Lobby& aLobby);
+
+public:
+    Lobby();
+    ~Lobby();
+    void AddPlayer();
+    void RemovePlayer();
+    void Clear();
+
+private:
+    Player* m_pHead;
+};
+
+Lobby::Lobby(): m_pHead(0) { }
+
+Lobby::~Lobby() {
+    Clear();
+}
+
+void Lobby::AddPlayer() {
+    // create a new player node
+    cout << "Please enter the name of the new player: ";
+    string name;
+    cin >> name;
+    Player* pNewPlayer = new Player(name);
+
+    if (m_pHead == 0) {
+        m_pHead = pNewPlayer;
     }
-    return *this;
+    else {
+        // iterate to the last player in the list to set the new object as its next player
+        Player* pIter = m_pHead;
+        while (pIter -> GetNext() != 0) {
+            pIter = pIter->GetNext();
+        }
+        pIter->SetNext(pNewPlayer);
+    }
 }
 
-void Critter::Greet() const {
-    cout << "I'm " << *m_pName << " and I'm " << m_Age << " years old.\n";
-    cout << "&m_pName: " << &m_pName << endl;
+void Lobby::RemovePlayer() {
+    if (m_pHead == 0) {
+        cout << "The game lobby is empty. No one to remove!\n";
+    }
+    else {
+        // save the memory address of the head player to a new pointer
+        Player* ptemp = m_pHead;
+        // change the head player to the next player
+        m_pHead = m_pHead->GetNext();
+        // free the memory chunk m_pHead was using from the heap
+        delete ptemp;
+    }
 }
 
-void testDestructor();
-void testCopyConstructor(Critter aCopy);
-void testAssignmentOp();
+void Lobby::Clear() {
+    while (m_pHead != 0) {
+        RemovePlayer();
+    }
+}
+
+ostream& operator<<(ostream& os, const Lobby& aLobby) {
+    Player* pIter = aLobby.m_pHead;
+    os << "\nHere's who's in the game lobby: \n";
+    if (pIter == 0) {
+        os << "The lobby is empty.\n";
+    }
+    else {
+        while (pIter != 0) {
+            os << pIter->GetName() << endl;
+            pIter = pIter->GetNext();
+        }
+    }
+
+    return os;
+}
+
 
 int main() {
-    testDestructor();
-    cout << endl;
+    Lobby myLobby;
+    int choice;
 
-    Critter crit("Poochie", 5);
-    crit.Greet();
-    testCopyConstructor(crit);
-    crit.Greet();
-    cout << endl;
+    do {
+        cout << myLobby;
+        cout << "\nGAME LOBBY\n";
 
-    testAssignmentOp();
+        cout << "0 - Exit the program.\n";
+        cout << "1 - Add a player to the lobby.\n";
+        cout << "2 - Remove a player from the lobby.\n";
+        cout << "3 - Clear the lobby.\n";
+
+        cout << endl << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 0: cout << "Good-bye.\n"; break;
+        case 1: myLobby.AddPlayer(); break;
+        case 2: myLobby.RemovePlayer(); break;
+        case 3: myLobby.Clear(); break;
+        default: cout << "That was not a valid choice.\n";
+        }
+    } 
+    
+    while (choice != 0);
 
     cout << endl;
 
     return 0;
-}
-
-void testDestructor() {
-    Critter toDestroy("Rover", 3);
-    toDestroy.Greet();
-}
-
-void testCopyConstructor(Critter aCopy) {
-    aCopy.Greet();
-}
-
-void testAssignmentOp() {
-    Critter crit1("cri1", 7);
-    Critter crit2("cri2", 9);
-    crit1 = crit2;
-
-    crit1.Greet();
-    crit2.Greet();
-    cout << endl;
-
-    Critter crit3("crit3", 11);
-    crit3 = crit3;
-    crit3.Greet();
 }
