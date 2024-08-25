@@ -10,15 +10,15 @@ using std::endl;
 //using std::string;
 using std::ostream;
 
-// Simple Boss
+// Simple Boss 2.0
 
 class Enemy {
 public:
-    int m_Damage;
-
     Enemy();
     void Attack() const;
 
+protected:
+    int m_Damage;
 };
 
 Enemy::Enemy() : m_Damage(10) {}
@@ -30,10 +30,11 @@ void Enemy::Attack() const {
 
 class Boss : public Enemy {
 public:
-    int m_DamageMultiplier;
-
     Boss();
     void SpecialAttack() const;
+
+private:
+    int m_DamageMultiplier;
 };
 
 Boss::Boss() : m_DamageMultiplier(3) {}
@@ -58,3 +59,9 @@ int main() {
 
     return 0;
 }
+
+// These base class member functions are not inherited by derived classes:
+// Constructors, Copy Constructors, Destructors, Overloaded Assignment Operators
+// 
+// protected members are only accessible in their own class and certain derived classes
+// 
