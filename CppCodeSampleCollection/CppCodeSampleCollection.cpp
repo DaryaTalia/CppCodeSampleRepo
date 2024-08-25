@@ -2,152 +2,57 @@
 //
 
 #include <iostream>
-#include <string>
+//#include <string>
 
 using std::cout;
-using std::cin;
+//using std::cin;
 using std::endl;
-using std::string;
+//using std::string;
 using std::ostream;
 
-// Game Lobby 2.0
+// Simple Boss
 
-class Player {
-    friend ostream& operator<<(ostream& os, const Player& aPlayer);
-
+class Enemy {
 public:
-    Player(const string& name = " ");
-    string GetName() const;
-    Player* GetNext() const;
-    void SetNext(Player* next);
+    int m_Damage;
 
-private:
-    string m_Name;
-    Player* m_pNext; //Pointer to next player in list
+    Enemy();
+    void Attack() const;
+
 };
 
-Player::Player(const string& name) : m_Name(name), m_pNext(0) {}
+Enemy::Enemy() : m_Damage(10) {}
 
-string Player::GetName() const {
-    return m_Name;
-}
-
-Player* Player::GetNext() const {
-    return m_pNext;
-}
-
-void Player::SetNext(Player* next) {
-    m_pNext = next;
-}
-
-ostream& operator<<(ostream& os, const Player& aPlayer) {
-    os << aPlayer.GetName();
-    return os;
+void Enemy::Attack() const {
+    cout << "Attack inflicts " << m_Damage << " damage points!\n";
 }
 
 
-// an aggragate of player objects
-class Lobby {
-    friend ostream& operator<<(ostream& os, const Lobby& aLobby);
-
+class Boss : public Enemy {
 public:
-    Lobby();
-    ~Lobby();
-    void AddPlayer();
-    void RemovePlayer();
-    void Clear();
+    int m_DamageMultiplier;
 
-private:
-    Player* m_pHead;
-    Player* m_pTail;
+    Boss();
+    void SpecialAttack() const;
 };
 
-Lobby::Lobby(): m_pHead(0) { }
+Boss::Boss() : m_DamageMultiplier(3) {}
 
-Lobby::~Lobby() {
-    Clear();
-}
-
-void Lobby::AddPlayer() {
-    // create a new player node
-    cout << "Please enter the name of the new player: ";
-    string name;
-    cin >> name;
-    Player* pNewPlayer = new Player(name);
-
-    if (m_pHead == 0) {
-        m_pHead = pNewPlayer;
-    }
-    else {
-        m_pTail->SetNext(pNewPlayer);
-    }
-
-    m_pTail = pNewPlayer;
-}
-
-void Lobby::RemovePlayer() {
-    if (m_pHead == 0) {
-        cout << "The game lobby is empty. No one to remove!\n";
-    }
-    else {
-        // save the memory address of the head player to a new pointer
-        Player* ptemp = m_pHead;
-        // change the head player to the next player
-        m_pHead = m_pHead->GetNext();
-        // free the memory chunk m_pHead was using from the heap
-        delete ptemp;
-    }
-}
-
-void Lobby::Clear() {
-    while (m_pHead != 0) {
-        RemovePlayer();
-    }
-}
-
-ostream& operator<<(ostream& os, const Lobby& aLobby) {
-    Player* pIter = aLobby.m_pHead;
-    os << "\nHere's who's in the game lobby: \n";
-    if (pIter == 0) {
-        os << "The lobby is empty.\n";
-    }
-    else {
-        while (pIter != 0) {
-            os << (*pIter);
-            pIter = pIter->GetNext();
-        }
-    }
-
-    return os;
+void Boss::SpecialAttack() const {
+    cout << "Special attack inflicts " << (m_DamageMultiplier * m_Damage);
+    cout << " damage points!\n";
 }
 
 
 int main() {
-    Lobby myLobby;
-    int choice;
+    cout << "Creating an enemy.\n";
+    Enemy enemy1;
+    enemy1.Attack();
 
-    do {
-        cout << myLobby;
-        cout << "\nGAME LOBBY\n";
-
-        cout << "0 - Exit the program.\n";
-        cout << "1 - Add a player to the lobby.\n";
-        cout << "2 - Remove a player from the lobby.\n";
-        cout << "3 - Clear the lobby.\n";
-
-        cout << endl << "Enter choice: ";
-        cin >> choice;
-
-        switch (choice) {
-        case 0: cout << "Good-bye.\n"; break;
-        case 1: myLobby.AddPlayer(); break;
-        case 2: myLobby.RemovePlayer(); break;
-        case 3: myLobby.Clear(); break;
-        default: cout << "That was not a valid choice.\n";
-        }
-    } 
-    
-    while (choice != 0);
+    cout << "\nCreating a boss.\n";
+    Boss boss1;
+    boss1.Attack();
+    boss1.SpecialAttack();
 
     cout << endl;
 
