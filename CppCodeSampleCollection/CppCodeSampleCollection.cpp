@@ -10,9 +10,11 @@ using std::endl;
 using std::string;
 using std::ostream;
 
-// Game Lobby
+// Game Lobby 2.0
 
 class Player {
+    friend ostream& operator<<(ostream& os, const Player& aPlayer);
+
 public:
     Player(const string& name = " ");
     string GetName() const;
@@ -38,6 +40,11 @@ void Player::SetNext(Player* next) {
     m_pNext = next;
 }
 
+ostream& operator<<(ostream& os, const Player& aPlayer) {
+    os << aPlayer.GetName();
+    return os;
+}
+
 
 // an aggragate of player objects
 class Lobby {
@@ -52,6 +59,7 @@ public:
 
 private:
     Player* m_pHead;
+    Player* m_pTail;
 };
 
 Lobby::Lobby(): m_pHead(0) { }
@@ -71,13 +79,10 @@ void Lobby::AddPlayer() {
         m_pHead = pNewPlayer;
     }
     else {
-        // iterate to the last player in the list to set the new object as its next player
-        Player* pIter = m_pHead;
-        while (pIter -> GetNext() != 0) {
-            pIter = pIter->GetNext();
-        }
-        pIter->SetNext(pNewPlayer);
+        m_pTail->SetNext(pNewPlayer);
     }
+
+    m_pTail = pNewPlayer;
 }
 
 void Lobby::RemovePlayer() {
@@ -108,7 +113,7 @@ ostream& operator<<(ostream& os, const Lobby& aLobby) {
     }
     else {
         while (pIter != 0) {
-            os << pIter->GetName() << endl;
+            os << (*pIter);
             pIter = pIter->GetNext();
         }
     }
