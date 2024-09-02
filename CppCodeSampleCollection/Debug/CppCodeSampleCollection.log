@@ -1,2 +1,3 @@
 ﻿  CppCodeSampleCollection.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(389,11): warning C4102: 'defaut': unreferenced label
   CppCodeSampleCollection.vcxproj -> D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Debug\CppCodeSampleCollection.exe

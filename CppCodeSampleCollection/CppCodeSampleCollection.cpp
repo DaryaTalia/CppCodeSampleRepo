@@ -6,6 +6,7 @@
 #include <string>
 #include <algorithm>
 #include <ctime>
+#include <map>
 
 using std::cin;
 using std::cout;
@@ -13,28 +14,23 @@ using std::endl;
 using std::string;
 using std::ctime;
 using std::vector;
+using std::map;
+using std::make_pair;
 
 // Command Pattern
 // Phone
 
-// Declarations
+//////////////////////////////// Declarations
 
 class Command {
 public:
     void virtual Execute() {};
 };
 
-class Phone {
-public:
-    Phone() {};
-    void TouchScreen();
-    Command SetCommand(Command* command);
-    ~Phone();
-private:
-    Command* _command = 0;
-};
+class App {};
 
-class Clock {
+// Clock class
+class Clock : public App {
 public:
     Clock();
     ~Clock();
@@ -112,26 +108,50 @@ private:
     Clock* _myClock;
 };
 
-// Main
 
-int main()
-{
-    Clock* clock1 = new Clock();
+// Calendar class
+class Calendar : public App {
 
-    Phone* phone = new Phone();
+};
 
-    phone->SetCommand(new UpdateClockCommand(clock1));
-    phone->TouchScreen();
 
-    cout << endl;
-    return 0;
+// Music class
+class Music : public App {
+
+};
+
+
+class Phone {
+public:
+    Phone();
+    void TouchScreen();
+    Command SetCommand(Command* command);
+    Clock* GetClock();
+    Calendar* GetCalendar();
+    Music* GetMusic();
+    ~Phone();
+private:
+    Command* _command = 0;
+    map<string, App*>* _appMap;
+};
+
+
+//////////////////////////////// Definitions
+
+// Phone
+
+Phone::Phone() {
+    _appMap = new map<string, App*>();
+    _appMap->insert(make_pair(string("Clock"), new Clock()));
+    _appMap->insert(make_pair("Calendar", new Calendar()));
+    _appMap->insert(make_pair("Music", new Music()));
+    cout << "Phone initialized.";
 }
-
-
-// Definitions
 
 Phone::~Phone() {
     delete _command;
+    _appMap->clear();
+    delete _appMap;
     cout << "Phone pointers cleaned.";
 }
 
@@ -142,6 +162,19 @@ void Phone::TouchScreen() {
 Command Phone::SetCommand(Command* command) {
     _command = command;
     return *_command;
+}
+
+
+Clock* Phone::GetClock() {
+    return (Clock*) (*_appMap)["Clock"];
+}
+
+Calendar* Phone::GetCalendar() {
+    return (Calendar*)(*_appMap)["Calendar"];
+}
+
+Music* Phone::GetMusic() {
+    return (Music*)(*_appMap)["Music"];
 }
 
 // Clock
@@ -228,4 +261,136 @@ void Clock::UpdateClock() {
 
 
 
-//
+//////////////////////////////// Main
+
+int ChooseApp();
+int ChooseClockCommand();
+int ChooseMusicCommand();
+int ChooseCalendarCommand();
+void RunCommand(Phone* _phone, int command);
+
+bool engaged;
+
+int main()
+{
+    engaged = true;
+
+    Phone* phone = new Phone();
+
+    while (engaged) {
+        cout << "To exit, enter 0: \n";
+        RunCommand(phone, ChooseApp());
+    }
+
+    cout << endl;
+    return 0;
+}
+
+int ChooseApp() {
+    cout << "Available Apps:\n1. Clock\n2. Calendar\n3. Music\n";
+    int app = -1;
+
+    while (app < 0 || app > 3) {
+        cout << "\nWhat app would you like to open? \t";
+        cin >> app;
+    }
+
+    int command = -1;
+
+    switch (app) {
+    case 1:
+        command = 10;
+        command += ChooseClockCommand();
+        break;
+    case 2:
+        command = 20;
+        command += ChooseCalendarCommand();
+        break;
+    case 3:
+        command = 30;
+        command += ChooseMusicCommand();
+        break;
+    default:
+        // Exit App
+        return 0;
+    }
+
+    return command;
+}
+
+int ChooseClockCommand() {
+    cout << "\nWhat action in the clock app would you like to perform?\n";
+    cout << "1. Set an alarm\n";
+    cout << "2. End an alarm\n";
+    cout << "3. Start a stopwatch\n";
+    cout << "4. Lap a startwatch\n";
+    cout << "5. End a stopwatch\n";
+    int action = -1;
+
+    while (action < 1 || action > 5) {
+        cout << "\nSelect an action (1-5):\t";
+        cin >> action;
+    }
+
+    return action;
+}
+
+int ChooseCalendarCommand() {
+    int command = -1;
+
+    return command;
+}
+
+int ChooseMusicCommand() {
+    int command = -1;
+
+    return command;
+}
+
+void RunCommand(Phone* _phone, int command) {
+    int _alarm = -1;
+    switch (command) {
+        // Exit App
+    case 0:
+        cout << "Exiting the app\n";
+        engaged = false;
+        break;
+
+        // Clock Commands
+    case 11:
+        while (_alarm < 1 || _alarm > 10) {
+            cout << "\nHow many minutes will you set your alarm? (Whole number less than or equal to 10): ";
+            cin >> _alarm;
+        }
+        _phone->SetCommand(new SetAlarmCommand(_phone->GetClock(), _alarm));
+        _phone->TouchScreen();
+        break;
+    case 12:
+        _phone->SetCommand(new EndAlarmCommand(_phone->GetClock()));
+        _phone->TouchScreen();
+        break;
+    case 13:
+        _phone->SetCommand(new StartStopwatchCommand(_phone->GetClock()));
+        _phone->TouchScreen();
+        break;
+    case 14:
+        _phone->SetCommand(new EndStopwatchCommand(_phone->GetClock()));
+        _phone->TouchScreen();
+        break;
+    case 15:
+        _phone->SetCommand(new UpdateClockCommand(_phone->GetClock()));
+        _phone->TouchScreen();
+        break;
+
+        // Calendar Commands
+
+        // Music Commands
+
+    defaut: {
+        cout << "\nInvalid Command, disengaging";
+        engaged = false;
+        break;
+        }
+    }
+    cout << endl;
+}
