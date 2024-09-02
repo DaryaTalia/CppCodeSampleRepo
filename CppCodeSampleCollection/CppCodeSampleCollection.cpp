@@ -20,7 +20,11 @@ using std::make_pair;
 // Command Pattern
 // Phone
 
-//////////////////////////////// Declarations
+// Global Variables
+bool engaged;
+
+clock_t lastTime;
+
 
 class Command {
 public:
@@ -40,6 +44,7 @@ public:
     void EndStopwatch();
     void LapStopwatch();
     void UpdateClock();
+    void UpdateClockDelta();
 private:
     vector<int> *_laps;              // store elapsed seconds foreach lap in lapped order
     int *_remainingAlarmTime;        // in seconds, active if greater than 0
@@ -108,6 +113,16 @@ private:
     Clock* _myClock;
 };
 
+class UpdateClockDeltaCommand : public Command {
+public:
+    UpdateClockDeltaCommand(Clock* clock) : _myClock(clock) {};
+    void virtual Execute() {
+        _myClock->UpdateClockDelta();
+    }
+private:
+    Clock* _myClock;
+};
+
 
 // Calendar class
 class Calendar : public App {
@@ -119,63 +134,6 @@ class Calendar : public App {
 class Music : public App {
 
 };
-
-
-class Phone {
-public:
-    Phone();
-    void TouchScreen();
-    Command SetCommand(Command* command);
-    Clock* GetClock();
-    Calendar* GetCalendar();
-    Music* GetMusic();
-    ~Phone();
-private:
-    Command* _command = 0;
-    map<string, App*>* _appMap;
-};
-
-
-//////////////////////////////// Definitions
-
-// Phone
-
-Phone::Phone() {
-    _appMap = new map<string, App*>();
-    _appMap->insert(make_pair(string("Clock"), new Clock()));
-    _appMap->insert(make_pair("Calendar", new Calendar()));
-    _appMap->insert(make_pair("Music", new Music()));
-    cout << "Phone initialized.";
-}
-
-Phone::~Phone() {
-    delete _command;
-    _appMap->clear();
-    delete _appMap;
-    cout << "Phone pointers cleaned.";
-}
-
-void Phone::TouchScreen() {
-    _command->Execute();
-}
-
-Command Phone::SetCommand(Command* command) {
-    _command = command;
-    return *_command;
-}
-
-
-Clock* Phone::GetClock() {
-    return (Clock*) (*_appMap)["Clock"];
-}
-
-Calendar* Phone::GetCalendar() {
-    return (Calendar*)(*_appMap)["Calendar"];
-}
-
-Music* Phone::GetMusic() {
-    return (Music*)(*_appMap)["Music"];
-}
 
 // Clock
 
@@ -259,7 +217,112 @@ void Clock::UpdateClock() {
     cout << endl;
 }
 
+void Clock::UpdateClockDelta() {
+    int elapsed = (clock() - lastTime) / CLOCKS_PER_SEC;
 
+    // alarm
+    if (*_remainingAlarmTime > 0) {
+        (*_remainingAlarmTime) -= elapsed;
+        cout << "Remaining Alarm Time: " << *_remainingAlarmTime << endl;
+
+        if (*_remainingAlarmTime == 0) {
+            cout << "Alarm Ended!\n";
+        }
+    }
+    else {
+        cout << "No alarm set.\n";
+    }
+
+    cout << endl;
+
+    // stopwatch
+    if (*_stopwatchActive) {
+        (*_elapsedStopwatchTime) += elapsed;
+        cout << "Elapsed Stopwatch: " << *_elapsedStopwatchTime << endl;
+    }
+    else {
+        cout << "Stopwatch disabled.\n";
+    }
+
+    cout << endl;
+}
+
+
+// Phone
+
+class Phone {
+public:
+    Phone();
+    void TouchScreen();
+    Command SetCommand(Command* command);
+    Clock* GetClock();
+    Calendar* GetCalendar();
+    Music* GetMusic();
+    void UpdateApps();
+    ~Phone();
+private:
+    Command* _command = 0;
+    map<string, App*>* _appMap;
+    vector<Command*>* _updateCommands;
+};
+
+Phone::Phone() {
+    _appMap = new map<string, App*>();
+    _appMap->insert(make_pair(string("Clock"), new Clock()));
+    _appMap->insert(make_pair("Calendar", new Calendar()));
+    _appMap->insert(make_pair("Music", new Music()));
+
+    _updateCommands = new vector<Command*>();
+    _updateCommands->push_back(new UpdateClockDeltaCommand(GetClock()));
+
+    cout << "Phone initialized.";
+}
+
+Phone::~Phone() {
+    delete _command;
+    _appMap->clear();
+    delete _appMap;
+    cout << "Phone pointers cleaned.";
+}
+
+void Phone::TouchScreen() {
+    _command->Execute();
+}
+
+Command Phone::SetCommand(Command* command) {
+    _command = command;
+    return *_command;
+}
+
+Clock* Phone::GetClock() {
+    return (Clock*)(*_appMap)["Clock"];
+}
+
+Calendar* Phone::GetCalendar() {
+    return (Calendar*)(*_appMap)["Calendar"];
+}
+
+Music* Phone::GetMusic() {
+    return (Music*)(*_appMap)["Music"];
+}
+
+void Phone::UpdateApps() {
+    std::vector<Command*>::const_iterator iter;
+    for (iter = (*_updateCommands).begin(); iter != (*_updateCommands).end(); ++iter) {
+        (*iter)->Execute();
+    }
+}
+
+class UpdateAllAppsCommand : public Command {
+public:
+    UpdateAllAppsCommand(Phone* phone) : _myPhone(phone) {};
+    void virtual Execute() {
+        _myPhone->UpdateApps();
+    }
+private:
+    Phone* _myPhone;
+
+};
 
 //////////////////////////////// Main
 
@@ -269,17 +332,20 @@ int ChooseMusicCommand();
 int ChooseCalendarCommand();
 void RunCommand(Phone* _phone, int command);
 
-bool engaged;
-
 int main()
 {
     engaged = true;
 
     Phone* phone = new Phone();
+    UpdateAllAppsCommand update = UpdateAllAppsCommand(phone);
+
+    lastTime = clock_t();
 
     while (engaged) {
         cout << "To exit, enter 0: \n";
         RunCommand(phone, ChooseApp());
+        update.Execute();
+        lastTime = clock();
     }
 
     cout << endl;
@@ -314,6 +380,8 @@ int ChooseApp() {
         // Exit App
         return 0;
     }
+
+    cout << endl;
 
     return command;
 }
