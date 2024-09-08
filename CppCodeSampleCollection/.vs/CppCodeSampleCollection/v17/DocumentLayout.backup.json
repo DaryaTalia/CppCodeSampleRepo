@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Characters.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Classes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Abilities.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Abilities.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Classes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:Characters.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:CppCodeSampleCollection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Abilities.h",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.h",
+              "RelativeDocumentMoniker": "Abilities.h",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.h",
+              "RelativeToolTip": "Abilities.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-08T05:45:43.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Abilities.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.cpp",
+              "RelativeDocumentMoniker": "Abilities.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Abilities.cpp",
+              "RelativeToolTip": "Abilities.cpp",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIcBAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-08T05:45:18.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Classes.h",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.h",
+              "RelativeDocumentMoniker": "Classes.h",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.h",
+              "RelativeToolTip": "Classes.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-08T05:43:32.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Characters.h",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.h",
+              "RelativeDocumentMoniker": "Characters.h",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.h",
+              "RelativeToolTip": "Characters.h",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAAHQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-08T05:29:22.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.cpp",
+              "RelativeDocumentMoniker": "Game.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.cpp",
+              "RelativeToolTip": "Game.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-08T05:33:25.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.h",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.h",
+              "RelativeDocumentMoniker": "Game.h",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Game.h",
+              "RelativeToolTip": "Game.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-08T05:32:37.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Classes.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.cpp",
+              "RelativeDocumentMoniker": "Classes.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Classes.cpp",
+              "RelativeToolTip": "Classes.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-08T05:43:04.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Characters.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.cpp",
+              "RelativeDocumentMoniker": "Characters.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\Characters.cpp",
+              "RelativeToolTip": "Characters.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-08T05:30:16.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CppCodeSampleCollection.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp",
+              "RelativeDocumentMoniker": "CppCodeSampleCollection.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp",
+              "RelativeToolTip": "CppCodeSampleCollection.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-08T05:23:25.722Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

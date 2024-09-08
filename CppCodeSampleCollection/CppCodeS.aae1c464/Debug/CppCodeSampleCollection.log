@@ -1,0 +1,34 @@
+﻿  Abilities.cpp
+  Characters.cpp
+  Classes.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
+  (compiling source file 'Abilities.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Abilities.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(108,15): error C2535: 'void FriendshipShield::Activate(Round &)': member function already defined or declared
+  (compiling source file 'Abilities.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(107,15):
+      see declaration of 'FriendshipShield::Activate'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
+  (compiling source file 'Characters.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Characters.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(108,15): error C2535: 'void FriendshipShield::Activate(Round &)': member function already defined or declared
+  (compiling source file 'Classes.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(107,15):
+      see declaration of 'FriendshipShield::Activate'
+  
+  CppCodeSampleCollection.cpp
+  Game.cpp
+  Generating Code...
