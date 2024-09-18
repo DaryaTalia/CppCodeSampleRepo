@@ -1,32 +1,34 @@
 #pragma once
 
 #include <vector>
+#include "Characters.h"
 
 using std::vector;
 
 class Round {
 public:
-	vector<Player*> playerChars;
 	vector<Enemy*> enemyChars;
 	vector<GenericCharacter*> playerOrder;
 
-	Round() {}
+	Round();
 
-	~Round() {}
+	~Round();
 
-	void PlayRound() {}
-	void RestartRound() {}
+	bool PlayRound();
+	void RestartRound();
 
-	void DisplayRoundStatus() {}
+	void DisplayRoundStatus();
 };
 
 class Game {
 public:
 	unsigned int roundsCount;
 	Round* currentRound;
+	vector<Player*>* playerChars;
 
 	Game() {
-		currentRound = new Round();
+		StartGame();
+		InitNewRound();
 	}
 
 	~Game() {
@@ -36,5 +38,13 @@ public:
 	void InitNewRound() {
 		currentRound = new Round();
 	}
-	void EndGame() {}
+
+	void EndGame();
+
+private:
+	void StartGame();
+
+	int CharacterVerification();
+
+	void DefineCharacters();
 };

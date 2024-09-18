@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "Game.cpp"
 
 using std::cout;
 using std::cin;
@@ -9,12 +10,83 @@ using std::endl;
 
 // DnD Lite Psuedocode
 
+
+/////////////////////////////
+///////////// MAIN /////////
+///////////////////////////
+
+bool roundStatus;
+
+enum class GameStatus { Init, Play, Replay, End };
+GameStatus status;
+
+Game myGame;
+
 int main() { 
-    cout << "DnD Lite Development Begins!";
+    cout << "DnD Lite Development Begins!\n\n";
+
+    status = GameStatus::Init;
+
+    myGame = Game();
+
+    status = GameStatus::Play;
+
+    while (status != GameStatus::End) {
+
+        roundStatus = false; // false for "Loss", true for "Win"
+
+        // Play Game Loop
+        if (status == GameStatus::Play) {
+            roundStatus = myGame.currentRound->PlayRound();
+        }
+
+        else if (status == GameStatus::Replay) {
+            myGame.currentRound->RestartRound();
+            roundStatus = myGame.currentRound->PlayRound();
+        }
+
+        // Determine game status
+
+        if (roundStatus) {
+            status = ContinueVerification("You won this round! Would you like to continue? (y/n) ");
+        }
+        else {
+            status = ContinueVerification("You lost this round... Would you like to replay? (y/n) ");
+        }
+
+        std::cout << std::endl;
+    }
+
+    myGame.EndGame();
 
     cout << endl;
 
     return 0;
+}
+
+GameStatus ContinueVerification(string _outcome) {
+    char response = ' ';
+
+    while (response != 'y' || response != 'n') {
+        cout << _outcome;
+        cin >> response;
+    }
+
+    std::cout << std::endl;
+
+    if (response == 'y' && status == GameStatus::Play) {
+        return GameStatus::Play;
+    }
+    else if (response == 'y' && status == GameStatus::Replay) {
+        return GameStatus::Play;
+    }
+    else if(response == 'n' && status == GameStatus::Play) {
+        return GameStatus::Play;
+    }
+    else if (response == 'n' && status == GameStatus::Replay) {
+        return GameStatus::Play;
+    }
+    
 }
 
 // The game will introduce itself and the winning and losing objectives.
