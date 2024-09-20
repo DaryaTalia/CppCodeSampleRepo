@@ -46,7 +46,7 @@ void Game::DefineCharacters() {
 		playerChars->at(playerIndex - 1)->ChooseClass();
 
 		// Determine if we've initialized enough characters to give the player feedback
-		if (playerIndex + 1 > playerChars->size()) {
+		if (playerIndex == playerChars->size()) {
 			std::cout << "Character Creation Complete!\n";
 		}
 		else {
@@ -61,10 +61,63 @@ void Game::DefineCharacters() {
 }
 
 void Game::EndGame() {
-	std::cout << "Thanks \n";
+	std::cout << "Thanks for playing!\n";
+}
+
+void Game::InitNewRound() {
+	currentRound = new Round(this);
+}
+
+Round::Round(Game* _game) {
+	InitializeEnemies(_game);
+	SetPlayOrder(_game);
+}
+
+void Round::InitializeEnemies(Game* _game) {
+	enemyChars = new vector<Enemy*>(_game->playerChars->size());
+
+	// Set enemy classes and abilities
+	vector<Enemy*>::iterator thisEnemy = enemyChars->begin();
+
+	while (thisEnemy != enemyChars->end()) {
+		// Set classes
+
+		// Set abilities
+
+		++thisEnemy;
+	}
 
 }
 
-Round::Round() {
+void Round::SetPlayOrder(Game* _game) {
+	// Player Order is the size of the total number of player's and enemies in the round
+	playerOrder = new vector<GenericCharacter*>();
+	playerOrder->reserve(_game->playerChars->size() + enemyChars->size());
 
+	// Insert Player Characters'
+	playerOrder->insert(playerOrder->begin(), _game->playerChars->begin(), _game->playerChars->end());
+	// Insert Enemt Characters'
+	playerOrder->insert(playerOrder->end(), enemyChars->begin(), enemyChars->end());
+
+
+
+
+}
+
+bool Round::PlayRound(Game* _game) {
+	enemyChars->clear();
+
+	return true;
+}
+
+void Round::RestartRound(Game* _game) {
+	vector<Enemy*>::iterator thisEnemy = enemyChars->begin();
+	while (thisEnemy != enemyChars->end()) {
+		//enemyChars->
+	}
+
+	//vector<Player*>::iterator thisPlayer = playerChars->begin();
+	//while (thisPlayer != playerChars->end()) {
+		//thisEnemy->Reset();
+	//}
 }

@@ -87,6 +87,8 @@ public:
 	}
 	~GenericCharacter() {}
 
+	virtual void Reset() = 0;
+
 	virtual void ChooseClass() = 0;
 
 	virtual void ChooseAbilities() = 0;
@@ -110,6 +112,8 @@ public:
 		// After the class is picked...
 		ChooseAbilities();
 	}
+
+	virtual void Reset();
 
 private:
 	void ChooseAbilities() {
@@ -141,6 +145,8 @@ public:
 		// After the class is picked...
 		ChooseAbilities();
 	}
+
+	virtual void Reset();
 
 private:
 	void ChooseAbilities() {

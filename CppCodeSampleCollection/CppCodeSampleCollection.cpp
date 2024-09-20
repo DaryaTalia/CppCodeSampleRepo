@@ -17,7 +17,7 @@ using std::endl;
 
 bool roundStatus;
 
-enum class GameStatus { Init, Play, Replay, End };
+enum class GameStatus { Init, Inprogress, End };
 GameStatus status;
 
 Game myGame;
@@ -29,18 +29,18 @@ int main() {
 
     myGame = Game();
 
-    status = GameStatus::Play;
+    status = GameStatus::Inprogress;
 
+    roundStatus = true; // false for "Loss", true for "Win"
+
+    // Play Game Loop
     while (status != GameStatus::End) {
 
-        roundStatus = false; // false for "Loss", true for "Win"
-
-        // Play Game Loop
-        if (status == GameStatus::Play) {
+        // Play Round Loop
+        if (roundStatus) {
             roundStatus = myGame.currentRound->PlayRound();
         }
-
-        else if (status == GameStatus::Replay) {
+        else {
             myGame.currentRound->RestartRound();
             roundStatus = myGame.currentRound->PlayRound();
         }
@@ -68,23 +68,18 @@ GameStatus ContinueVerification(string _outcome) {
     char response = ' ';
 
     while (response != 'y' || response != 'n') {
-        cout << _outcome;
+        cout << _outcome << "\t";
         cin >> response;
+        std::cout << std::endl;
     }
 
     std::cout << std::endl;
 
-    if (response == 'y' && status == GameStatus::Play) {
-        return GameStatus::Play;
+    if (response == 'y') {
+        return GameStatus::Inprogress;
     }
-    else if (response == 'y' && status == GameStatus::Replay) {
-        return GameStatus::Play;
-    }
-    else if(response == 'n' && status == GameStatus::Play) {
-        return GameStatus::Play;
-    }
-    else if (response == 'n' && status == GameStatus::Replay) {
-        return GameStatus::Play;
+    else {
+        return GameStatus::End;
     }
     
 }
