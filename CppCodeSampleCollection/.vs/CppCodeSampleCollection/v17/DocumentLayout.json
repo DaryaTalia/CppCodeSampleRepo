@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AAE1C464-1D52-4B09-A32E-7540A5F9B4C7}|CppCodeSampleCollection.vcxproj|solutionrelative:CppCodeSampleCollection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CppCodeSampleCollection.cpp",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp",
+              "RelativeDocumentMoniker": "CppCodeSampleCollection.cpp",
+              "ToolTip": "D:\\Documents\\GitHub\\CppCodeSampleCollection\\CppCodeSampleRepo\\CppCodeSampleCollection\\CppCodeSampleCollection.cpp",
+              "RelativeToolTip": "CppCodeSampleCollection.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-17T20:39:45.675Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
