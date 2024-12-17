@@ -2,7 +2,9 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include "Classes.h"
+
+class AbstractClass;
+class AbstractAbiliy;
 
 using std::string;
 using std::rand;
@@ -16,7 +18,7 @@ public:
 	string name;
 	CharacterType type;
 	char icon;
-	AbstractClass myClass;
+	AbstractClass *myClass;
 
 	// Health Range
 	unsigned int _currHealth;
@@ -32,9 +34,6 @@ public:
 
 	bool decreasingHealth;
 	unsigned int decHealthLife;
-
-	bool increasingHealth;
-	unsigned int incHealthLife;
 
 	bool freezingHealth;
 	unsigned int frzHealthLife;
@@ -54,6 +53,7 @@ public:
 	GenericCharacter(string _name) : name(_name) {
 		type = CharacterType::UNKNOWN;
 		icon = '/';
+		myClass = new AbstractClass();
 
 		_maxHealth = 30;
 		_currHealth = _maxHealth;
@@ -133,7 +133,7 @@ public:
 
 		_minHealth = 20;
 
-		srand(time(nullptr));
+		// srand(time(nullptr));
 		// int random = rand();
 	}
 

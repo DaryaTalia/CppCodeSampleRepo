@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Game.h"
-#include "Characters.h"
 
 using std::string;
 using std::vector;
+
+class Round;
+class GenericCharacter;
 
 class AbstractAbility {
 public:
@@ -104,7 +105,6 @@ public:
 
 class FriendshipShield : public iHealth {
 public:
-	virtual void Activate(Round& _round);
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {};

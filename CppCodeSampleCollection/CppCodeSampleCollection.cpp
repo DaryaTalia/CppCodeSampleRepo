@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "Game.cpp"
+#include "Characters.cpp"
+#include "Classes.cpp"
+#include "Abilities.cpp"
 
 using std::cout;
 using std::cin;
@@ -38,11 +41,11 @@ int main() {
 
         // Play Round Loop
         if (roundStatus) {
-            roundStatus = myGame.currentRound->PlayRound();
+            roundStatus = myGame.currentRound->PlayRound(&myGame);
         }
         else {
-            myGame.currentRound->RestartRound();
-            roundStatus = myGame.currentRound->PlayRound();
+            myGame.currentRound->RestartRound(&myGame);
+            roundStatus = myGame.currentRound->PlayRound(&myGame);
         }
 
         // Determine game status

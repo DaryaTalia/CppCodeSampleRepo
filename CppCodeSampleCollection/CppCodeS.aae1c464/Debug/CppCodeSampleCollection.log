@@ -1,34 +1,393 @@
 ﻿  Abilities.cpp
   Characters.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(97,8): error C2143: syntax error: missing ';' before '<'
+  (compiling source file 'Characters.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(97,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Characters.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(97,39): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Characters.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(56,30): error C2027: use of undefined type 'AbstractClass'
+  (compiling source file 'Characters.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(6,7):
+      see declaration of 'AbstractClass'
+  
   Classes.cpp
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
-  (compiling source file 'Abilities.cpp')
-  
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Abilities.cpp')
-  
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(108,15): error C2535: 'void FriendshipShield::Activate(Round &)': member function already defined or declared
-  (compiling source file 'Abilities.cpp')
-      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(107,15):
-      see declaration of 'FriendshipShield::Activate'
-  
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
-  (compiling source file 'Characters.cpp')
-  
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Characters.cpp')
-  
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,9): error C3646: 'name': unknown override specifier
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(12,9): error C2065: 'AbstractAbility': undeclared identifier
   (compiling source file 'Classes.cpp')
   
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(7,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(12,25): error C2059: syntax error: '>'
   (compiling source file 'Classes.cpp')
   
-D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(108,15): error C2535: 'void FriendshipShield::Activate(Round &)': member function already defined or declared
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(17,9): error C2065: 'AbstractAbility': undeclared identifier
   (compiling source file 'Classes.cpp')
-      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Abilities.h(107,15):
-      see declaration of 'FriendshipShield::Activate'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(17,25): error C2059: syntax error: '>'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(22,34): error C2061: syntax error: identifier 'CounterSong'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(23,34): error C2061: syntax error: identifier 'ForeverPoem'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(24,34): error C2061: syntax error: identifier 'SisterLullaby'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(25,34): error C2061: syntax error: identifier 'WorldLastRhapsody'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(26,34): error C2061: syntax error: identifier 'Crossbow'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(27,34): error C2061: syntax error: identifier 'PeakPerformance'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(36,34): error C2061: syntax error: identifier 'FriendshipShield'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(37,34): error C2061: syntax error: identifier 'HoneySpell'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(38,34): error C2061: syntax error: identifier 'GuidingLight'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(39,34): error C2061: syntax error: identifier 'Madness'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(40,34): error C2061: syntax error: identifier 'Protection'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(41,34): error C2061: syntax error: identifier 'LoveBane'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(51,34): error C2061: syntax error: identifier 'Scimitar'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(52,34): error C2061: syntax error: identifier 'Warhammer'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(53,34): error C2061: syntax error: identifier 'Longbow'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(54,34): error C2061: syntax error: identifier 'IronDefense'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(55,34): error C2061: syntax error: identifier 'Olympian'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(56,34): error C2061: syntax error: identifier 'Revenger'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(66,34): error C2061: syntax error: identifier 'Longbow'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(67,34): error C2061: syntax error: identifier 'Shortsword'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(68,34): error C2061: syntax error: identifier 'BefriendBear'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(69,34): error C2061: syntax error: identifier 'ExploreSurroundings'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(70,34): error C2061: syntax error: identifier 'PoisonedBerries'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(71,34): error C2061: syntax error: identifier 'SolarEclipse'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(81,34): error C2061: syntax error: identifier 'Shortsword'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(82,34): error C2061: syntax error: identifier 'Pickpocket'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(83,34): error C2061: syntax error: identifier 'Riposte'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(84,34): error C2061: syntax error: identifier 'Sneak'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(85,34): error C2061: syntax error: identifier 'Crossbow'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(86,34): error C2061: syntax error: identifier 'ChangeClothes'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(96,34): error C2061: syntax error: identifier 'WaterBlast'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(97,34): error C2061: syntax error: identifier 'AcidSkin'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(98,34): error C2061: syntax error: identifier 'ConjureSword'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(99,34): error C2061: syntax error: identifier 'SummonCat'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(100,34): error C2061: syntax error: identifier 'BrokenClock'
+  (compiling source file 'Classes.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(101,34): error C2061: syntax error: identifier 'VineBound'
+  (compiling source file 'Classes.cpp')
   
   CppCodeSampleCollection.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,7): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,21): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(24,4): error C2065: 'currentRound': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(25,10): error C2065: 'currentRound': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(25,3): error C2541: 'delete': cannot delete objects that are not pointers
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(30,4): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(63,4): warning C4150: deletion of pointer to incomplete type 'Enemy'; no destructor called
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(6,7):
+      see declaration of 'Enemy'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(74,4): warning C4150: deletion of pointer to incomplete type 'GenericCharacter'; no destructor called
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(4,7):
+      see declaration of 'GenericCharacter'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,3): error C2065: 'string': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,10): error C2146: syntax error: missing ';' before identifier 'myName'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,10): error C2065: 'myName': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(42,15): error C2065: 'myName': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(43,49): error C2065: 'myName': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(43,48): error C2027: use of undefined type 'Player'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(46,18): error C2027: use of undefined type 'Player'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(68,2): error C2065: 'currentRound': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(97,9): error C2065: 'AbstractAbility': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(97,25): error C2059: syntax error: '>'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(56,30): error C2027: use of undefined type 'AbstractClass'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Characters.h(6,7):
+      see declaration of 'AbstractClass'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(12,9): error C2065: 'AbstractAbility': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(12,25): error C2059: syntax error: '>'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(17,9): error C2065: 'AbstractAbility': undeclared identifier
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(17,25): error C2059: syntax error: '>'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(22,34): error C2061: syntax error: identifier 'CounterSong'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(23,34): error C2061: syntax error: identifier 'ForeverPoem'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(24,34): error C2061: syntax error: identifier 'SisterLullaby'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(25,34): error C2061: syntax error: identifier 'WorldLastRhapsody'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(26,34): error C2061: syntax error: identifier 'Crossbow'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(27,34): error C2061: syntax error: identifier 'PeakPerformance'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(36,34): error C2061: syntax error: identifier 'FriendshipShield'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(37,34): error C2061: syntax error: identifier 'HoneySpell'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(38,34): error C2061: syntax error: identifier 'GuidingLight'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(39,34): error C2061: syntax error: identifier 'Madness'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(40,34): error C2061: syntax error: identifier 'Protection'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(41,34): error C2061: syntax error: identifier 'LoveBane'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(51,34): error C2061: syntax error: identifier 'Scimitar'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(52,34): error C2061: syntax error: identifier 'Warhammer'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(53,34): error C2061: syntax error: identifier 'Longbow'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(54,34): error C2061: syntax error: identifier 'IronDefense'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(55,34): error C2061: syntax error: identifier 'Olympian'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(56,34): error C2061: syntax error: identifier 'Revenger'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(66,34): error C2061: syntax error: identifier 'Longbow'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(67,34): error C2061: syntax error: identifier 'Shortsword'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(68,34): error C2061: syntax error: identifier 'BefriendBear'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(69,34): error C2061: syntax error: identifier 'ExploreSurroundings'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(70,34): error C2061: syntax error: identifier 'PoisonedBerries'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(71,34): error C2061: syntax error: identifier 'SolarEclipse'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(81,34): error C2061: syntax error: identifier 'Shortsword'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(82,34): error C2061: syntax error: identifier 'Pickpocket'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(83,34): error C2061: syntax error: identifier 'Riposte'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(84,34): error C2061: syntax error: identifier 'Sneak'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(85,34): error C2061: syntax error: identifier 'Crossbow'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(86,34): error C2061: syntax error: identifier 'ChangeClothes'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(96,34): error C2061: syntax error: identifier 'WaterBlast'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(97,34): error C2061: syntax error: identifier 'AcidSkin'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(98,34): error C2061: syntax error: identifier 'ConjureSword'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(99,34): error C2061: syntax error: identifier 'SummonCat'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(100,34): error C2061: syntax error: identifier 'BrokenClock'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Classes.h(101,34): error C2061: syntax error: identifier 'VineBound'
+  (compiling source file 'CppCodeSampleCollection.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(44,34): error C2039: 'currentRound': is not a member of 'Game'
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(10,7):
+      see declaration of 'Game'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(47,20): error C2039: 'currentRound': is not a member of 'Game'
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(10,7):
+      see declaration of 'Game'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(48,34): error C2039: 'currentRound': is not a member of 'Game'
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(10,7):
+      see declaration of 'Game'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(54,22): error C3861: 'ContinueVerification': identifier not found
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\CppCodeSampleCollection.cpp(57,22): error C3861: 'ContinueVerification': identifier not found
   Game.cpp
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,7): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(13,21): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(24,4): error C2065: 'currentRound': undeclared identifier
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(25,10): error C2065: 'currentRound': undeclared identifier
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(25,3): error C2541: 'delete': cannot delete objects that are not pointers
+  (compiling source file 'Game.cpp')
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(30,4): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  (compiling source file 'Game.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(63,4): warning C4150: deletion of pointer to incomplete type 'Enemy'; no destructor called
+  (compiling source file 'Game.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(6,7):
+      see declaration of 'Enemy'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(74,4): warning C4150: deletion of pointer to incomplete type 'GenericCharacter'; no destructor called
+  (compiling source file 'Game.cpp')
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(4,7):
+      see declaration of 'GenericCharacter'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,3): error C2065: 'string': undeclared identifier
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,10): error C2146: syntax error: missing ';' before identifier 'myName'
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(39,10): error C2065: 'myName': undeclared identifier
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(42,15): error C2065: 'myName': undeclared identifier
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(43,49): error C2065: 'myName': undeclared identifier
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(43,48): error C2027: use of undefined type 'Player'
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(46,18): error C2027: use of undefined type 'Player'
+      D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.h(5,7):
+      see declaration of 'Player'
+  
+D:\Documents\GitHub\CppCodeSampleCollection\CppCodeSampleRepo\CppCodeSampleCollection\Game.cpp(68,2): error C2065: 'currentRound': undeclared identifier
   Generating Code...

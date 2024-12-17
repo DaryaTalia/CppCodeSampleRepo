@@ -1,7 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "Characters.h"
+class GenericCharacter;
+class Player; 
+class Enemy; 
 
 using std::vector;
 
@@ -76,6 +78,8 @@ public:
 		playerOrder = NULL;
 		delete playerOrder;
 	}
+
+
 
 	bool PlayRound(Game* _game);
 	void RestartRound(Game* _game);

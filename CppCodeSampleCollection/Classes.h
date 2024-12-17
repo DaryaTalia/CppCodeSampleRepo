@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include "Abilities.h"
 #include <vector>
 
 using std::string;
