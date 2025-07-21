@@ -2,16 +2,17 @@
 //
 
 #include <iostream>
-#include "Game.cpp"
-#include "Characters.cpp"
-#include "Classes.cpp"
-#include "Abilities.cpp"
+#include "Game.h"
+#include "Characters.h"
+#include "Classes.h"
+#include "Abilities.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
 
-// DnD Lite Psuedocode
+// DnD Lite
 
 
 /////////////////////////////
@@ -23,14 +24,36 @@ bool roundStatus;
 enum class GameStatus { Init, Inprogress, End };
 GameStatus status;
 
-Game myGame;
+Game *myGame;
+
+
+
+GameStatus ContinueVerification(string _outcome) {
+    char response = ' ';
+
+    while (response != 'y' && response != 'n') {
+        cout << _outcome << "\t";
+        cin >> response;
+        std::cout << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    if (response == 'y') {
+        return GameStatus::Inprogress;
+    }
+    else {
+        return GameStatus::End;
+    }
+
+}
 
 int main() { 
     cout << "DnD Lite Development Begins!\n\n";
 
     status = GameStatus::Init;
 
-    myGame = Game();
+    myGame = new Game(0);
 
     status = GameStatus::Inprogress;
 
@@ -41,11 +64,11 @@ int main() {
 
         // Play Round Loop
         if (roundStatus) {
-            roundStatus = myGame.currentRound->PlayRound(&myGame);
+            roundStatus = myGame->currentRound->PlayRound(myGame);
         }
         else {
-            myGame.currentRound->RestartRound(&myGame);
-            roundStatus = myGame.currentRound->PlayRound(&myGame);
+            myGame->currentRound->RestartRound(myGame);
+            roundStatus = myGame->currentRound->PlayRound(myGame);
         }
 
         // Determine game status
@@ -60,31 +83,11 @@ int main() {
         std::cout << std::endl;
     }
 
-    myGame.EndGame();
+    myGame->EndGame();
 
     cout << endl;
 
     return 0;
-}
-
-GameStatus ContinueVerification(string _outcome) {
-    char response = ' ';
-
-    while (response != 'y' || response != 'n') {
-        cout << _outcome << "\t";
-        cin >> response;
-        std::cout << std::endl;
-    }
-
-    std::cout << std::endl;
-
-    if (response == 'y') {
-        return GameStatus::Inprogress;
-    }
-    else {
-        return GameStatus::End;
-    }
-    
 }
 
 // The game will introduce itself and the winning and losing objectives.

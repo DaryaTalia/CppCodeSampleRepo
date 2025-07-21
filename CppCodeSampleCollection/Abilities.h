@@ -1,12 +1,15 @@
-#pragma once
 #include <string>
 #include <vector>
 
-using std::string;
-using std::vector;
+using namespace std;
+
+#ifndef ABILITIES_H
+#define ABILITIES_H
 
 class Round;
 class GenericCharacter;
+
+using std::vector;
 
 class AbstractAbility {
 public:
@@ -14,8 +17,9 @@ public:
 
 	unsigned int abilityTimer = 0;
 	unsigned int maxTimer = 0;
-	string description;
-	vector<GenericCharacter*> targets;
+	std::string name;
+	std::string description;
+	std::vector<GenericCharacter*> targets;
 };
 
 class iHealth : virtual public AbstractAbility {
@@ -51,6 +55,9 @@ private:
 
 class CounterSong : public iAttack {
 public:
+	CounterSong();
+	~CounterSong();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {}; // Invalid
@@ -59,6 +66,9 @@ public:
 
 class ForeverPoem : public iHealth {
 public:
+	ForeverPoem();
+	~ForeverPoem();
+
 	virtual void Activate(Round& _round);
 	virtual void FreezeHealth(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {}; // Invalid
@@ -68,6 +78,9 @@ public:
 
 class SisterLullaby : public iHealth {
 public:
+	SisterLullaby();
+	~SisterLullaby();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {}; // Invalid
 	virtual void DecreaseHealth(Round& _round) {}; // Invalid
@@ -77,6 +90,9 @@ public:
 
 class WorldLastRhapsody : public iHealth {
 public:
+	WorldLastRhapsody();
+	~WorldLastRhapsody();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {}; // Invalid
@@ -86,6 +102,9 @@ public:
 
 class Crossbow : public iHealth {
 public:
+	Crossbow();
+	~Crossbow();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -95,6 +114,9 @@ public:
 
 class PeakPerformance : public iAttack, public iTurn {
 public:
+	PeakPerformance();
+	~PeakPerformance();
+
 	virtual void Activate(Round& _round);
 	virtual void SkipTurn(Round& _round) {}; // Invalid
 	virtual void HideTurn(Round& _round);
@@ -105,6 +127,9 @@ public:
 
 class FriendshipShield : public iHealth {
 public:
+	FriendshipShield();
+	~FriendshipShield();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {};
@@ -114,6 +139,9 @@ public:
 
 class HoneySpell : public iHealth {
 public:
+	HoneySpell();
+	~HoneySpell();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {};
@@ -123,6 +151,9 @@ public:
 
 class GuidingLight : public iHealth, public iAttack {
 public:
+	GuidingLight();
+	~GuidingLight();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {};
@@ -134,6 +165,9 @@ public:
 
 class Madness : public iTurn {
 public:
+	Madness();
+	~Madness();
+
 	virtual void Activate(Round& _round);
 	virtual void SkipTurn(Round& _round);
 	virtual void HideTurn(Round& _round) {};
@@ -142,6 +176,9 @@ public:
 
 class Protection : public iTurn {
 public:
+	Protection();
+	~Protection();
+
 	virtual void Activate(Round& _round);
 	virtual void HideTurn(Round& _round);
 	virtual void SkipTurn(Round& _round) {};
@@ -150,6 +187,9 @@ public:
 
 class LoveBane : public iAttack {
 public:
+	LoveBane();
+	~LoveBane();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round) {};
 	virtual void DecreaseAttack(Round& _round);
@@ -158,6 +198,9 @@ public:
 
 class Scimitar : public iHealth {
 public:
+	Scimitar();
+	~Scimitar();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -167,6 +210,9 @@ public:
 
 class Warhammer : public iHealth {
 public:
+	Warhammer();
+	~Warhammer();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -176,6 +222,9 @@ public:
 
 class Longbow : public iHealth {
 public:
+	Longbow();
+	~Longbow();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -185,6 +234,9 @@ public:
 
 class IronDefense : public iHealth {
 public:
+	IronDefense();
+	~IronDefense();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round) {};
@@ -194,6 +246,9 @@ public:
 
 class Olympian : public iAttack {
 public:
+	Olympian();
+	~Olympian();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {};
@@ -202,6 +257,9 @@ public:
 
 class Revenger : public iAttack {
 public:
+	Revenger();
+	~Revenger();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round) {};
 	virtual void DecreaseAttack(Round& _round);
@@ -210,6 +268,9 @@ public:
 
 class Shortsword : public iHealth {
 public:
+	Shortsword();
+	~Shortsword();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -219,6 +280,9 @@ public:
 
 class BefriendBear : public iAttack {
 public:
+	BefriendBear();
+	~BefriendBear();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {};
@@ -227,6 +291,9 @@ public:
 
 class ExploreSurroundings : public iHealth, public iAttack {
 public:
+	ExploreSurroundings();
+	~ExploreSurroundings();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {};
@@ -238,6 +305,9 @@ public:
 
 class PoisonedBerries : public iAttack {
 public:
+	PoisonedBerries();
+	~PoisonedBerries();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round) {};
 	virtual void DecreaseAttack(Round& _round);
@@ -246,6 +316,9 @@ public:
 
 class SolarEclipse : public iAttack {
 public:
+	SolarEclipse();
+	~SolarEclipse();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round) {};
 	virtual void DecreaseAttack(Round& _round);
@@ -254,6 +327,9 @@ public:
 
 class Pickpocket : public iHealth {
 public:
+	Pickpocket();
+	~Pickpocket();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {};
@@ -263,6 +339,9 @@ public:
 
 class Riposte : public iAttack {
 public:
+	Riposte();
+	~Riposte();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseAttack(Round& _round);
 	virtual void DecreaseAttack(Round& _round) {};
@@ -271,6 +350,9 @@ public:
 
 class Sneak : public iTurn {
 public:
+	Sneak();
+	~Sneak();
+
 	virtual void Activate(Round& _round);
 	virtual void SkipTurn(Round& _round) {};
 	virtual void HideTurn(Round& _round);
@@ -279,6 +361,9 @@ public:
 
 class ChangeClothes : public iTurn {
 public:
+	ChangeClothes();
+	~ChangeClothes();
+
 	virtual void Activate(Round& _round);
 	virtual void SkipTurn(Round& _round) {};
 	virtual void HideTurn(Round& _round);
@@ -287,6 +372,9 @@ public:
 
 class WaterBlast : public iHealth {
 public:
+	WaterBlast();
+	~WaterBlast();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -296,6 +384,9 @@ public:
 
 class AcidSkin : public iHealth, public iAttack {
 public:
+	AcidSkin();
+	~AcidSkin();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -307,6 +398,9 @@ public:
 
 class ConjureSword : public iHealth {
 public:
+	ConjureSword();
+	~ConjureSword();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round);
@@ -316,6 +410,9 @@ public:
 
 class SummonCat : public iHealth {
 public:
+	SummonCat();
+	~SummonCat();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round);
 	virtual void DecreaseHealth(Round& _round) {};
@@ -325,6 +422,9 @@ public:
 
 class BrokenClock : public iHealth {
 public:
+	BrokenClock();
+	~BrokenClock();
+
 	virtual void Activate(Round& _round);
 	virtual void IncreaseHealth(Round& _round) {};
 	virtual void DecreaseHealth(Round& _round) {};
@@ -334,8 +434,13 @@ public:
 
 class VineBound : public iTurn {
 public:
+	VineBound();
+	~VineBound();
+
 	virtual void Activate(Round& _round);
 	virtual void SkipTurn(Round& _round);
 	virtual void HideTurn(Round& _round) {};
 
 };
+
+#endif

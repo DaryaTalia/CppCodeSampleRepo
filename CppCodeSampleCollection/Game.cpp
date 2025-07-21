@@ -1,10 +1,42 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include "Game.h"
 
 using std::vector;
 
+Game::Game(int code) {
+	std::cout << "Debug.Log: Game::Game(" << code << "\) \n\n";	
+
+	// Define player's characters
+	StartGame();
+	std::cout << "Debug.Log: Game::Game(" << ++code << "\) | StartGame() Successful \n\n";
+
+	// Define first set of enemy characters and establish play order
+	InitNewRound();
+	std::cout << "Debug.Log: Game::Game(" << ++code << "\) | InitNewRound() Successful \n\n";
+}
+
+Game::~Game() {
+	*currentRound = NULL;
+	delete currentRound;
+
+	vector<Player*>::iterator playerP = playerChars->begin();
+	while (playerP != playerChars->end()) {
+		*playerP = NULL;
+		delete* playerP;
+		++playerP;
+	}
+	playerChars->clear();
+	playerChars = NULL;
+	delete playerChars;
+}
+
 void Game::StartGame() {
+	int code = 0;
+
+	std::cout << "Debug.Log: Game::StartGame(" << code << "\) \n\n";
+
 	// The game will introduce itself and the winning and losing objectives.
 	std::cout << "Welcome to DnD Lite!\n";
 	std::cout << "This is a C++, turn-based DnD battle game.\n";
@@ -15,47 +47,66 @@ void Game::StartGame() {
 
 	playerChars = new vector<Player*>(CharacterVerification());
 
+	std::cout << "Debug.Log: Game::StartGame(" << ++code << "\) | CharacterVerification() Successful \n\n";
+
 	// Get Classes for each player character
 	DefineCharacters();
+
+	std::cout << "Debug.Log: Game::StartGame(" << ++code << "\) | DefineCharacters() Successful \n\n";
 }
 
 int Game::CharacterVerification() {
+	int code = 0;
+
+	std::cout << "Debug.Log: Game::CharacterVerification(" << code << "\) \n\n";
+
 	int characterCount = 0;
-	while (characterCount < 2 && characterCount > 4) {
+	while (characterCount < 2 || characterCount > 4) {
 		std::cout << "How many characters would you like to control? (2-4) \t";
 		std::cin >> characterCount;
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+
+	std::cout << "Debug.Log: Game::CharacterVerification(" << ++code << "\) | CharacterCount = " << characterCount << " \n\n";
+
 	return characterCount;
 }
 
 void Game::DefineCharacters() {
+	int code = 0;
+
+	std::cout << "Debug.Log: Game::DefineCharacters(" << code << "\) \n\n";
+
 	vector<Player*>::iterator thisPlayer = playerChars->begin();
-	int playerIndex = 1;
+	int characterIndex = 1;
 
 	while (thisPlayer != playerChars->end()) {
+
+		std::cout << "Debug.Log: Game::DefineCharacters(" << code << "\) | characterIndex = "<< characterIndex <<" \n\n";
 		// Choose a name for this player
 		string myName = "";
 
-		std::cout << "(Player " << playerIndex << ") What is this player's name? \t";
+		std::cout << "(Character " << characterIndex << ") What is this character's name? \t";
 		std::cin >> myName;
-		playerChars->at(playerIndex - 1) = new Player(myName);
+		playerChars->at(characterIndex - 1) = new Player(myName);
 
 		// Initialize this player's Class and Abilities
-		playerChars->at(playerIndex - 1)->ChooseClass();
+		playerChars->at(characterIndex - 1)->ChooseClass();
+
+		std::cout << "Debug.Log: Game::DefineCharacters(" << ++code << "\) | ChooseClass() Successful \n\n";
 
 		// Determine if we've initialized enough characters to give the player feedback
-		if (playerIndex == playerChars->size()) {
+		if (characterIndex == playerChars->size()) {
 			std::cout << "Character Creation Complete!\n";
 		}
 		else {
-			std::cout << "Next Character:\n";
+			std::cout << "\nNext Character:\n";
 		}
 
 		std::cout << std::endl;
 
-		++playerIndex;
+		++characterIndex;
 		++thisPlayer;
 	}
 }
@@ -68,9 +119,43 @@ void Game::InitNewRound() {
 	currentRound = new Round(this);
 }
 
+
+
 Round::Round(Game* _game) {
 	InitializeEnemies(_game);
 	SetPlayOrder(_game);
+}
+
+Round::~Round() {
+	// Destruct enemies
+	vector<Enemy*>::iterator enemyP = enemyChars->begin();
+	while (enemyP != enemyChars->end()) {
+		*enemyP = NULL;
+		delete* enemyP;
+		++enemyP;
+	}
+	enemyChars->clear();
+	enemyChars = NULL;
+	delete enemyChars;
+
+	// Destruct pointers in character order
+	vector<GenericCharacter*>::iterator characterP = playerOrder->begin();
+	while (characterP != playerOrder->end()) {
+		*characterP = NULL;
+		delete* characterP;
+		++characterP;
+	}
+	playerOrder->clear();
+	playerOrder = NULL;
+	delete playerOrder;
+}
+
+Round& Round::operator=(const Round& round)
+{
+	std::swap(*enemyChars, *round.enemyChars);
+	std::swap(*playerOrder, *round.playerOrder);
+
+	return *this;
 }
 
 void Round::InitializeEnemies(Game* _game) {

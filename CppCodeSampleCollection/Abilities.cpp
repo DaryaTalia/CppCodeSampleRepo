@@ -5,6 +5,15 @@
 
 // Counter Song
 
+CounterSong::CounterSong(){
+	name = "Counter Song";
+	description = "Sing a song to enhance your attack damage.";
+}
+
+CounterSong::~CounterSong() {
+
+}
+
 void CounterSong::Activate(Round& _round) {
 	IncreaseAttack(_round);
 }

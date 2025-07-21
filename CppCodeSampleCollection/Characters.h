@@ -1,21 +1,23 @@
-#pragma once
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <vector>
 
-class AbstractClass;
-class AbstractAbiliy;
+#include "Classes.h"
+#include "Abilities.h"
 
-using std::string;
-using std::rand;
-using std::srand;
-using std::time;
+using namespace std;
+
+#ifndef CHARACTERS_H
+#define CHARACTERS_H
+
+using std::vector;
 
 enum class CharacterType { UNKNOWN, PLAYER, ENEMY };
 
 class GenericCharacter {
 public:
-	string name;
+	std::string name;
 	CharacterType type;
 	char icon;
 	AbstractClass *myClass;
@@ -50,42 +52,11 @@ public:
 	bool decreasingAttack;
 	unsigned int decAttackLife;
 
-	GenericCharacter(string _name) : name(_name) {
-		type = CharacterType::UNKNOWN;
-		icon = '/';
-		myClass = new AbstractClass();
+	vector<AbstractAbility*> myAbilities;
 
-		_maxHealth = 30;
-		_currHealth = _maxHealth;
+	GenericCharacter(std::string _name);
 
-		_lowAttackDamage = 0;
-		_highAttackDamage = 0;
-
-		increasingHealth = false;
-		incHealthLife = 0;
-
-		decreasingHealth = false;
-		decHealthLife = 0;
-
-		increasingHealth = false;
-		incHealthLife = 0;
-
-		freezingHealth = false;
-		frzHealthLife = 0;
-
-		skippingTurn = false;
-		skipTurnLife = 0;
-
-		hidingTurn = false;
-		hideTurnLife = 0;
-
-		increasingAttack = false;
-		incAttackLife = 0;
-
-		decreasingAttack = false;
-		decAttackLife = 0;
-	}
-	~GenericCharacter() {}
+	~GenericCharacter();
 
 	virtual void Reset() = 0;
 
@@ -94,36 +65,23 @@ public:
 	virtual void ChooseAbilities() = 0;
 
 private:
-	vector<AbstractAbility*> _myAbilities;
 };
 
-class Player : GenericCharacter {
+class Player : public GenericCharacter {
 public:
-	Player(string _name) : GenericCharacter(_name) {
-		type = CharacterType::PLAYER;
-		icon = '+';
-	}
+	Player(string _name);
 
-	~Player() {}
+	~Player();
 
-	void ChooseClass() {
-		// Ask player to pick the class
-
-		// After the class is picked...
-		ChooseAbilities();
-	}
+	void ChooseClass();
 
 	virtual void Reset();
 
 private:
-	void ChooseAbilities() {
-		// Ask the player to choose 2 abilities
-		
-		// Add the first ability in the class list to myAbilities first
-	}
+	void ChooseAbilities();
 };
 
-class Enemy : GenericCharacter {
+class Enemy : public GenericCharacter {
 public:
 	unsigned int _minHealth;
 
@@ -155,3 +113,5 @@ private:
 		// Add the first ability in the class list to myAbilities first
 	}
 };
+
+#endif
