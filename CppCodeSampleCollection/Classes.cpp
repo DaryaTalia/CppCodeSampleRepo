@@ -8,7 +8,8 @@ using std::vector;
 
 
 AbstractClass::AbstractClass() {
-	name = "";
+	this->name = "";
+	this->_abilityList = {};
 }
 
 AbstractClass::~AbstractClass() {
@@ -21,26 +22,26 @@ AbstractClass::~AbstractClass() {
 	_abilityList.clear();
 }
 
-vector<AbstractAbility*> AbstractClass::GetAbilityList() {
-	return _abilityList;
+vector<AbstractAbility*>* AbstractClass::GetAbilityList() {
+	return &_abilityList;
 }
 
 
 Bard::Bard() {
-	name = "Bard";
-	description = "Poetic and Musical Magic";
+	this->name = "Bard";
+	this->description = "Poetic and Musical Magic";
 
-	GetAbilityList().push_back(new CounterSong());
-	std::cout << "Bard(): Added CounterSong to Ability List: " << GetAbilityList().at(0)->name;
-	GetAbilityList().push_back(new ForeverPoem());
-	GetAbilityList().push_back(new SisterLullaby());
-	GetAbilityList().push_back(new WorldLastRhapsody());
-	GetAbilityList().push_back(new Crossbow());
-	GetAbilityList().push_back(new PeakPerformance());
+	GetAbilityList()->emplace_back(new CounterSong());
+	std::cout << "Bard(): Added CounterSong to Ability List: " << GetAbilityList()->at(0)->name << endl;
+	GetAbilityList()->emplace_back(new ForeverPoem());
+	GetAbilityList()->emplace_back(new SisterLullaby());
+	GetAbilityList()->emplace_back(new WorldLastRhapsody());
+	GetAbilityList()->emplace_back(new Crossbow());
+	GetAbilityList()->emplace_back(new PeakPerformance());
 }
 
 Bard::~Bard() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 
 
@@ -49,16 +50,16 @@ Cleric::Cleric() {
 	name = "Cleric";
 	description = "Chosen Mages of Deities";
 
-	GetAbilityList().push_back(new FriendshipShield());
-	GetAbilityList().push_back(new HoneySpell());
-	GetAbilityList().push_back(new GuidingLight());
-	GetAbilityList().push_back(new Madness());
-	GetAbilityList().push_back(new Protection());
-	GetAbilityList().push_back(new LoveBane());
+	GetAbilityList()->emplace_back(new FriendshipShield());
+	GetAbilityList()->emplace_back(new HoneySpell());
+	GetAbilityList()->emplace_back(new GuidingLight());
+	GetAbilityList()->emplace_back(new Madness());
+	GetAbilityList()->emplace_back(new Protection());
+	GetAbilityList()->emplace_back(new LoveBane());
 }
 
 Cleric::~Cleric() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 
 
@@ -66,16 +67,16 @@ Fighter::Fighter() {
 	name = "Fighter";
 	description = "Masters of Combat";
 
-	GetAbilityList().push_back(new Scimitar());
-	GetAbilityList().push_back(new Warhammer());
-	GetAbilityList().push_back(new Longbow());
-	GetAbilityList().push_back(new IronDefense());
-	GetAbilityList().push_back(new Olympian());
-	GetAbilityList().push_back(new Revenger());
+	GetAbilityList()->emplace_back(new Scimitar());
+	GetAbilityList()->emplace_back(new Warhammer());
+	GetAbilityList()->emplace_back(new Longbow());
+	GetAbilityList()->emplace_back(new IronDefense());
+	GetAbilityList()->emplace_back(new Olympian());
+	GetAbilityList()->emplace_back(new Revenger());
 }
 
 Fighter::~Fighter() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 
 
@@ -83,15 +84,15 @@ Ranger::Ranger() {
 	name = "Ranger";
 	description = "Watchers of Dense Nature";
 
-	GetAbilityList().push_back(new Longbow());
-	GetAbilityList().push_back(new Shortsword());
-	GetAbilityList().push_back(new BefriendBear());
-	GetAbilityList().push_back(new ExploreSurroundings());
-	GetAbilityList().push_back(new PoisonedBerries());
-	GetAbilityList().push_back(new SolarEclipse());
+	GetAbilityList()->emplace_back(new Longbow());
+	GetAbilityList()->emplace_back(new Shortsword());
+	GetAbilityList()->emplace_back(new BefriendBear());
+	GetAbilityList()->emplace_back(new ExploreSurroundings());
+	GetAbilityList()->emplace_back(new PoisonedBerries());
+	GetAbilityList()->emplace_back(new SolarEclipse());
 }
 Ranger::~Ranger() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 
 
@@ -99,16 +100,16 @@ Rogue::Rogue() {
 	name = "Rogue";
 	description = "Manipulators of Stealth and Vulnerabilities";
 
-	GetAbilityList().push_back(new Shortsword());
-	GetAbilityList().push_back(new Pickpocket());
-	GetAbilityList().push_back(new Riposte());
-	GetAbilityList().push_back(new Sneak());
-	GetAbilityList().push_back(new Crossbow());
-	GetAbilityList().push_back(new ChangeClothes());
+	GetAbilityList()->emplace_back(new Shortsword());
+	GetAbilityList()->emplace_back(new Pickpocket());
+	GetAbilityList()->emplace_back(new Riposte());
+	GetAbilityList()->emplace_back(new Sneak());
+	GetAbilityList()->emplace_back(new Crossbow());
+	GetAbilityList()->emplace_back(new ChangeClothes());
 }
 
 Rogue::~Rogue() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 
 
@@ -116,14 +117,14 @@ Wizard::Wizard() {
 	name = "Wizard";
 	description = "Masters of Magic";
 
-	GetAbilityList().push_back(new WaterBlast());
-	GetAbilityList().push_back(new AcidSkin());
-	GetAbilityList().push_back(new ConjureSword());
-	GetAbilityList().push_back(new SummonCat());
-	GetAbilityList().push_back(new BrokenClock());
-	GetAbilityList().push_back(new VineBound());
+	GetAbilityList()->emplace_back(new WaterBlast());
+	GetAbilityList()->emplace_back(new AcidSkin());
+	GetAbilityList()->emplace_back(new ConjureSword());
+	GetAbilityList()->emplace_back(new SummonCat());
+	GetAbilityList()->emplace_back(new BrokenClock());
+	GetAbilityList()->emplace_back(new VineBound());
 }
 Wizard::~Wizard() {
-	GetAbilityList().clear();
+	GetAbilityList()->clear();
 }
 

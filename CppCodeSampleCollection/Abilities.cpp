@@ -6,8 +6,8 @@
 // Counter Song
 
 CounterSong::CounterSong(){
-	name = "Counter Song";
-	description = "Sing a song to enhance your attack damage.";
+	this->name = "Counter Song";
+	this->description = "Sing a song to enhance your attack damage.";
 }
 
 CounterSong::~CounterSong() {
@@ -29,6 +29,15 @@ void CounterSong::IncreaseAttack(Round& _round) {
 
 // Forever Poem
 
+ForeverPoem::ForeverPoem() {
+	name = "Forever Poem";
+	description = " ";
+}
+
+ForeverPoem::~ForeverPoem() {
+
+}
+
 void ForeverPoem::Activate(Round& _round) {
 	FreezeHealth(_round);
 }
@@ -42,6 +51,15 @@ void ForeverPoem::FreezeHealth(Round& _round) {
 }
 
 // Sister Lullaby
+
+SisterLullaby::SisterLullaby() {
+	name = "Sister Lullaby";
+	description = " ";
+}
+
+SisterLullaby::~SisterLullaby() {
+
+}
 
 void SisterLullaby::Activate(Round& _round) {
 	FreezeHealth(_round);
@@ -58,6 +76,15 @@ void SisterLullaby::FreezeHealth(Round& _round) {
 
 // World Last Rhapsody
 
+WorldLastRhapsody::WorldLastRhapsody() {
+	name = "World's Last Rhapsody";
+	description = " ";
+}
+
+WorldLastRhapsody::~WorldLastRhapsody() {
+
+}
+
 void WorldLastRhapsody::Activate(Round& _round) {
 	IncreaseHealth(_round);
 }
@@ -73,6 +100,15 @@ void WorldLastRhapsody::IncreaseHealth(Round& _round) {
 
 // Crossbow
 
+Crossbow::Crossbow() {
+	name = "Crossbow";
+	description = " ";
+}
+
+Crossbow::~Crossbow() {
+
+}
+
 void Crossbow::Activate(Round& _round) {
 	DecreaseHealth(_round);
 }
@@ -87,6 +123,15 @@ void Crossbow::DecreaseHealth(Round& _round) {
 }
 
 // Peak Performance
+
+PeakPerformance::PeakPerformance() {
+	name = "Peak Performance";
+	description = " ";
+}
+
+PeakPerformance::~PeakPerformance() {
+
+}
 
 void PeakPerformance::Activate(Round& _round) {
 	// Use HideTurn() and IncreaseAttack() on self
@@ -107,6 +152,15 @@ void PeakPerformance::IncreaseAttack(Round& _round) {
 
 // Friendship Shield
 
+FriendshipShield::FriendshipShield() {
+	name = "Friendship Shield";
+	description = " ";
+}
+
+FriendshipShield::~FriendshipShield() {
+
+}
+
 void FriendshipShield::Activate(Round& _round) {
 	IncreaseHealth(_round);
 }
@@ -119,6 +173,15 @@ void FriendshipShield::IncreaseHealth(Round& _round) {
 }
 
 // Honey Spell
+
+HoneySpell::HoneySpell() {
+	name = "Honey Spell";
+	description = " ";
+}
+
+HoneySpell::~HoneySpell() {
+
+}
 
 void HoneySpell::Activate(Round& _round) {
 	IncreaseHealth(_round);
@@ -134,6 +197,15 @@ void HoneySpell::IncreaseHealth(Round& _round) {
 }
 
 // Guiding Light
+
+GuidingLight::GuidingLight() {
+	name = "Guiding Light";
+	description = " ";
+}
+
+GuidingLight::~GuidingLight() {
+
+}
 
 void GuidingLight::Activate(Round& _round) {
 	// Ask player which ally (including self) they want to affect
@@ -157,6 +229,15 @@ void GuidingLight::IncreaseHealth(Round& _round) {
 
 // Madness
 
+Madness::Madness() {
+	name = "Madness";
+	description = " ";
+}
+
+Madness::~Madness() {
+
+}
+
 void Madness::Activate(Round& _round) {
 	SkipTurn(_round);
 }
@@ -170,6 +251,15 @@ void Madness::SkipTurn(Round& _round) {
 }
 
 // Protection
+
+Protection::Protection() {
+	name = "Protection";
+	description = " ";
+}
+
+Protection::~Protection() {
+
+}
 
 void Protection::Activate(Round& _round) {
 	HideTurn(_round);
@@ -185,6 +275,15 @@ void Protection::HideTurn(Round& _round) {
 
 // LoveBane
 
+LoveBane::LoveBane() {
+	name = "LoveBane";
+	description = " ";
+}
+
+LoveBane::~LoveBane() {
+
+}
+
 void LoveBane::Activate(Round& _round) {
 	DecreaseAttack(_round);
 }
@@ -197,6 +296,15 @@ void LoveBane::DecreaseAttack(Round& _round) {
 }
 
 // Scimitar
+
+Scimitar::Scimitar() {
+	name = "Scimitar";
+	description = " ";
+}
+
+Scimitar::~Scimitar() {
+
+}
 
 void Scimitar::Activate(Round& _round) {
 	DecreaseHealth(_round);
@@ -211,6 +319,15 @@ void Scimitar::DecreaseHealth(Round& _round) {
 }
 
 // Warhammer
+
+Warhammer::Warhammer() {
+	name = "Warhammer";
+	description = " ";
+}
+
+Warhammer::~Warhammer() {
+
+}
 
 void Warhammer::Activate(Round& _round) {
 	DecreaseHealth(_round);
@@ -227,6 +344,15 @@ void Warhammer::DecreaseHealth(Round& _round) {
 
 // Longbow
 
+Longbow::Longbow() {
+	name = "Longbow";
+	description = " ";
+}
+
+Longbow::~Longbow() {
+
+}
+
 void Longbow::Activate(Round& _round) {
 	DecreaseHealth(_round);
 }
@@ -242,6 +368,15 @@ void Longbow::DecreaseHealth(Round& _round) {
 
 // Iron Defense
 
+IronDefense::IronDefense() {
+	name = "Iron Defense";
+	description = " ";
+}
+
+IronDefense::~IronDefense() {
+
+}
+
 void IronDefense::Activate(Round& _round) {
 	FreezeHealth(_round);
 }
@@ -255,6 +390,15 @@ void IronDefense::FreezeHealth(Round& _round) {
 
 // Olympian
 
+Olympian::Olympian() {
+	name = "Olympian";
+	description = " ";
+}
+
+Olympian::~Olympian() {
+
+}
+
 void Olympian::Activate(Round& _round) {
 	IncreaseAttack(_round);
 }
@@ -267,6 +411,15 @@ void Olympian::IncreaseAttack(Round& _round) {
 }
 
 // Revenger
+
+Revenger::Revenger() {
+	name = "Revenger";
+	description = " ";
+}
+
+Revenger::~Revenger() {
+
+}
 
 void Revenger::Activate(Round& _round) {
 	DecreaseAttack(_round);
@@ -283,6 +436,15 @@ void Revenger::DecreaseAttack(Round& _round) {
 
 // Shortsword
 
+Shortsword::Shortsword() {
+	name = "Shortsword";
+	description = " ";
+}
+
+Shortsword::~Shortsword() {
+
+}
+
 void Shortsword::Activate(Round& _round) {
 	DecreaseHealth(_round);
 }
@@ -298,6 +460,15 @@ void Shortsword::DecreaseHealth(Round& _round) {
 
 // Befriend Bear
 
+BefriendBear::BefriendBear() {
+	name = "Befriend Bear";
+	description = " ";
+}
+
+BefriendBear::~BefriendBear() {
+
+}
+
 void BefriendBear::Activate(Round& _round) {
 	IncreaseAttack(_round);
 }
@@ -310,6 +481,15 @@ void BefriendBear::IncreaseAttack(Round& _round) {
 }
 
 // Explore Surroundings
+
+ExploreSurroundings::ExploreSurroundings() {
+	name = "Explore Surroundings";
+	description = " ";
+}
+
+ExploreSurroundings::~ExploreSurroundings() {
+
+}
 
 void ExploreSurroundings::Activate(Round& _round) {
 	// Ask player which ally (including self) they want to affect
@@ -333,6 +513,15 @@ void ExploreSurroundings::IncreaseHealth(Round& _round) {
 
 // Poisoned Berries
 
+PoisonedBerries::PoisonedBerries() {
+	name = "Poisoned Berries";
+	description = " ";
+}
+
+PoisonedBerries::~PoisonedBerries() {
+
+}
+
 void PoisonedBerries::Activate(Round& _round) {
 	DecreaseAttack(_round);
 }
@@ -348,6 +537,15 @@ void PoisonedBerries::DecreaseAttack(Round& _round) {
 
 // Solar Eclipse
 
+SolarEclipse::SolarEclipse() {
+	name = "Solar Eclipse";
+	description = " ";
+}
+
+SolarEclipse::~SolarEclipse() {
+
+}
+
 void SolarEclipse::Activate(Round& _round) {
 	DecreaseAttack(_round);
 }
@@ -361,6 +559,15 @@ void SolarEclipse::DecreaseAttack(Round& _round) {
 }
 
 // Pickpocket
+
+Pickpocket::Pickpocket() {
+	name = "Pickpocket";
+	description = " ";
+}
+
+Pickpocket::~Pickpocket() {
+
+}
 
 void Pickpocket::Activate(Round& _round) {
 	IncreaseHealth(_round);
@@ -377,6 +584,15 @@ void Pickpocket::IncreaseHealth(Round& _round) {
 
 // Riposte
 
+Riposte::Riposte() {
+	name = "Riposte";
+	description = " ";
+}
+
+Riposte::~Riposte() {
+
+}
+
 void Riposte::Activate(Round& _round) {
 	IncreaseAttack(_round);
 }
@@ -389,6 +605,15 @@ void Riposte::IncreaseAttack(Round& _round) {
 }
 
 // Sneak
+
+Sneak::Sneak() {
+	name = "Sneak";
+	description = " ";
+}
+
+Sneak::~Sneak() {
+
+}
 
 void Sneak::Activate(Round& _round) {
 	HideTurn(_round);
@@ -403,6 +628,15 @@ void Sneak::HideTurn(Round& _round) {
 
 // Change Clothes
 
+ChangeClothes::ChangeClothes() {
+	name = "ChangeClothes";
+	description = " ";
+}
+
+ChangeClothes::~ChangeClothes() {
+
+}
+
 void ChangeClothes::Activate(Round& _round) {
 	HideTurn(_round);
 }
@@ -415,6 +649,15 @@ void ChangeClothes::HideTurn(Round& _round) {
 }
 
 // Water Blast
+
+WaterBlast::WaterBlast() {
+	name = "Water Blast";
+	description = " ";
+}
+
+WaterBlast::~WaterBlast() {
+
+}
 
 void WaterBlast::Activate(Round& _round) {
 	DecreaseHealth(_round);
@@ -430,6 +673,15 @@ void WaterBlast::DecreaseHealth(Round& _round) {
 }
 
 // Acid Skin
+
+AcidSkin::AcidSkin() {
+	name = "Acid Skin";
+	description = " ";
+}
+
+AcidSkin::~AcidSkin() {
+
+}
 
 void AcidSkin::Activate(Round& _round) {
 	// Ask the player which enemy to decrease health and attack on
@@ -460,6 +712,15 @@ void AcidSkin::DecreaseAttack(Round& _round) {
 
 // Conjure Sword
 
+ConjureSword::ConjureSword() {
+	name = "Conjure Sword";
+	description = " ";
+}
+
+ConjureSword::~ConjureSword() {
+
+}
+
 void ConjureSword::Activate(Round& _round) {
 	DecreaseHealth(_round);
 }
@@ -475,6 +736,15 @@ void ConjureSword::DecreaseHealth(Round& _round) {
 
 // Summon Cat
 
+SummonCat::SummonCat() {
+	name = "Summon Cat";
+	description = " ";
+}
+
+SummonCat::~SummonCat() {
+
+}
+
 void SummonCat::Activate(Round& _round) {
 	IncreaseHealth(_round);
 }
@@ -488,6 +758,15 @@ void SummonCat::IncreaseHealth(Round& _round) {
 
 // Broken Clock
 
+BrokenClock::BrokenClock() {
+	name = "Broken Clock";
+	description = " ";
+}
+
+BrokenClock::~BrokenClock() {
+
+}
+
 void BrokenClock::Activate(Round& _round) {
 	FreezeHealth(_round);
 }
@@ -500,6 +779,15 @@ void BrokenClock::FreezeHealth(Round& _round) {
 }
 
 // Vine Bound
+
+VineBound::VineBound() {
+	name = "Vine Bound";
+	description = " ";
+}
+
+VineBound::~VineBound() {
+
+}
 
 void VineBound::Activate(Round& _round) {
 	SkipTurn(_round);

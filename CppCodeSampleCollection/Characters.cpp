@@ -2,62 +2,65 @@
 #include "Characters.h"
 
 GenericCharacter::GenericCharacter(std::string _name) : name(_name) {
-	type = CharacterType::UNKNOWN;
-	icon = '/';
-	myClass = new AbstractClass();
+	this->type = CharacterType::UNKNOWN;
+	this->icon = '/';
+	this->myClass = new AbstractClass();
+	this->myAbilities = {};
 
-	_maxHealth = 30;
-	_currHealth = _maxHealth;
+	this->_maxHealth = 30;
+	this->_currHealth = _maxHealth;
 
-	_lowAttackDamage = 0;
-	_highAttackDamage = 0;
+	this->_lowAttackDamage = 0;
+	this->_highAttackDamage = 0;
 
-	increasingHealth = false;
-	incHealthLife = 0;
+	this->increasingHealth = false;
+	this->incHealthLife = 0;
 
-	decreasingHealth = false;
-	decHealthLife = 0;
+	this->decreasingHealth = false;
+	this->decHealthLife = 0;
 
-	increasingHealth = false;
-	incHealthLife = 0;
+	this->increasingHealth = false;
+	this->incHealthLife = 0;
 
-	freezingHealth = false;
-	frzHealthLife = 0;
+	this->freezingHealth = false;
+	this->frzHealthLife = 0;
 
-	skippingTurn = false;
-	skipTurnLife = 0;
+	this->skippingTurn = false;
+	this->skipTurnLife = 0;
 
-	hidingTurn = false;
-	hideTurnLife = 0;
+	this->hidingTurn = false;
+	this->hideTurnLife = 0;
 
-	increasingAttack = false;
-	incAttackLife = 0;
+	this->increasingAttack = false;
+	this->incAttackLife = 0;
 
-	decreasingAttack = false;
-	decAttackLife = 0;
+	this->decreasingAttack = false;
+	this->decAttackLife = 0;
 }
 
 GenericCharacter::~GenericCharacter() {
-	myClass = NULL;
+	this->myClass = NULL;
 	delete myClass;
+}
+
+AbstractClass GenericCharacter::ChooseClass()
+{
+	return AbstractClass();
 }
 
 
 
 
 Player::Player(string _name) : GenericCharacter(_name) {
-	type = CharacterType::PLAYER;
-	icon = '+';
+	this->type = CharacterType::PLAYER;
+	this->icon = '+';
 }
 
 Player::~Player() {
 
 }
 
-void Player::ChooseClass() {
-	int code = 0;
-
-	std::cout << "Debug.Log: Player::ChooseClass(" << code << ") \n\n";
+AbstractClass Player::ChooseClass() {
 
 	// Ask player to pick the class
 	int selection = 0;
@@ -82,55 +85,44 @@ void Player::ChooseClass() {
 
 		switch (selection) {
 			case 1: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Bard' selected \n\n";
-				myClass = new Bard();
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Bard() Successful\n\n";
+				//this->myClass = new Bard();
+				(*myClass) = Bard();
 				std::cout << name << " is a Bard: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 			case 2: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Cleric' selected \n\n";
 				myClass = new Cleric();
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Cleric() Successful\n\n";
 				std::cout << name << " is a Cleric: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 			case 3: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Fighter' selected \n\n";
 				myClass = new Fighter();
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Fighter() Successful\n\n";
 				std::cout << name << " is a Fighter: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 			case 4: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Ranger' selected \n\n";
 				myClass = new Ranger();
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Ranger() Successful\n\n";
 				std::cout << name << " is a Ranger: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 			case 5: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Rogue' selected \n\n";
 				myClass = new Rogue();
 				std::cout << name << " is a Rogue: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 			case 6: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case 'Wizard' selected \n\n";
 				myClass = new Wizard();
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Wizard() Successful\n\n";
 				std::cout << name << " is a Wizard: " << myClass->description << ".\n";
 				std::cout << std::endl;
 				break;
 			}
 
 			default: {
-				std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || 'case " << selection << "'Bard' selected \n\n";
 				std::cout << "Invalid selection, enter a valid choice between 1 and 6. ";
 				std::cout << std::endl;
 				break;
@@ -139,59 +131,57 @@ void Player::ChooseClass() {
 	}
 	std::cout << std::endl;
 
-	std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || Class Selected \n\n";
-
 	// After the class is picked...
 	ChooseAbilities();
-	std::cout << "Debug.Log: Player::ChooseClass(" << ++code << ") || ChooseAbilities() Successfull \n\n";
+
+	return (*myClass);
 }
-
-void Player::Reset() {
-
-}
-
 
 void Player::ChooseAbilities() {
 	int code = 0;
 
-	std::cout << "Debug.Log: Player::ChooseAbilitie\s(" << code << ") \n\n";
-
-	int ability1 = 0, ability2 = 0;
-
 	std::cout << myClass->name << " class has the following abilities: \n";
-	vector<AbstractAbility*>::iterator classAbilities = myClass->GetAbilityList().begin();
+	vector<AbstractAbility*>::iterator classAbilities = myClass->GetAbilityList()->begin();
 	int abilityIndex = 1;
 
-	while (classAbilities != myClass->GetAbilityList().end()) {
-		std::cout << abilityIndex++ << (*classAbilities)->name << ": " << (*classAbilities)->description;
+	while (classAbilities != myClass->GetAbilityList()->end()) {
+		std::cout << abilityIndex++ << ". " << (*classAbilities)->name << ": " << (*classAbilities)->description;
+		classAbilities++;
 		std::cout << std::endl;
 	}
 
 	// Ask the player to choose 2 abilities
 
+	int ability1 = 0; 
+	int ability2 = 0;
+
 	// First Ability 
-	while (ability1 < 1 && ability1 > myClass->GetAbilityList().capacity()) {
+	while (ability1 < 1 || ability1 > myClass->GetAbilityList()->size()) {
+		std::cout << std::endl;
 		std::cout << "What will their first ability be? \t";
 		std::cin >> ability1;
 		std::cout << std::endl;
 
-		if (ability1 < 1 || ability1 > myClass->GetAbilityList().capacity()) {
+		if (ability1 < 1 || ability1 > myClass->GetAbilityList()->size()) {
 			std::cout << "Invalid selection, enter a valid ability option. \t";
 		}
 	}
 	std::cout << std::endl;
 
-	myAbilities.push_back(myClass->GetAbilityList()[ability1]);
-	std::cout << name << " has " << myClass->GetAbilityList()[ability1]->name << "\n";
+	ability1--;
+	myAbilities.emplace_back(myClass->GetAbilityList()->at(ability1));
+	std::cout << name << " has " << (*myClass->GetAbilityList()) [ability1]->name << "\n";
 	std::cout << std::endl;
 
 	// Second Ability 
-	while ((ability2 < 1 && ability2 > myClass->GetAbilityList().capacity()) && ability2 != ability1 ) {
+	ability1++;
+	while ((ability2 < 1 || ability2 > myClass->GetAbilityList()->size()) && ability2 != ability1 ) {
+		std::cout << std::endl;
 		std::cout << "What will their second ability be? \t";
 		std::cin >> ability2;
 		std::cout << std::endl;
 
-		if (ability2 < 1 || ability2 > myClass->GetAbilityList().capacity()) {
+		if (ability2 < 1 || ability2 > myClass->GetAbilityList()->size()) {
 			std::cout << "Invalid selection, enter a valid ability option. \t";
 		}
 
@@ -201,13 +191,23 @@ void Player::ChooseAbilities() {
 	}
 	std::cout << std::endl;
 
-	myAbilities.push_back(myClass->GetAbilityList()[ability2]);
-	std::cout << name << " has " << myClass->GetAbilityList()[ability2]->name << "\n";
+	ability2--;
+	myAbilities.emplace_back(myClass->GetAbilityList()->at(ability2));
+	std::cout << name << " has " << (*myClass->GetAbilityList())[ability2]->name << "\n";
 	std::cout << std::endl;
+}
+
+void Player::Reset() {
+
 }
 
 
 
+
+AbstractClass Enemy::ChooseClass()
+{
+	return AbstractClass();
+}
 
 void Enemy::Reset() {
 

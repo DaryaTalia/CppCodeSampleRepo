@@ -6,15 +6,15 @@
 using std::vector;
 
 Game::Game(int code) {
-	std::cout << "Debug.Log: Game::Game(" << code << "\) \n\n";	
+	std::cout << "Debug.Log: Game::Game(" << code << ") \n\n";	
 
 	// Define player's characters
 	StartGame();
-	std::cout << "Debug.Log: Game::Game(" << ++code << "\) | StartGame() Successful \n\n";
+	std::cout << "Debug.Log: Game::Game(" << ++code << ") | StartGame() Successful \n\n";
 
 	// Define first set of enemy characters and establish play order
 	InitNewRound();
-	std::cout << "Debug.Log: Game::Game(" << ++code << "\) | InitNewRound() Successful \n\n";
+	std::cout << "Debug.Log: Game::Game(" << ++code << ") | InitNewRound() Successful \n\n";
 }
 
 Game::~Game() {
@@ -35,7 +35,7 @@ Game::~Game() {
 void Game::StartGame() {
 	int code = 0;
 
-	std::cout << "Debug.Log: Game::StartGame(" << code << "\) \n\n";
+	std::cout << "Debug.Log: Game::StartGame(" << code << ") \n\n";
 
 	// The game will introduce itself and the winning and losing objectives.
 	std::cout << "Welcome to DnD Lite!\n";
@@ -47,18 +47,18 @@ void Game::StartGame() {
 
 	playerChars = new vector<Player*>(CharacterVerification());
 
-	std::cout << "Debug.Log: Game::StartGame(" << ++code << "\) | CharacterVerification() Successful \n\n";
+	std::cout << "Debug.Log: Game::StartGame(" << ++code << ") | CharacterVerification() Successful \n\n";
 
 	// Get Classes for each player character
 	DefineCharacters();
 
-	std::cout << "Debug.Log: Game::StartGame(" << ++code << "\) | DefineCharacters() Successful \n\n";
+	std::cout << "Debug.Log: Game::StartGame(" << ++code << ") | DefineCharacters() Successful \n\n";
 }
 
 int Game::CharacterVerification() {
 	int code = 0;
 
-	std::cout << "Debug.Log: Game::CharacterVerification(" << code << "\) \n\n";
+	std::cout << "Debug.Log: Game::CharacterVerification(" << code << ") \n\n";
 
 	int characterCount = 0;
 	while (characterCount < 2 || characterCount > 4) {
@@ -68,22 +68,26 @@ int Game::CharacterVerification() {
 	}
 	std::cout << std::endl;
 
-	std::cout << "Debug.Log: Game::CharacterVerification(" << ++code << "\) | CharacterCount = " << characterCount << " \n\n";
+	std::cout << "Debug.Log: Game::CharacterVerification(" << ++code << ") | CharacterCount = " << characterCount << " \n\n";
 
 	return characterCount;
 }
 
 void Game::DefineCharacters() {
+	//TODO: Add check for unique class between characters/players
+
+	Player newPlayer = Player("");
+
 	int code = 0;
 
-	std::cout << "Debug.Log: Game::DefineCharacters(" << code << "\) \n\n";
+	std::cout << "Debug.Log: Game::DefineCharacters(" << code << ") \n\n";
 
 	vector<Player*>::iterator thisPlayer = playerChars->begin();
 	int characterIndex = 1;
 
 	while (thisPlayer != playerChars->end()) {
 
-		std::cout << "Debug.Log: Game::DefineCharacters(" << code << "\) | characterIndex = "<< characterIndex <<" \n\n";
+		std::cout << "Debug.Log: Game::DefineCharacters(" << code << ") | characterIndex = "<< characterIndex <<" \n\n";
 		// Choose a name for this player
 		string myName = "";
 
@@ -92,9 +96,11 @@ void Game::DefineCharacters() {
 		playerChars->at(characterIndex - 1) = new Player(myName);
 
 		// Initialize this player's Class and Abilities
-		playerChars->at(characterIndex - 1)->ChooseClass();
+		//newPlayer = ChooseClass();
 
-		std::cout << "Debug.Log: Game::DefineCharacters(" << ++code << "\) | ChooseClass() Successful \n\n";
+		 playerChars->at(characterIndex - 1)->ChooseClass();
+
+		std::cout << "Debug.Log: Game::DefineCharacters(" << ++code << ") | ChooseClass() Successful \n\n";
 
 		// Determine if we've initialized enough characters to give the player feedback
 		if (characterIndex == playerChars->size()) {

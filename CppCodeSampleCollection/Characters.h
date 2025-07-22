@@ -60,7 +60,7 @@ public:
 
 	virtual void Reset() = 0;
 
-	virtual void ChooseClass() = 0;
+	AbstractClass ChooseClass();
 
 	virtual void ChooseAbilities() = 0;
 
@@ -73,7 +73,7 @@ public:
 
 	~Player();
 
-	void ChooseClass();
+	AbstractClass ChooseClass();
 
 	virtual void Reset();
 
@@ -97,12 +97,7 @@ public:
 
 	~Enemy() {}
 
-	void ChooseClass() {
-		// Randomly select a class for the enemy
-
-		// After the class is picked...
-		ChooseAbilities();
-	}
+	AbstractClass ChooseClass();
 
 	virtual void Reset();
 

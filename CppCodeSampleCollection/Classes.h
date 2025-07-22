@@ -18,7 +18,7 @@ public:
 	AbstractClass();
 	~AbstractClass();
 
-	vector<AbstractAbility*> GetAbilityList();
+	vector<AbstractAbility*>* GetAbilityList();
 
 private:
 	vector<AbstractAbility*> _abilityList;
