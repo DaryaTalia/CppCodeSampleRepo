@@ -55,7 +55,7 @@ public:
 	void InitializeEnemies(Game* _game);
 	void SetPlayOrder(Game* _game);
 
-	void DisplayRoundStatus();
+	void DisplayRoundStatus(Game* _game);
 };
 
 #endif

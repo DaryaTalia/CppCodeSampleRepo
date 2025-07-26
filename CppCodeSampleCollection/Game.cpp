@@ -2,8 +2,36 @@
 #include <algorithm>
 #include <vector>
 #include "Game.h"
+#include <map>
+#include <cstdlib>
 
 using std::vector;
+using std::map;
+
+vector<string> names = {
+"Sage",
+"Eira",
+"Sigurd",
+"Thara",
+"G'eldryn",
+"Jace",
+"Melody",
+"Brynn",
+"Dorgath",
+"Fingon",
+"Gojo",
+"Erevan",
+"Raven",
+"Thranduil",
+"Merlin",
+"Yannick",
+"Orion",
+"Adelaide",
+"Zoth",
+"Yorik",
+"Xanth",
+"Morka",
+};
 
 Game::Game(int code) {
 	std::cout << "Debug.Log: Game::Game(" << code << ") \n\n";	
@@ -15,6 +43,8 @@ Game::Game(int code) {
 	// Define first set of enemy characters and establish play order
 	InitNewRound();
 	std::cout << "Debug.Log: Game::Game(" << ++code << ") | InitNewRound() Successful \n\n";
+
+	roundsCount = 0;
 }
 
 Game::~Game() {
@@ -33,12 +63,8 @@ Game::~Game() {
 }
 
 void Game::StartGame() {
-	int code = 0;
-
-	std::cout << "Debug.Log: Game::StartGame(" << code << ") \n\n";
-
 	// The game will introduce itself and the winning and losing objectives.
-	std::cout << "Welcome to DnD Lite!\n";
+	std::cout << "Welcome to DnD Lite!\n\n";
 	std::cout << "This is a C++, turn-based DnD battle game.\n";
 	std::cout << "You can build a team of up to 4 characters, choose their names, classes, and abilities, and battle against enemy opponents.\n";
 	std::cout << "Use your abilities wisely to support your team, disadvantage the enemy, and win the round.\n\n";
@@ -47,18 +73,11 @@ void Game::StartGame() {
 
 	playerChars = new vector<Player*>(CharacterVerification());
 
-	std::cout << "Debug.Log: Game::StartGame(" << ++code << ") | CharacterVerification() Successful \n\n";
-
 	// Get Classes for each player character
 	DefineCharacters();
-
-	std::cout << "Debug.Log: Game::StartGame(" << ++code << ") | DefineCharacters() Successful \n\n";
 }
 
 int Game::CharacterVerification() {
-	int code = 0;
-
-	std::cout << "Debug.Log: Game::CharacterVerification(" << code << ") \n\n";
 
 	int characterCount = 0;
 	while (characterCount < 2 || characterCount > 4) {
@@ -68,8 +87,6 @@ int Game::CharacterVerification() {
 	}
 	std::cout << std::endl;
 
-	std::cout << "Debug.Log: Game::CharacterVerification(" << ++code << ") | CharacterCount = " << characterCount << " \n\n";
-
 	return characterCount;
 }
 
@@ -78,16 +95,10 @@ void Game::DefineCharacters() {
 
 	Player newPlayer = Player("");
 
-	int code = 0;
-
-	std::cout << "Debug.Log: Game::DefineCharacters(" << code << ") \n\n";
-
 	vector<Player*>::iterator thisPlayer = playerChars->begin();
 	int characterIndex = 1;
 
 	while (thisPlayer != playerChars->end()) {
-
-		std::cout << "Debug.Log: Game::DefineCharacters(" << code << ") | characterIndex = "<< characterIndex <<" \n\n";
 		// Choose a name for this player
 		string myName = "";
 
@@ -99,8 +110,6 @@ void Game::DefineCharacters() {
 		//newPlayer = ChooseClass();
 
 		 playerChars->at(characterIndex - 1)->ChooseClass();
-
-		std::cout << "Debug.Log: Game::DefineCharacters(" << ++code << ") | ChooseClass() Successful \n\n";
 
 		// Determine if we've initialized enough characters to give the player feedback
 		if (characterIndex == playerChars->size()) {
@@ -115,6 +124,7 @@ void Game::DefineCharacters() {
 		++characterIndex;
 		++thisPlayer;
 	}
+
 }
 
 void Game::EndGame() {
@@ -167,13 +177,109 @@ Round& Round::operator=(const Round& round)
 void Round::InitializeEnemies(Game* _game) {
 	enemyChars = new vector<Enemy*>(_game->playerChars->size());
 
+	map<string, bool> enemyClasses;
+
+	enemyClasses["Bard"] = false;
+	enemyClasses["Cleric"] = false;
+	enemyClasses["Fighter"] = false;
+	enemyClasses["Ranger"] = false;
+	enemyClasses["Rogue"] = false;
+	enemyClasses["Wizard"] = false;
+
+	int selection = -1;
+	int randomNum;
+
 	// Set enemy classes and abilities
 	vector<Enemy*>::iterator thisEnemy = enemyChars->begin();
 
 	while (thisEnemy != enemyChars->end()) {
+		// Set Random Name
+		// TODO: Set Random Name
+		randomNum = rand() % names.size() + 1;
+		(*thisEnemy) = new Enemy(names[randomNum]);
+
 		// Set classes
+		bool cl = false;
+
+		while (!cl) {
+			randomNum = rand() % 6;
+
+			switch (randomNum) {
+			case 0: {
+				if (!enemyClasses["Bard"]) {
+					(*thisEnemy)->myClass = new Bard();
+					enemyClasses["Bard"] = true;
+					cl = true;
+				}
+				break;
+			}
+			case 1: {
+				if (!enemyClasses["Cleric"]) {
+					(*thisEnemy)->myClass = new Cleric();
+					enemyClasses["Cleric"] = true;
+					cl = true;
+				}
+				break;
+			}
+			case 2: {
+				if (!enemyClasses["Fighter"]) {
+					(*thisEnemy)->myClass = new Fighter();
+					enemyClasses["Fighter"] = true;
+					cl = true;
+				}
+				break;
+			}
+			case 3: {
+				if (!enemyClasses["Ranger"]) {
+					(*thisEnemy)->myClass = new Ranger();
+					enemyClasses["Ranger"] = true;
+					cl = true;
+				}
+				break;
+			}
+			case 4: {
+				if (!enemyClasses["Rogue"]) {
+					(*thisEnemy)->myClass = new Rogue();
+					enemyClasses["Rogue"] = true;
+					cl = true;
+				}
+				break;
+			}
+			case 5: {
+				if (!enemyClasses["Wizard"]) {
+					(*thisEnemy)->myClass = new Wizard();
+					enemyClasses["Wizard"] = true;
+					cl = true;
+				}
+				break;
+			}
+
+			default: {
+				break;
+			}
+			}
+		}
 
 		// Set abilities
+		int ab1 = -1;
+		int ab2 = -1;
+
+		while (ab1 < 0) {
+			randomNum = rand() % 6;
+
+			(*thisEnemy)->myAbilities.emplace_back((*thisEnemy)->myClass->GetAbilityList()->at(ab1));
+		}
+
+		while (ab2 < 0) {
+			randomNum = rand() % 6;
+
+			if (ab2 == ab1) {
+				ab2 = -1;
+			}
+			else {
+				(*thisEnemy)->myAbilities.emplace_back((*thisEnemy)->myClass->GetAbilityList()->at(ab2));
+			}
+		}
 
 		++thisEnemy;
 	}
@@ -187,11 +293,28 @@ void Round::SetPlayOrder(Game* _game) {
 
 	// Insert Player Characters'
 	playerOrder->insert(playerOrder->begin(), _game->playerChars->begin(), _game->playerChars->end());
-	// Insert Enemt Characters'
+	// Insert Enemy Characters'
 	playerOrder->insert(playerOrder->end(), enemyChars->begin(), enemyChars->end());
 
+	random_shuffle(playerOrder->begin(), playerOrder->end());
 
+	DisplayRoundStatus(_game);
+}
 
+void Round::DisplayRoundStatus(Game* _game)
+{
+	// Round Number
+	//icon Player (Class): _currHealth/_maxHealth
+
+	vector<GenericCharacter*>::iterator players = playerOrder->begin();
+
+	std::cout << "\nRound " << _game->roundsCount + 1 << " : \n";
+
+	while (players != playerOrder->end()) {
+		std::cout << (*players)->icon << " " << (*players)->name << " (" << (*players)->myClass << ") | Health: " << (*players)->_currHealth << "/" << (*players)->_maxHealth << "\n";
+
+		players++;
+	}
 
 }
 

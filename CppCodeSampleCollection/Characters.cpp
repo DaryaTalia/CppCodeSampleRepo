@@ -187,6 +187,7 @@ void Player::ChooseAbilities() {
 
 		if (ability2 == ability1) {
 			std::cout << "Invalid selection, choose a different ability \t";
+			ability2 = 0;
 		}
 	}
 	std::cout << std::endl;
@@ -203,6 +204,17 @@ void Player::Reset() {
 
 
 
+
+Enemy::Enemy(string _name) : GenericCharacter(_name) {
+	this->type = CharacterType::ENEMY;
+	this->icon = '-';
+
+	_minHealth = 20;
+}
+
+Enemy::~Enemy() {
+
+}
 
 AbstractClass Enemy::ChooseClass()
 {

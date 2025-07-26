@@ -85,17 +85,9 @@ class Enemy : public GenericCharacter {
 public:
 	unsigned int _minHealth;
 
-	Enemy(string _name) : GenericCharacter(_name) {
-		type = CharacterType::ENEMY;
-		icon = '-';
+	Enemy(string _name);
 
-		_minHealth = 20;
-
-		// srand(time(nullptr));
-		// int random = rand();
-	}
-
-	~Enemy() {}
+	~Enemy();
 
 	AbstractClass ChooseClass();
 

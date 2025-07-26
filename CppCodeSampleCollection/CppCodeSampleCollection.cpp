@@ -59,16 +59,23 @@ int main() {
 
     roundStatus = true; // false for "Loss", true for "Win"
 
+    int code = 0;
+
     // Play Game Loop
     while (status != GameStatus::End) {
 
         // Play Round Loop
         if (roundStatus) {
+            std::cout << "Debug.Log: CCSC::main(" << code++ << ") | Before PlayRound()  \n\n";
             roundStatus = myGame->currentRound->PlayRound(myGame);
+            std::cout << "Debug.Log: CCSC::main(" << code++ << ") | After PlayRound() \n\n";
         }
         else {
+            std::cout << "Debug.Log: CCSC::main(" << code++ << ") | Before RestartRounf()  \n\n";
             myGame->currentRound->RestartRound(myGame);
+            std::cout << "Debug.Log: CCSC::main(" << code++ << ") | After RestartRound(), Before PlayRound()  \n\n";
             roundStatus = myGame->currentRound->PlayRound(myGame);
+            std::cout << "Debug.Log: CCSC::main(" << code++ << ") | After PlayRound()  \n\n";
         }
 
         // Determine game status
